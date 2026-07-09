@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Event 1"
 date: 2024-01-01
 weight: 1
@@ -7,117 +7,32 @@ pre: " <b> 4.1. </b> "
 ---
 
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Event Report: Saturday Meet up
 
-### Event Objectives
+### Overview
+- **Event Name:** Saturday Meet up  
+- **Date & Time:** 09:00 - 12:00, May 30, 2026  
+- **Location:** Floor 26, Bitexco Financial Tower, No. 2 Hai Trieu Street, Ben Nghe Ward, District 1, Ho Chi Minh City  
+- **Role:** Attendee (FCJ Intern / Aura Academic Developer)  
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+---
 
-### Speakers
+### Event Description & Key Highlights
+Unlike traditional theoretical lectures, **Saturday Meet up** at the AWS office (Floor 26, Bitexco) served as an open networking and knowledge-sharing environment where cloud professionals, mentors, and interns explored the practical reality of the modern Cloud Computing industry.  
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+The meetup focused on 4 core topics designed to bridge the gap between academic knowledge and industry practice:
+1. **Gamified Cloud Learning via AWS Cloud Quest:** Exploring how to leverage Cloud Quest to practically master AWS competencies—from Cloud Practitioner to Serverless Developer—by solving simulated real-world enterprise challenges.
+2. **Hackathon Mastery & Product Development (Floci Case Study):** Speakers shared real-life journeys of transforming raw ideas into functional products during high-pressure Hackathon competitions, emphasizing the importance of delivering a focused MVP (Minimum Viable Product) supported by scalable architecture.
+3. **DevOps Culture & Cloud Operations Automation:** Demystifying the role of DevOps as the critical bridge between Development and Operations. The session highlighted CI/CD best practices, Infrastructure as Code (IaC), and strategies for zero-downtime deployments.
+4. **Professional Self-Development in Tech:** Insights into building a standout technical portfolio, mastering engineering communication, and actively leveraging tech communities to accelerate career growth.
 
-### Key Highlights
+---
 
-#### Identifying the drawbacks of legacy application architecture
+### Outcomes & Key Takeaways
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+Attending this meetup provided me (Vũ Gia Kiệt) with actionable insights directly applicable to our **Aura Academic** project and my personal career development:
 
-#### Transitioning to modern application architecture – Microservices
-
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
-
-### Key Takeaways
-
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
-
-### Event Experience
-
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
-
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+* **Practical AWS Mastery:** Learned how to effectively utilize AWS Cloud Quest for hands-on debugging and architectural practice, enabling faster mastery of cloud services beyond static documentation.
+* **DevOps & Teamwork Mindset:** Realized that DevOps is fundamentally a collaborative culture rather than just a set of tools. This inspired me to streamline our project's Git collaboration and deployment workflow.
+* **Hackathon & Deadline Strategy:** Practical lessons on product prioritization helped me better identify critical path features when building solutions under tight timelines.
+* **Valuable Networking:** Had the opportunity to engage directly with senior engineers and passionate peers, receiving valuable guidance on technical resume preparation and professional networking.

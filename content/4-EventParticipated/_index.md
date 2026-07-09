@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Events Participated"
 date: 2024-01-01
 weight: 4
@@ -9,7 +9,7 @@ pre: " <b> 4. </b> "
 
 > In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
 > 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
+> Each event should be presented in the format Event 1 along with the following details:
 > * Event name
 > * Date and time
 > * Location (if applicable)
@@ -18,24 +18,16 @@ pre: " <b> 4. </b> "
 > * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
 > * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+During my internship, I had the opportunity to attend the offline **Saturday Meet up** event. It was a valuable networking and learning experience where I gained practical industry insights, career orientation, and connected with experienced AWS engineers as well as fellow tech enthusiasts.
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+### [Event 1: Saturday Meet up](4.1-Event1/)  
+&emsp;**Event Name:** Saturday Meet up  
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Date & Time:** 09:00 - 12:00, May 30, 2026  
 
-&emsp;**Role:** Attendee  
-
----
-
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
-
-&emsp;**Date & Time:** 09:00, August 13, 2025  
-
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Location:** Floor 26, Bitexco Financial Tower, No. 2 Hai Trieu Street, Ben Nghe Ward, District 1, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  
+
+&emsp;**Brief Description:** An in-depth offline tech meetup focusing on practical cloud learning via AWS Cloud Quest, product development insights from Hackathons (Floci), DevOps workflows in real-world operations, and personal skill growth. 
