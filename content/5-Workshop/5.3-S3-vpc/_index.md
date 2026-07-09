@@ -16,3 +16,10 @@ In this section, you will create **a Gateway eendpoint** to access **Amazon S3**
 
 - [Create gateway endpoint](3.1-create-gwe/)
 - [Test gateway endpoint](3.2-test-gwe/)
+
+---
+
+### Step Outcomes & Verification
+* **Gateway VPC Endpoint Provisioned:** Successfully created and attached the S3 Gateway Endpoint (`com.amazonaws.us-east-1.s3`) to the route tables of `VPC Cloud`.
+* **Internal Connectivity Verified:** Confirmed object upload capability to S3 from the EC2 instance inside `VPC Cloud` entirely via private internal routing without public internet or NAT traversal.
+* **Zero Cost Impact:** Achieved high-speed internal S3 transfer at zero hourly or data processing endpoint costs.

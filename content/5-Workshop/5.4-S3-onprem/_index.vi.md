@@ -16,5 +16,12 @@ pre : " <b> 5.4. </b> "
     
 ![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
 
+---
+
+### Kết quả đạt được sau bước này (Step Outcomes)
+* **Triển khai thành công Interface VPC Endpoint (AWS PrivateLink):** Thiết lập Private IP trong các Subnet của `VPC Cloud` và tích hợp phân giải tên miền (DNS Resolution) cho Amazon S3.
+* **Định tuyến Hybrid mượt mà:** Máy chủ kiểm thử tại `VPC On-Prem` (mô phỏng TTDL doanh nghiệp) đã có thể thực hiện các thao tác đọc/ghi S3 thông qua đường hầm VPN Site-to-Site tới Private IP của Interface Endpoint.
+* **Loại bỏ rủi ro bảo mật đường truyền:** Toàn bộ lưu lượng liên thông từ On-premises lên S3 được đóng gói và mã hóa trên mạng riêng, không phơi nhiễm ra bên ngoài Internet công cộng.
+
 
 

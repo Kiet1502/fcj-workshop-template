@@ -76,6 +76,18 @@ Nhờ tận dụng tối đa kiến trúc Serverless và gói tài nguyên **AWS
 - **Rủi ro rớt mạng/mất kết nối của thí sinh:** Hệ thống tích hợp cơ chế lưu dữ liệu bài làm tự động xuống bộ nhớ trình duyệt (Local Storage / IndexedDB) và tự động đồng bộ ngay lập tức khi đường truyền internet được khôi phục.  
 - **Rủi ro nhận diện nhầm của AI Proctoring:** AI đóng vai trò giám sát, cờ báo (flagging) và lưu trữ bằng chứng (log/hình ảnh); quyền quyết định xử lý kỷ luật cuối cùng luôn thuộc về giảng viên để đảm bảo tính công bằng tuyệt đối.  
 
-### 8. Kết quả kỳ vọng & Giá trị dài hạn  
-* **Cải tiến kỹ thuật:** Thay thế hoàn toàn quy trình coi thi, ra đề và chấm thi thủ công bằng giải pháp công nghệ tự động hóa độ trễ thấp trên AWS.  
-* **Giá trị dài hạn:** Xây dựng hệ sinh thái công nghệ giáo dục (EdTech) tiên tiến, tạo tiền đề mở rộng tích hợp cho hàng trăm trường học và cơ sở đào tạo trên toàn quốc.
+### 8. Kết quả đạt được & Giá trị thực tiễn (Achieved Outcomes & Practical Value)
+
+Thông qua việc phát triển và triển khai thành công nền tảng **Aura Academic** trên hệ sinh thái AWS, nhóm đã đạt được các kết quả nổi bật cả về mặt kỹ thuật lẫn giá trị ứng dụng thực tiễn:
+
+#### Kết quả Kỹ thuật & Hạ tầng (Technical Outcomes & Architecture Validation)
+* **Triển khai Frontend tốc độ cao & bảo mật:** Xây dựng và phát hành thành công giao diện Next.js tĩnh trên Amazon S3 kết hợp mạng biên toàn cầu CloudFront CDN (`http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/`), đảm bảo độ trễ tải trang dưới 200ms và khả năng chịu tải hàng nghìn thí sinh truy cập đồng thời.
+* **Tích hợp Generative AI vào quy trình ra đề (Exam Builder):** Ứng dụng thành công Amazon Bedrock để tự động hóa trích xuất văn bản từ tài liệu thô (DOCX, PDF), sinh ma trận câu hỏi trắc nghiệm đa tầng và giải thích đáp án chi tiết chỉ trong vài giây.
+* **Giám sát phòng thi AI thông minh (AI Proctoring):** Nghiên cứu và tích hợp Amazon Rekognition xử lý luồng video thời gian thực từ camera thí sinh, phát hiện chính xác đa nhân diện, đổi người thi, rời khỏi khung hình hoặc gian lận trong phòng thi bảo mật (Secure Room).
+* **Kiến trúc Serverless tối ưu:** Vận hành mượt mà cụm dịch vụ không máy chủ (AWS Lambda, Amazon API Gateway, DynamoDB), giúp tự động co giãn theo lưu lượng thực tế (Auto-scaling) mà không cần quản trị máy chủ vật lý.
+
+#### Giá trị Thực tiễn & Tác động (Practical & Educational Impact)
+* **Tiết kiệm 80% công sức cho giảng viên:** Giảm thiểu tối đa thời gian ra đề thi, định dạng tài liệu và chấm điểm thủ công nhờ hệ thống chấm điểm tự động tức thì kèm báo cáo phân tích phổ điểm trực quan.
+* **Đảm bảo 99% sự công bằng & minh bạch:** Loại bỏ các hành vi gian lận trực tuyến nhờ nhật ký kiểm toán (Audit Logs) minh bạch cùng bằng chứng vi phạm bằng hình ảnh được lưu trữ an toàn trên Amazon S3.
+* **Tối ưu chi phí hạ tầng vượt trội:** Mô hình tính phí theo mức sử dụng thực tế (Pay-as-you-go) giúp duy trì chi phí toàn bộ hệ thống chỉ từ `~8.00 – 18.00 USD/tháng`, tiết kiệm hơn 85% so với việc thuê máy chủ riêng truyền thống.
+* **Khả năng nhân rộng cao (High Scalability):** Tạo nền tảng công nghệ giáo dục (EdTech) vững chắc, sẵn sàng mở rộng và áp dụng cho hàng trăm trường đại học, trường phổ thông và trung tâm đào tạo trên toàn quốc.

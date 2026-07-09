@@ -16,5 +16,12 @@ pre : " <b> 5.4. </b> "
 
 ![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
 
+---
+
+### Step Outcomes & Verification
+* **Interface VPC Endpoint (AWS PrivateLink) Deployed:** Provisioned private IP addresses inside `VPC Cloud` subnets with private DNS resolution enabled for Amazon S3.
+* **Seamless Hybrid Routing:** Confirmed that the on-premises test server (`VPC On-Prem`) successfully executed read/write operations against target S3 buckets over the Site-to-Site VPN tunnel directly to the Interface Endpoint's private IPs.
+* **Eliminated Transit Vulnerabilities:** Ensured end-to-end encryption and private routing across hybrid networks without traversing the public internet.
+
 
 

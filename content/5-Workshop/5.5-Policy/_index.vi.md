@@ -93,3 +93,12 @@ Sau đó chúng ta kiểm tra truy cập vào S3 bucket đầu tiên
  Câu lệnh xảy ra lỗi bởi vì bucket không có quyền truy cập bởi VPC endpoint policy.
 
 Trong phần này, bạn đã tạo chính sách VPC Endpoint cho Amazon S3 và sử dụng AWS CLI để kiểm tra chính sách. Các hoạt động AWS CLI liên quan đến bucket S3 ban đầu của bạn thất bại vì bạn áp dụng một chính sách chỉ cho phép truy cập đến bucket thứ hai mà bạn đã tạo. Các hoạt động AWS CLI nhắm vào bucket thứ hai của bạn thành công vì chính sách cho phép chúng. Những chính sách này có thể hữu ích trong các tình huống khi bạn cần kiểm soát quyền truy cập vào tài nguyên thông qua VPC Endpoint.
+
+---
+
+### Kết quả đạt được sau bước này (Step Outcomes)
+* **Kích hoạt thành công VPC Endpoint Policy:** Cấu hình và đính kèm chính sách tài nguyên IAM (JSON Resource Policy) trực tiếp lên Gateway VPC Endpoint của Amazon S3.
+* **Kiểm thử phân quyền chặt chẽ theo nguyên tắc quyền tối thiểu (Least Privilege):**
+  - **Thao tác hợp lệ (Allowed):** Lệnh AWS CLI truy xuất/tải dữ liệu lên bucket hợp lệ (`yourbucketname-2`) được hệ thống chấp thuận và thực hiện tức thì.
+  - **Thao tác bị từ chối (Denied):** Lệnh AWS CLI cố gắng truy cập trái phép vào bucket cũ (`yourbucketname-1`) bị chặn đứng với thông báo `AccessDenied`.
+* **Phòng chống rò rỉ dữ liệu (Anti-Data Exfiltration):** Xác minh năng lực ngăn chặn các tác nhân độc hại hoặc máy chủ nội bộ bị nhiễm mã độc gửi/tải dữ liệu của công ty ra các S3 Bucket phi chuẩn bên ngoài tổ chức.

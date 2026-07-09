@@ -16,3 +16,10 @@ Trong phần này, bạn sẽ tạo một Gateway endpoint để truy cập Amaz
 
 - [Tạo gateway endpoint](3.1-create-gwe/)
 - [Test gateway endpoint](3.2-test-gwe/)
+
+---
+
+### Kết quả đạt được sau bước này (Step Outcomes)
+* **Khởi tạo Gateway VPC Endpoint cho S3:** Thiết lập thành công Gateway Endpoint (`com.amazonaws.us-east-1.s3`) gắn trực tiếp vào bảng định tuyến (Route Table) của `VPC Cloud`.
+* **Kiểm thử kết nối nội bộ thành công:** Đã tải thử nghiệm object lên S3 bucket từ EC2 Instance trong `VPC Cloud` hoàn toàn thông qua dải địa chỉ IP nội bộ, chứng minh lưu lượng không hề đi ra Internet công cộng hay đi qua NAT Gateway.
+* **Tối ưu chi phí:** Khôi phục độ trễ mạng thấp tối đa cho ứng dụng nội bộ với mức phí điểm cuối bằng 0 (Gateway Endpoint không tốn phí duy trì giờ máy hay phí xử lý dữ liệu).

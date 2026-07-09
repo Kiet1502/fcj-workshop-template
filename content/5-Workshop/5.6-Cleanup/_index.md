@@ -27,6 +27,10 @@ In this workshop, you learned architecture patterns for accessing Amazon S3 with
 
 5. Delete S3 buckets
 + Open S3 console
-+ Choose the bucket we created for the lab, click and confirm empty. Click delete and confirm delete.
-
 ![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+
+---
+
+### Step Outcomes & Environment Verification
+* **Complete Resource Decommissioning:** Successfully deleted Route 53 Private Hosted Zones, Resolver Rules, S3 Buckets, VPC Endpoints, and the underlying CloudFormation stacks (`PLCloudSetup`, `PLOnpremSetup`).
+* **Zero Ongoing Cost Guarantee:** Ensured zero post-workshop billing charges by fully returning the AWS account to a clean baseline state.

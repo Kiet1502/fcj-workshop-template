@@ -96,4 +96,13 @@ This command will return an error because access to this bucket is not permitted
 
 In this section, you created a VPC endpoint policy for Amazon S3, and used the AWS CLI to test the policy. AWS CLI actions targeted to your original S3 bucket failed because you applied a policy that only allowed access to the second bucket you created. AWS CLI actions targeted for your second bucket succeeded because the policy allowed them. These policies can be useful in situations where you need to control access to resources through VPC endpoints.
 
+---
+
+### Step Outcomes & Security Verification
+* **VPC Endpoint IAM Policy Activated:** Successfully attached a JSON Resource Policy directly to the Amazon S3 Gateway VPC Endpoint.
+* **Least-Privilege Enforcement Verified:**
+  - **Authorized Access (Allowed):** AWS CLI operations targeting the permitted bucket (`yourbucketname-2`) executed instantly without errors.
+  - **Unauthorized Access Blocked (Denied):** AWS CLI commands targeting the unauthorized bucket (`yourbucketname-1`) were blocked at the network perimeter with `AccessDenied`.
+* **Data Exfiltration Prevention Validated:** Proved the capability to stop compromised or malicious internal EC2 instances from copying sensitive corporate data to external or non-approved S3 buckets.
+
 

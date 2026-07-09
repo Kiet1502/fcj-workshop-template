@@ -240,3 +240,11 @@ The **ClouddFormation** deployment requires about 15 minutes to complete.
 + **3 EC2s** have been created
 
 ![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+
+---
+
+### Step Outcomes & Infrastructure Verification
+* **IAM Permissions Established:** Successfully attached comprehensive networking, VPC, Transit Gateway, and EC2 IAM policies to support automated infrastructure provisioning and tear-down.
+* **CloudFormation Stack Provisioned (`PLCloudSetup`):** Automated deployment completed successfully without rollback, establishing the baseline hybrid networking environment within 15 minutes:
+  - **2 VPC Environments Provisioned:** `VPC Cloud` (hosting target cloud instances and future S3 endpoints) and `VPC On-Prem` (simulating corporate internal data center networks).
+  - **3 Running EC2 Instances:** Operational test instance inside `VPC Cloud`, test instance inside `VPC On-Prem`, and dedicated strongSwan VPN instance actively maintaining a secure Site-to-Site VPN tunnel with AWS Transit Gateway.

@@ -240,3 +240,11 @@ Quá trình triển khai CloudFormation cần khoảng 15 phút để hoàn thà
 + 3 EC2s đã được tạo
 
 ![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+
+---
+
+### Kết quả đạt được sau bước chuẩn bị (Prerequisite Outcomes)
+* **Quyền hạn IAM sẵn sàng (IAM Permissions Verified):** Cấp phát chính xác tập quyền cần thiết để khởi tạo, chỉnh sửa và dọn dẹp các tài nguyên mạng nâng cao (VPC, Transit Gateway, Endpoint, VPN, EC2).
+* **Triển khai tự động hạ tầng CloudFormation thành công:** Khởi tạo hoàn chỉnh cấu trúc mạng lai trong vòng 15 phút mà không gặp lỗi:
+  - **2 VPC hoàn chỉnh:** `VPC Cloud` (chứa máy chủ kiểm thử và S3 Gateway Endpoint trong tương lai) và `VPC On-Prem` (mô phỏng trung tâm dữ liệu nội bộ).
+  - **3 EC2 Instances đang vận hành (Running):** Máy chủ kiểm thử tại `VPC Cloud`, máy chủ kiểm thử tại `VPC On-Prem` và máy chủ chạy strongSwan VPN duy trì đường hầm Site-to-Site VPN ổn định kết nối với AWS Transit Gateway.
