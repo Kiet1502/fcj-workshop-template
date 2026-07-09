@@ -1,0 +1,74 @@
+baseURL = "https://Kiet1502.github.io/fcj-workshop-template/"
+relativeURLs = false
+canonifyURLs = false
+defaultContentLanguage = "en"
+
+# Change the default theme to be use when building the site with Hugo
+theme = "hugo-theme-learn"
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "workshop"
+  # Git hub repo link
+  editURL = ""
+  description = "Personal AWS internship report site built with Hugo and the FCJ workshop template."
+  author = "Kiet1502"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  
+[Languages]
+[Languages.en]
+title = "AWS Internship Report Site"
+weight = 1
+languageName = "English"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-github'></i> GitHub Repository"
+identifier = "GitHub Repository"
+url = "https://github.com/Kiet1502/fcj-workshop-template"
+weight = 10
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-facebook'></i> AWS Study Group"
+identifier = "AWS Study Group FB"
+url = "https://www.facebook.com/groups/awsstudygroupfcj/"
+weight = 20
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-linkedin'></i> LinkedIn"
+identifier = "LinkedIn Profile"
+url = "https://www.linkedin.com/"
+weight = 30
+
+[Languages.vi]
+title = "Website Báo Cáo Thực Tập AWS"
+weight = 2
+languageName = "Tiếng Việt"
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-github'></i> Mã nguồn GitHub"
+identifier = "GitHub Repository"
+url = "https://github.com/Kiet1502/fcj-workshop-template"
+weight = 10
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-facebook'></i> AWS Study Group"
+identifier = "AWS Study Group FB"
+url = "https://www.facebook.com/groups/awsstudygroupfcj/"
+weight = 20
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-linkedin'></i> LinkedIn"
+identifier = "LinkedIn Profile"
+url = "https://www.linkedin.com/"
+weight = 30
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
