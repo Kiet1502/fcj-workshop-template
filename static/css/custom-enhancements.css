@@ -52,9 +52,10 @@ button:focus-visible {
 }
 
 #body-inner table {
-  display: table;
-  width: 100%;
-  table-layout: auto;
+  display: table !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
   box-shadow: 0 10px 24px rgba(28, 34, 42, 0.08);
   white-space: normal !important;
   word-wrap: break-word;
@@ -63,15 +64,72 @@ button:focus-visible {
 
 #body-inner td,
 #body-inner th {
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 0.75rem;
   white-space: normal !important;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 #body-inner th {
   background: var(--enhancement-soft-surface-color);
+  font-weight: 600;
+}
+
+/* Specific column proportions for 6-column evaluation table (STT | Tiêu chí | Mô tả | Tốt | Khá | Trung bình) to completely eliminate horizontal scrolling */
+#body-inner table tr th:first-child:nth-last-child(6),
+#body-inner table tr td:first-child:nth-last-child(6) {
+  width: 5.5%;
+  text-align: center;
+}
+
+#body-inner table tr th:nth-child(2):nth-last-child(5),
+#body-inner table tr td:nth-child(2):nth-last-child(5) {
+  width: 23.5%;
+}
+
+#body-inner table tr th:nth-child(3):nth-last-child(4),
+#body-inner table tr td:nth-child(3):nth-last-child(4) {
+  width: 47%;
+}
+
+#body-inner table tr th:nth-child(4):nth-last-child(3),
+#body-inner table tr td:nth-child(4):nth-last-child(3),
+#body-inner table tr th:nth-child(5):nth-last-child(2),
+#body-inner table tr td:nth-child(5):nth-last-child(2),
+#body-inner table tr th:nth-child(6):nth-last-child(1),
+#body-inner table tr td:nth-child(6):nth-last-child(1) {
+  width: 8%;
+  text-align: center;
+  padding: 0.65rem 0.25rem;
+}
+
+/* Specific column proportions for 5-column worklog tables (STT/Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu) */
+#body-inner table tr th:first-child:nth-last-child(5),
+#body-inner table tr td:first-child:nth-last-child(5) {
+  width: 6.5%;
+  text-align: center;
+}
+
+#body-inner table tr th:nth-child(2):nth-last-child(4),
+#body-inner table tr td:nth-child(2):nth-last-child(4) {
+  width: 53.5%;
+}
+
+#body-inner table tr th:nth-child(3):nth-last-child(3),
+#body-inner table tr td:nth-child(3):nth-last-child(3),
+#body-inner table tr th:nth-child(4):nth-last-child(2),
+#body-inner table tr td:nth-child(4):nth-last-child(2) {
+  width: 14%;
+  text-align: center;
+  white-space: nowrap !important;
+}
+
+#body-inner table tr th:nth-child(5):nth-last-child(1),
+#body-inner table tr td:nth-child(5):nth-last-child(1) {
+  width: 12%;
+  text-align: center;
+  word-break: break-all;
 }
 
 #body-inner a[data-external-link="true"]::after {
