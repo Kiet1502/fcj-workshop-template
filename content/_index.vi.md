@@ -7,9 +7,9 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** [Họ và tên của bạn]
+&emsp; **Họ và tên:** Vũ Gia Kiệt
 
-&emsp; **Số điện thoại:** [Số điện thoại của bạn]
+&emsp; **Số điện thoại:** 0924770838
 
 &emsp; **Email:** vkey150204@gmail.com
 
@@ -17,7 +17,7 @@ chapter: false
 
 &emsp; **Ngành:** Công nghệ thông tin
 
-&emsp; **Lớp:** [Lớp của bạn]
+&emsp; **Lớp:** 22DTHE4
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Vietnam
 
@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 17/04/2026 đến ngày 10/07/2026
 
-![Ảnh đại diện của bạn](/images/avatar.png)
+![Ảnh đại diện của Vũ Gia Kiệt](images/avatar.jpg)
 
 
 

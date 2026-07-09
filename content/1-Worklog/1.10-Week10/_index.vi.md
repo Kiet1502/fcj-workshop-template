@@ -1,59 +1,37 @@
----
+﻿---
 title: "Worklog Tuần 10"
 date: 2024-01-01
 weight: 2
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+
+### Thời gian: 19/06 – 25/06
 
 ### Mục tiêu tuần 10:
+* Thực hành Machine Learning với Amazon SageMaker Studio (Jupyter Notebook).
+* Xử lý thị giác máy tính với Amazon Rekognition, trích xuất văn bản OCR với Amazon Textract và phân tích cảm xúc với Amazon Comprehend.
+* Xây dựng chatbot đa phương tiện với Amazon Lex và Amazon Polly.
+* Phân tích dữ liệu thời gian thực với Amazon Kinesis Data Streams và Data Warehouse Amazon Redshift.
+* Triển khai web app với AWS Elastic Beanstalk, tối ưu caching với Amazon ElastiCache (Redis) và điều phối workflow với AWS Step Functions.
+* Định tuyến mạng biên với AWS Global Accelerator, truy cập an toàn qua SSM Session Manager và quản lý bảo mật nâng cao với KMS, CloudTrail, GuardDuty, Macie.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
-
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Kết quả đạt được tuần 10:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+### Các công việc và kết quả triển khai trong tuần:
+| STT | Nội dung công việc | Kết quả đạt được | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| :---: | :--- | :--- | :---: | :---: | :--- |
+| **1** | Thực hành thiết lập môi trường máy học với Amazon SageMaker Studio, chạy thử nghiệm Jupyter Notebook để xử lý các tập dữ liệu mẫu. | Thiết lập SageMaker Studio hoàn chỉnh, chạy thành công Notebook xử lý và huấn luyện trên tập dữ liệu mẫu. | 19/06/2026 | 19/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **2** | Khởi tạo luồng xử lý thị giác máy tính với Amazon Rekognition để tự động nhận diện khuôn mặt và gắn thẻ (tagging) hình ảnh. | Xây dựng pipeline tự động phân tích ảnh, nhận diện chính xác đối tượng và khuôn mặt. | 19/06/2026 | 19/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | Tích hợp Amazon Textract để trích xuất văn bản từ tài liệu PDF (OCR), kết hợp với Amazon Comprehend để phân tích cảm xúc và từ khóa của đoạn văn. | Trích xuất thành công văn bản từ PDF/ảnh bằng Textract và đưa vào Comprehend phân tích chính xác ngữ điệu, từ khóa chính. | 20/06/2026 | 20/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | Xây dựng chatbot tương tác đa phương tiện bằng cách kết hợp Amazon Lex (xử lý ngôn ngữ tự nhiên) và Amazon Polly (chuyển đổi văn bản thành giọng nói). | Tạo thành công Chatbot AI có khả năng hiểu hội thoại tự nhiên (Lex) và phát âm phản hồi bằng giọng nói tự nhiên (Polly). | 20/06/2026 | 20/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **5** | Phân tích luồng dữ liệu thời gian thực (Real-time streaming) thông qua kiến trúc của Amazon Kinesis Data Streams. | Thiết lập luồng Kinesis nhận và xử lý hàng nghìn sự kiện/giây theo thời gian thực với độ trễ cực thấp. | 21/06/2026 | 21/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **6** | Thực hành tải dữ liệu vào kho dữ liệu quy mô lớn (Data Warehouse) bằng Amazon Redshift và thực thi các truy vấn phân tích. | Tạo cụm Redshift, tải tập dữ liệu lớn và thực hiện các câu truy vấn phân tích phức tạp với tốc độ cao. | 21/06/2026 | 21/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **7** | Triển khai nhanh ứng dụng web thông qua nền tảng AWS Elastic Beanstalk, tự động hóa quá trình cấp phát tài nguyên tính toán. | Deploy ứng dụng lên Elastic Beanstalk chỉ qua vài thao tác, hệ tự động cấu hình EC2, Load Balancer và Auto Scaling. | 22/06/2026 | 22/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **8** | Tối ưu hóa tốc độ truy xuất dữ liệu bằng cách thiết lập bộ nhớ đệm (In-memory caching) với Amazon ElastiCache (sử dụng engine Redis). | Tích hợp ElastiCache Redis giúp giảm tải cho database chính, tăng tốc thời gian phản hồi API dưới 10ms. | 22/06/2026 | 22/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **9** | Điều phối (Orchestrate) các luồng quy trình phức tạp, kết nối nhiều hàm tính toán độc lập thành một workflow trực quan bằng AWS Step Functions. | Vẽ và chạy thành công state machine trên Step Functions điều phối tuần tự các hàm Lambda xử lý đơn hàng/dữ liệu. | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **10** | Đẩy nhanh tốc độ phân phối ứng dụng toàn cầu và giảm độ trễ bằng cách định tuyến lưu lượng qua mạng biên với AWS Global Accelerator. | Cấu hình Global Accelerator giúp tối ưu đường đi của gói tin qua mạng cáp quang riêng của AWS, giảm độ trễ đáng kể. | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **11** | Sử dụng AWS Systems Manager (SSM) Session Manager để thiết lập kết nối an toàn vào máy chủ mà không cần mở cổng SSH (Port 22) ra môi trường internet. | Truy cập terminal EC2 trực tiếp trên trình duyệt qua Session Manager an toàn tuyệt đối, đóng hoàn toàn cổng 22. | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **12** | Quản lý vòng đời mã hóa dữ liệu với AWS KMS (Key Management Service), thực hành tự tạo và tự động xoay vòng khóa (CMK). | Tạo Customer Managed Key (CMK) trong KMS để mã hóa dữ liệu EBS/S3 và cấu hình tự động xoay vòng khóa định kỳ. | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **13** | Thiết lập theo dõi dấu vết kiểm toán (Audit trail) cho toàn bộ tài khoản với AWS CloudTrail, kết hợp phát hiện mối đe dọa bằng Amazon GuardDuty và Amazon Macie. | Kích hoạt CloudTrail ghi log toàn bộ API calls, bật GuardDuty phát hiện hành vi bất thường và Macie quét bảo vệ dữ liệu nhạy cảm trên S3. | 25/06/2026 | 25/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 

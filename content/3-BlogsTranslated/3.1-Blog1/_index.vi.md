@@ -1,126 +1,74 @@
 ---
-title: "Blog 1"
+title: "Blog 1 - Nền tảng Thi trực tuyến & Giám sát AI trên AWS Cloud"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Hành trình xây dựng Nền tảng Thi trực tuyến & Giám sát AI trên AWS Cloud (Serverless Architecture)
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+> *Bài viết được chia sẻ và thảo luận trên cộng đồng **AWS Study Group Vietnam**:*  
+> 👉 [**Xem bài đăng gốc & bình luận trên Facebook**](https://www.facebook.com/share/p/1D6dVxB4R3/?)  
+> 🌐 *Sản phẩm thực tế đang Live:* [**Aura Academic Frontend S3 Hosting**](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
 
 ---
 
-## Hướng dẫn kiến trúc
+## 1. Mở đầu: Khi chuyển đổi số giáo dục cần một cú hích từ Cloud-Native
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+Trong bối cảnh giáo dục hiện đại, việc tổ chức các kỳ thi trực tuyến (Online Exams) đã trở thành một nhu cầu tất yếu cho các trường đại học, phổ thông và trung tâm đào tạo. Tuy nhiên, các hệ thống Learning Management System (LMS) truyền thống thường xuyên gặp phải 3 rào cản chí mạng:
+1. **Khả năng chịu tải kém:** Khi hàng nghìn thí sinh cùng truy cập vào thời điểm bắt đầu thi, máy chủ vật lý hoặc VPS truyền thống dễ bị nghẽn mạng (bottleneck), sập server dẫn đến mất bài làm.
+2. **Chi phí duy trì máy chủ cao:** Để sẵn sàng cho những đợt thi cao điểm diễn ra vài lần trong năm, nhà trường phải chi trả lượng chi phí rất lớn để thuê và duy trì các cụm máy chủ 24/7.
+3. **Giám sát lỏng lẻo:** Khó kiểm soát hành vi gian lận (thi hộ, tra cứu tài liệu trái phép, chuyển đổi tab ứng dụng).
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
-
----
-
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Từ những trăn trở đó, nhóm chúng tôi đã quyết định xây dựng **Aura Academic | Smart Exam Engine** — nền tảng thi trắc nghiệm và giám sát thông minh thế hệ mới, ứng dụng triệt để kiến trúc **Serverless** trên hệ sinh thái **Amazon Web Services (AWS)**.
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## 2. Kiến trúc giải pháp Serverless của Aura Academic
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Thay vì quản lý máy chủ ảo EC2 phức tạp, chúng tôi áp dụng triết lý **"Zero Server Management"** (Không cần quản trị máy chủ) của AWS để đạt độ khả mở tối đa và chi phí tối thiểu:
 
----
+```mermaid
+graph LR
+    User[Thí sinh / Giảng viên] --> CloudFront[Amazon CloudFront CDN]
+    CloudFront --> S3[Amazon S3 Static Hosting]
+    User --> APIGW[Amazon API Gateway REST/WebSocket]
+    APIGW --> Lambda[AWS Lambda Microservices]
+    Lambda --> DynamoDB[(Amazon DynamoDB NoSQL)]
+    Lambda --> Bedrock[Amazon Bedrock AI]
+    Lambda --> Rekognition[Amazon Rekognition Computer Vision]
+```
 
-## The pub/sub hub
-
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
-
----
-
-## Core microservice
-
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+### Các dịch vụ AWS cốt lõi được ứng dụng:
+* **Amazon S3 + Amazon CloudFront (Frontend Layer):** Toàn bộ giao diện người dùng (xây dựng bằng Next.js/React với hiệu ứng mượt mà, hỗ trợ Dark/Light mode) được compile thành static site và lưu trữ trên **Amazon S3**. Khi người dùng truy cập, **Amazon CloudFront** đóng vai trò là mạng biên (Edge CDN) phân phối nội dung toàn cầu với độ trễ dưới 20ms, đồng thời bảo vệ hệ thống khỏi các cuộc tấn công từ chối dịch vụ (DDoS) nhờ tích hợp **AWS Shield**.
+* **AWS Lambda + Amazon API Gateway (Backend API Layer):** Logic nghiệp vụ (xác thực người dùng, tạo phòng thi, nộp bài, tính điểm) được chia nhỏ thành các hàm microservices chạy trên **AWS Lambda**. Chỉ khi có request từ **API Gateway** dội vào, Lambda mới khởi chạy và xử lý. Bạn không phải trả một đồng chi phí nào khi hệ thống ở trạng thái nhàn rỗi (Idle).
+* **Amazon DynamoDB (Database Layer):** Với yêu cầu ghi nhận hàng nghìn câu trả lời và Audit Logs cùng lúc theo thời gian thực (Real-time), **DynamoDB** (NoSQL) với cơ chế *On-Demand Capacity Mode* là lựa chọn hoàn hảo, mang lại tốc độ truy xuất dưới mili giây (sub-millisecond latency) và tự động mở rộng theo lưu lượng thực tế.
 
 ---
 
-## Front door microservice
+## 3. Bài toán tối ưu chi phí (Cost Optimization & Pay-As-You-Go)
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+Một trong những bài học đắt giá nhất từ chương trình thực tập **First Cloud Journey (FCJ)** là tư duy tối ưu chi phí (FinOps). Với mô hình Serverless và tận dụng **AWS Free Tier / Credits**, chi phí vận hành cho một hệ thống quy mô hàng nghìn thí sinh được tối ưu đến mức khó tin:
 
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+| Thành phần hạ tầng | Dịch vụ AWS sử dụng | Cơ chế tính phí | Chi phí ước tính / Tháng |
+| :--- | :--- | :--- | :--- |
+| **Giao diện & CDN** | Amazon S3 + CloudFront | Trả theo dung lượng lưu trữ & băng thông | ~1.50 USD |
+| **Backend API** | AWS Lambda + API Gateway | Trả theo số lượng Request (Miễn phí 1 triệu request đầu) | ~0.50 USD |
+| **Cơ sở dữ liệu** | Amazon DynamoDB | Trả theo thao tác đọc/ghi (Read/Write Units) | ~1.00 USD |
+| **Dịch vụ AI/ML** | Bedrock + Rekognition | Trả theo số Token xử lý và số phút video/ảnh phân tích | ~5.00 - 15.00 USD |
+| **TỔNG CỘNG** | **Kiến trúc Cloud-Native** | **Hoạt động ổn định, chịu tải cao** | **~8.00 - 18.00 USD/tháng** |
 
 ---
 
-## Tính năng mới trong giải pháp
+## 4. Tổng kết & Lời khuyên cho các bạn mới bắt đầu học AWS
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Việc chuyển dịch từ tư duy lập trình truyền thống sang tư duy **Cloud-Native & Serverless** ban đầu có thể gặp một ít bỡ ngỡ về cách phân tách sự kiện (Event-driven) và quản trị quyền truy cập (IAM Policies). Tuy nhiên, một khi bạn đã làm chủ được các công cụ như Lambda, API Gateway và DynamoDB, tốc độ phát triển sản phẩm (Time-to-Market) sẽ tăng lên gấp nhiều lần.
+
+Hãy bắt đầu từ việc xây dựng những ứng dụng nhỏ, đọc kỹ tài liệu AWS Well-Architected Framework, và đừng ngần ngại chia sẻ những vướng mắc lên cộng đồng để cùng nhau tiến bộ!
+
+---
+
+> 💬 **Bạn nghĩ sao về giải pháp Serverless này cho các kỳ thi trực tuyến?**  
+> Hãy để lại ý kiến thảo luận và góp ý cho nhóm tại bài đăng Facebook:  
+> 👉 [**Tham gia bình luận trên AWS Study Vietnam tại đây**](https://www.facebook.com/share/p/1D6dVxB4R3/?)

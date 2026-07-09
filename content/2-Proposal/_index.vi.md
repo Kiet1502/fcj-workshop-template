@@ -5,104 +5,77 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+# Aura Academic | Smart Exam Engine  
+## Nền Tảng Thi Trực Tuyến & Giám Sát Tự Động Hóa Bằng Trí Tuệ Nhân Tạo Trên AWS Cloud  
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+*Sản phẩm được phát triển và triển khai thực tế tại link:* [Aura Academic Frontend AWS S3 Hosting](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+---
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+### 1. Tóm tắt điều hành (Executive Summary)  
+**Aura Academic (Smart Exam Engine)** là nền tảng thi trắc nghiệm trực tuyến thông minh thế hệ mới, được nhóm chúng tôi phát triển nhằm giải quyết triệt để bài toán bảo mật, giám sát gian lận và tối ưu hóa quy trình tổ chức thi cử cho các trường đại học, trường phổ thông, trung tâm đào tạo và giảng viên. Nền tảng tích hợp sâu các công nghệ Trí tuệ nhân tạo (**AI Proctoring**, **Generative AI**) và được xây dựng trên kiến trúc **AWS Cloud & Serverless** hiện đại, đảm bảo tính khả mở cao (high scalability), độ trễ cực thấp và chi phí vận hành tối ưu.  
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+### 2. Tuyên bố vấn đề (Problem Statement)  
+* **Vấn đề hiện tại:**  
+  - **Giám sát lỏng lẻo:** Các kỳ thi trực tuyến hiện nay thường thiếu cơ chế giám sát chặt chẽ, dễ xảy ra tình trạng gian lận (nhờ người thi hộ, tra cứu tài liệu trái phép, rời khỏi vùng camera, mở tab/ứng dụng khác).  
+  - **Biên soạn đề thi thủ công:** Giảng viên mất hàng giờ đồng hồ để trích xuất, định dạng và tạo ngân hàng câu hỏi từ các tài liệu thô (DOCX, PDF) hoặc sách giáo khoa.  
+  - **Hạ tầng truyền thống dễ quá tải:** Các hệ thống quản lý thi (LMS) cũ thường bị nghẽn mạng hoặc sập server khi hàng nghìn sinh viên truy cập làm bài đồng thời, thiếu báo cáo phân tích chuyên sâu sau kỳ thi.  
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+* **Giải pháp đột phá - Aura Academic:**  
+  - **AI Camera / Proctoring AI Đỉnh Cao:** Ứng dụng công nghệ Computer Vision để nhận diện khuôn mặt thời gian thực, phát hiện đa nhân diện, đổi người thi, rời khỏi camera hoặc xuất hiện tạp âm bất thường trong phòng thi khép kín (**Secure Room**).  
+  - **Exam Builder / Biên Soạn Đề Thi Siêu Tốc:** Tích hợp mô hình ngôn ngữ lớn (**LLMs / Generative AI**) cho phép tự động trích xuất kiến thức từ tài liệu DOCX, PDF và tạo ma trận đề thi phân hóa chỉ với 1 lần chạm.  
+  - **Auto Report & Phân Tích Phổ Điểm:** Hệ thống chấm điểm tự động tức thì, thống kê nhật ký kiểm toán (**Audit Logs**) minh bạch và trực quan hóa phổ điểm chi tiết bằng biểu đồ động giúp giảng viên đánh giá chất lượng câu hỏi.  
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+* **Lợi ích & Hoàn vốn đầu tư (Benefits & ROI):**  
+  - Tiết kiệm tới **80%** thời gian chuẩn bị đề thi và chấm điểm cho giảng viên.  
+  - Đảm bảo **99%** sự công bằng, minh bạch và bảo mật trong các kỳ thi trực tuyến.  
+  - Tận dụng kiến trúc Cloud Native & Serverless của AWS (Amazon S3, CloudFront, Lambda, Bedrock...) giúp giảm chi phí đầu tư phần cứng ban đầu, chỉ trả phí theo lưu lượng sử dụng thực tế (**Pay-as-you-go**).  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### 3. Kiến trúc giải pháp (Solution Architecture & AWS Cloud Integration)  
+Hệ thống **Aura Academic** áp dụng kiến trúc Serverless hiện đại trên hệ sinh thái Amazon Web Services (AWS), cho phép dễ dàng chịu tải hàng nghìn thí sinh thi đồng thời mà không cần quản lý máy chủ vật lý:  
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+* **Frontend Hosting & CDN:**  
+  - Giao diện người dùng (xây dựng bằng Next.js/React hiện đại, hỗ trợ Dark Mode/Light Mode mượt mà) được đóng gói và triển khai hosting tĩnh trên **Amazon S3**.  
+  - Kết hợp với mạng biên phân phối nội dung toàn cầu **Amazon CloudFront**, đảm bảo tốc độ tải trang cực kỳ nhanh và chống tấn công DDoS hiệu quả (tên miền trực tiếp đang live: `http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/`).  
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+* **AI & Machine Learning Layer:**  
+  - **Amazon Bedrock:** Cung cấp các mô hình Foundation Models (FMs/LLMs) tiên tiến phục vụ module **Exam Builder** (tự động phân tích nội dung tài liệu học tập, sinh câu hỏi trắc nghiệm và giải thích đáp án).  
+  - **Amazon Rekognition:** Xử lý và nhận diện luồng video/hình ảnh thời gian thực từ webcam của thí sinh (**AI Proctoring**), tự động chốt lỗi vi phạm khi có dấu hiệu gian lận.  
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+* **Serverless Backend Layer:**  
+  - **AWS Lambda & Amazon API Gateway:** Xử lý toàn bộ logic nghiệp vụ (quản lý mã phòng thi, xác thực kết nối, nộp bài, tính điểm) dưới dạng kiến trúc microservices không máy chủ.  
+  - **Amazon DynamoDB:** Cơ sở dữ liệu NoSQL với độ trễ phản hồi dưới mili giây, lưu trữ ngân hàng câu hỏi, trạng thái phòng thi real-time và Audit Logs.  
+  - **Amazon S3 (Data Storage):** Lưu trữ an toàn tài liệu đề thi gốc và các hình ảnh chụp minh chứng vi phạm của thí sinh trong kỳ thi.  
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+* **Security & Identity:**  
+  - **Amazon Cognito:** Quản lý định danh và bảo mật đăng nhập cho các nhóm đối tượng (Giảng viên, Sinh viên, Quản trị viên nhà trường).  
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+### 4. Triển khai kỹ thuật & Quy trình vận hành khép kín  
+* **Quy trình 4 bước toàn diện của Aura Academic:**  
+  1. **Khởi tạo & Tạo đề (Exam Builder):** Giảng viên tải tài liệu lên hệ thống hoặc sử dụng ngân hàng câu hỏi có sẵn; AI tự động gợi ý ma trận đề thi chuẩn xác.  
+  2. **Thiết lập phòng thi bảo mật (Secure Room):** Giảng viên tạo phòng thi, cài đặt các quy tắc giám sát (yêu cầu camera, micrô, khóa chuyển tab) và gửi mã phòng cho sinh viên.  
+  3. **Vận hành & Giám sát AI (Live Exams & AI Proctoring):** Thí sinh truy cập phòng thi; hệ thống AI theo dõi liên tục thời gian thực, ghi nhận sự cố mất kết nối và tự động khôi phục bài làm an toàn.  
+  4. **Báo cáo & Phân tích (Auto Report & Smart Grading):** Ngay sau khi kết thúc giờ làm bài, hệ thống xuất báo cáo phổ điểm, danh sách thí sinh vi phạm kèm hình ảnh minh chứng cụ thể.  
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+### 5. Lộ trình & Mốc triển khai (Khớp với lộ trình thực tập AWS 11 Tuần)  
+- **Giai đoạn 1 (Tuần 1 – Tuần 3):** Khảo sát yêu cầu bài toán, thiết kế giao diện UI/UX trực quan và triển khai hosting Frontend lên **Amazon S3 + CloudFront**.  
+- **Giai đoạn 2 (Tuần 4 – Tuần 7):** Nghiên cứu chuyên sâu và tích hợp các dịch vụ AI/ML của AWS (**Amazon Bedrock** cho tạo đề thi, **Amazon Rekognition** cho giám sát camera).  
+- **Giai đoạn 3 (Tuần 8 – Tuần 10):** Hoàn thiện Backend Serverless (**AWS Lambda, API Gateway, DynamoDB**), xây dựng hệ thống phòng thi bảo mật (Secure Room) và luồng tự động hóa CI/CD.  
+- **Giai đoạn 4 (Tuần 11 & Tương lai):** Kiểm thử chịu tải thực tế, hoàn thiện tài liệu kiến trúc, đóng góp bài viết cho cộng đồng AWS Study Group và sẵn sàng đưa hệ thống vào ứng dụng tại các trường học.  
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+### 6. Ước tính ngân sách hạ tầng (Budget Estimation on AWS Cloud)  
+Nhờ tận dụng tối đa kiến trúc Serverless và gói tài nguyên **AWS Free Tier / Credits**, chi phí vận hành hệ thống được tối ưu ở mức thấp nhất:  
+- **Amazon S3 & CloudFront (Frontend hosting & CDN):** ~1.50 USD/tháng.  
+- **AWS Lambda & API Gateway (Backend API):** ~0.50 USD/tháng (trong hạn mức miễn phí hàng triệu request).  
+- **Amazon DynamoDB (NoSQL Database):** ~1.00 USD/tháng (On-Demand capacity mode).  
+- **Amazon Bedrock & Rekognition (AI Services):** ~5.00 – 15.00 USD/tháng (tùy theo tần suất sinh đề thi tự động và số lượng sinh viên thi đồng thời).  
+- **Tổng chi phí dự kiến cho môi trường Lab / Triển khai thực tế quy mô vừa:** **~8.00 – 18.00 USD/tháng**, tiết kiệm hơn 85% so với việc thuê và duy trì các máy chủ riêng (Dedicated Server / VPS) truyền thống.  
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+### 7. Đánh giá rủi ro & Kế hoạch giảm thiểu (Risk Assessment & Mitigation)  
+- **Rủi ro rớt mạng/mất kết nối của thí sinh:** Hệ thống tích hợp cơ chế lưu dữ liệu bài làm tự động xuống bộ nhớ trình duyệt (Local Storage / IndexedDB) và tự động đồng bộ ngay lập tức khi đường truyền internet được khôi phục.  
+- **Rủi ro nhận diện nhầm của AI Proctoring:** AI đóng vai trò giám sát, cờ báo (flagging) và lưu trữ bằng chứng (log/hình ảnh); quyền quyết định xử lý kỷ luật cuối cùng luôn thuộc về giảng viên để đảm bảo tính công bằng tuyệt đối.  
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
-
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
-
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
-
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
-
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+### 8. Kết quả kỳ vọng & Giá trị dài hạn  
+* **Cải tiến kỹ thuật:** Thay thế hoàn toàn quy trình coi thi, ra đề và chấm thi thủ công bằng giải pháp công nghệ tự động hóa độ trễ thấp trên AWS.  
+* **Giá trị dài hạn:** Xây dựng hệ sinh thái công nghệ giáo dục (EdTech) tiên tiến, tạo tiền đề mở rộng tích hợp cho hàng trăm trường học và cơ sở đào tạo trên toàn quốc.

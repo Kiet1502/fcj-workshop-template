@@ -16,7 +16,7 @@ home = [ "HTML", "RSS", "JSON"]
   # Git hub repo link
   editURL = ""
   description = "Personal AWS internship report site built with Hugo and the FCJ workshop template."
-  author = "Kiet1502"
+  author = "Vũ Gia Kiệt"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false

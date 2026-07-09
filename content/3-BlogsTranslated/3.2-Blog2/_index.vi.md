@@ -1,127 +1,79 @@
 ---
-title: "Blog 2"
+title: "Blog 2 - Tích hợp AI (Bedrock & Rekognition) trong Giám sát Phòng thi"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Tích hợp Trí tuệ Nhân tạo (Generative AI & Computer Vision) trong hệ thống Giám sát phòng thi
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
-
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+> *Bài viết được chia sẻ và thảo luận trên cộng đồng **AWS Study Group Vietnam**:*  
+> 👉 [**Xem bài đăng gốc & bình luận trên Facebook**](https://www.facebook.com/photo/?fbid=1676460976896951&set=gm.2201043733993920&idorvanity=660548818043427)  
+> 🌐 *Khám phá tính năng AI tại:* [**Aura Academic AI Proctoring**](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
 
 ---
 
-## Hướng dẫn kiến trúc
+## 1. Sức mạnh của AI trong ngành EdTech hiện đại
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+Nếu như kiến trúc Serverless (S3, Lambda, DynamoDB) giúp hệ thống **Aura Academic** giải quyết hoàn hảo bài toán về độ mở rộng và chi phí hạ tầng, thì **Trí tuệ Nhân tạo (AI/ML)** chính là "linh hồn" mang lại sự khác biệt và tự động hóa toàn diện cho nền tảng.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Trong bài blog thứ 2 này, nhóm chúng tôi xin chia sẻ chi tiết về cách ứng dụng bộ đôi dịch vụ AI hàng đầu của AWS: **Amazon Bedrock (Generative AI)** cho tính năng tạo đề thi thông minh và **Amazon Rekognition (Computer Vision)** cho hệ thống giám sát phòng thi tự động.
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## 2. Trợ lý AI tạo đề thi thần tốc với Amazon Bedrock
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Một trong những công việc tốn thời gian nhất của giảng viên là soạn thảo và chuẩn hóa ngân hàng câu hỏi từ các tài liệu bài giảng dài hàng trăm trang. Với **Amazon Bedrock**, chúng tôi đã tích hợp trực tiếp các mô hình Ngôn ngữ Lớn (LLMs) hàng đầu thế giới như **Claude 3 (Anthropic)** và **Titan Embeddings** vào quy trình tạo đề:
 
----
+```mermaid
+sequenceDiagram
+    participant Giảng_Viên as Giảng viên
+    participant Frontend as Aura Frontend (Next.js)
+    participant Bedrock as Amazon Bedrock (Claude 3)
+    participant DynamoDB as Ngân hàng câu hỏi (DynamoDB)
+    
+    Giảng_Viên->>Frontend: Tải lên tài liệu giáo trình (PDF / DOCX)
+    Frontend->>Bedrock: Gửi Prompt yêu cầu trích xuất & tạo câu trắc nghiệm theo ma trận độ khó
+    Bedrock-->>Frontend: Trả về JSON 50+ câu hỏi chuẩn hóa (Câu hỏi, 4 đáp án, Giải thích chi tiết)
+    Giảng_Viên->>Frontend: Kiểm duyệt nhanh & Bấm "Duyệt đề"
+    Frontend->>DynamoDB: Lưu trữ vào Ngân hàng đề thi
+```
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
-
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The pub/sub hub
-
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+### Điểm nổi bật:
+* **Tự động trích xuất ngữ cảnh chính xác:** Mô hình hiểu sâu ngữ cảnh chuyên ngành, tự động tạo câu hỏi phân loại theo 4 cấp độ nhận biết: *Nhận biết - Thông hiểu - Vận dụng - Vận dụng cao*.
+* **Bảo mật dữ liệu tuyệt đối:** Khác với việc dùng các API công cộng ngoài thị trường, dữ liệu tài liệu giáo trình tải lên **Amazon Bedrock** được mã hóa hoàn toàn trong VPC riêng của dự án và không bao giờ bị sử dụng để huấn luyện lại mô hình (Zero Data Training Leakage).
 
 ---
 
-## Core microservice
+## 3. Hệ thống Giám sát Phòng thi Thông minh (AI Proctoring) với Amazon Rekognition
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Để đảm bảo tính công bằng tuyệt đối trong các kỳ thi trực tuyến, việc phát hiện gian lận bằng mắt thường hoặc qua Zoom/Google Meet là không thể khi lớp học có hàng trăm sinh viên. **Amazon Rekognition** đã giúp chúng tôi giải quyết bài toán này với độ chính xác trên 99%:
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
-
----
-
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+| Tính năng Giám sát | Cơ chế hoạt động với Amazon Rekognition | Hành động xử lý tự động của hệ thống |
+| :--- | :--- | :--- |
+| **Xác thực khuôn mặt (Face Verification)** | So khớp ảnh chụp webcam lúc bắt đầu thi với ảnh thẻ sinh viên lưu trong hồ sơ (`CompareFaces API`). | Chặn truy cập phòng thi nếu độ trùng khớp (Similarity) dưới 90%, chống thi hộ ngay từ vòng gửi xe. |
+| **Phát hiện đa nhân diện (Multi-face Detection)** | Phân tích luồng khung hình định kỳ (`DetectFaces API`) để kiểm tra số lượng khuôn mặt xuất hiện trong khung hình. | Cảnh báo lập tức nếu có từ 2 khuôn mặt trở lên xuất hiện (phát hiện có người chỉ bài). |
+| **Phát hiện vắng mặt (Absence Detection)** | Nhận diện trường hợp khung hình webcam trống rỗng hoặc sinh viên rời khỏi vị trí thi quá thời gian cho phép. | Ghi nhận Audit Log, tự động nhắc nhở trên màn hình và trừ điểm rèn luyện nếu vi phạm nhiều lần. |
 
 ---
 
-## Staging ER7 microservice
+## 4. Tối ưu hiệu năng phân tích hình ảnh (Edge-to-Cloud Processing)
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Để tránh việc gửi liên tục video HD lên Cloud gây tốn băng thông và chi phí API không cần thiết, chúng tôi áp dụng chiến lược xử lý lai (**Hybrid Edge-Cloud Processing**):
+1. **Tại trình duyệt (Client Edge):** Sử dụng thư viện `TensorFlow.js / MediaPipe` nhẹ để phát hiện chuyển động cơ bản ngay trên trình duyệt.
+2. **Tại Cloud (Amazon Rekognition):** Chỉ khi client phát hiện sự bất thường (ví dụ: quay đầu sang hai bên liên tục, ánh sáng thay đổi đột ngột hoặc mất mặt), hệ thống mới chụp một khung hình chất lượng cao (Keyframe) và gửi qua API Gateway lên **Amazon Rekognition** để thẩm định chính xác và lưu bằng chứng (Evidence Snapshot) vào **Amazon S3**.
+
+Nhờ kiến trúc thông minh này, chi phí giám sát AI giảm đến **80%** so với việc stream video liên tục lên server truyền thống!
 
 ---
 
-## Tính năng mới trong giải pháp
+## 5. Kết luận
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Sự kết hợp giữa **Amazon Bedrock** và **Amazon Rekognition** không chỉ giúp nền tảng **Aura Academic** đạt chuẩn mực bảo mật của các kỳ thi quốc tế mà còn mở ra vô vàn tiềm năng ứng dụng AI trong cá nhân hóa trải nghiệm học tập.
+
+---
+
+> 💬 **Bạn quan tâm đến kỹ thuật Prompt Engineering hay Computer Vision hơn?**  
+> Hãy để lại bình luận và chia sẻ góc nhìn của bạn tại bài post cộng đồng:  
+> 👉 [**Thảo luận trực tiếp trên bài viết Facebook tại đây**](https://www.facebook.com/photo/?fbid=1676460976896951&set=gm.2201043733993920&idorvanity=660548818043427)

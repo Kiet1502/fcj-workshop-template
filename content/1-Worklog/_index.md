@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog"
 date: 2024-01-01
 weight: 1
@@ -6,34 +6,21 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+**On this page**, you will find the detailed weekly worklog throughout the **11-week** internship period (from **April 17** to **July 02**).
 
-Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+Below is the comprehensive summary table of the weekly timeline and actual implementation details:
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
-
-**Week 2:** [Doing task A...](1.2-week2/)
-
-**Week 3:** [Doing task B...](1.3-week3/)
-
-**Week 4:** [Doing task C...](1.4-week4/)
-
-**Week 5:** [Doing task D...](1.5-week5/)
-
-**Week 6:** [Doing task E...](1.6-week6/)
-
-**Week 7:** [Doing task G...](1.7-week7/)
-
-**Week 8:** [Doing task H...](1.8-week8/)
-
-**Week 9:** [Doing task I...](1.9-week9/)
-
-**Week 10:** [Doing task L...](1.10-week10/)
-
-**Week 11:** [Doing task M...](1.11-week11/)
-
-**Week 12:** [Doing task N...](1.12-week12/)
+| Week | Date | Content Summary | Details |
+| :---: | :---: | :--- | :---: |
+| **1** | 17/04 – 23/04 | - Get familiar with team members, read and understand internship rules and the 3-month AWS roadmap.<br>- Learn basic AWS concepts, cloud ecosystem overview, and core service groups.<br>- Create AWS Free Tier account, resolve identity verification and Visa card issues with AWS Support.<br>- Get familiar with AWS Management Console and practice configuring AWS Command Line Interface (CLI).<br>- Study Amazon Elastic Compute Cloud (EC2) virtual server service focusing on Week 1 objectives.<br>- Complete 5 hands-on Labs (selected based on documentation to avoid costs) and successfully claim $100 AWS Credits as resources for future projects. | [Week 1](1.1-week1/) |
+| **2** | 24/04 – 30/04 | - Study fundamentals and set up network infrastructure on AWS using Amazon Virtual Private Cloud (VPC).<br>- Deep dive and practice virtual server administration with Amazon Elastic Compute Cloud (EC2).<br>- Launch, monitor, and manage multiple EC2 instances simultaneously with different operating systems (Linux, Windows Server) and customize instance configurations (t3.micro, t3.nano, t3.medium).<br>- Successfully deploy web application (AWS FCJ Management) on EC2 instances, configure networking and security for internet access. | [Week 2](1.2-week2/) |
+| **3** | 01/05 - 07/05 | - Launch EC2 instances running Windows Server and customize configurations.<br>- Successfully deploy web application (AWS FCJ Management) onto EC2.<br>- Configure networking and security for public internet access.<br>- Study AWS Object Storage service (Amazon S3) and access control mechanisms (Bucket Policy, IAM).<br>- Host a static web interface on Amazon S3 and configure Public Access.<br>- *On-site:* Study Amazon RDS and initialize MySQL database. Install Docker Engine on EC2 and test running containers.<br>- Synthesize practice evidence (S3, RDS, Docker), update progress reports, and terminate unused resources to optimize costs. | [Week 3](1.3-week3/) |
+| **4** | 08/05 – 14/05 | - Study Amazon Bedrock and get familiar with Foundation Models (FMs) in the AWS environment.<br>- Learn RAG (Retrieval-Augmented Generation) architecture and Vector Search mechanics.<br>- Practice API calls interacting with Large Language Models (LLMs) on Amazon Bedrock and test basic RAG flow configurations.<br>- Deep dive into Docker and practice writing Dockerfiles to containerize applications, ensuring deployment consistency.<br>- Synthesize lab completion evidence (Bedrock, RAG, Docker), submit Week 4 report, and terminate resources to optimize costs. | [Week 4](1.4-week4/) |
+| **5** | 15/05 – 21/05 | - Study Serverless architecture and understanding the working mechanism of AWS Lambda and Amazon API Gateway.<br>- Create AWS Lambda functions to handle backend logic without server provisioning or management.<br>- Configure Amazon API Gateway connected with AWS Lambda to build basic RESTful API endpoints.<br>- Learn Content Delivery Networks (CDN) and integrate Amazon CloudFront for static web interfaces hosted on S3.<br>- Set up HTTPS security and optimize loading speeds via CloudFront caching mechanisms.<br>- Update practice evidence on reporting system and review AWS Billing to strictly adhere to Free Tier limits. | [Week 5](1.5-week5/) |
+| **6** | 22/05 - 28/05 | - Study monitoring and log management systems in Cloud environments via Amazon CloudWatch.<br>- Set up CloudWatch Dashboards to track basic performance metrics like CPU and Network utilization.<br>- Configure automated alert systems (CloudWatch Alarms) combined with Amazon SNS to send email notifications when resources exceed safe thresholds.<br>- Learn Infrastructure as Code (IaC) principles and AWS CloudFormation service.<br>- Practice Lab: Write CloudFormation templates (YAML format) to automate entire resource provisioning workflows, replacing manual GUI operations. | [Week 6](1.6-week6/) |
+| **7** | 29/05 – 04/06 | - Go to the office and study the services below.<br>- Create and configure an IAM User account with AdministratorAccess privileges to replace the Root account, adhering to security best practices.<br>- Deploy Amazon Bedrock Knowledge Bases combined with Titan Embeddings G1 - Text v1.2 model for RAG architecture.<br>- Configure Amazon S3 as Data Source and establish automated vector database via Amazon OpenSearch Serverless.<br>- Troubleshoot request overload issues (Error 429) by navigating deployment regions (us-east-1) and cleaning up stuck OpenSearch Collections. | [Week 7](1.7-week7/) |
+| **8** | 05/06 – 11/06 | - Practice deploying NoSQL databases with Amazon DynamoDB, learning how to set up tables, Partition Keys, and execute data queries.<br>- Study and set up basic CI/CD pipelines using AWS CodePipeline and AWS CodeBuild to automate testing, building, and source code deployment.<br>- Learn Amazon Cognito for user identity management and configure User Pools providing secure login/signup features for web applications.<br>- Practice deploying (hosting) frontend application on AWS Amplify, directly connecting with source code repositories for automatic UI updates upon code changes.<br>- Study container management services Amazon ECR (Elastic Container Registry) and Amazon ECS. Practice pushing Docker images to ECR and configuring container runs on Serverless platforms via AWS Fargate. | [Week 8](1.8-week8/) |
+| **9** | 12/06 – 18/06 | - Practice AI Agents architecture: Initialize and configure autonomous AI agents using Amazon Bedrock Agents; set up Action Groups integrated with AWS Lambda functions for automated request analysis and API execution.<br>- Deploy Event-Driven architecture: Complete Lab series configuring message queues with Amazon SQS and setting up central event bus with Amazon EventBridge to decouple microservices components.<br>- DNS Administration and Advanced Security: Perform domain resolution and traffic routing with Amazon Route 53; deploy AWS WAF web application firewall to protect API endpoints and CloudFront content distributions against common vulnerabilities (OWASP Top 10).<br>- Unstructured Data Analytics: Run Lab configuring AWS Glue Crawlers to automatically scan metadata from log files on Amazon S3, then use Amazon Athena to write SQL queries directly against raw data without loading into a database.<br>- Sensitive Information Management: Deploy AWS Secrets Manager to secure database connection strings and critical API Keys, practicing automated Secret rotation to completely replace storing plaintext environment variables. | [Week 9](1.9-week9/) |
+| **10** | 19/06 – 25/06 | - Practice setting up machine learning environments with Amazon SageMaker Studio, running sample Jupyter Notebooks to process dataset samples.<br>- Initialize computer vision processing pipelines with Amazon Rekognition for automated face recognition and image tagging.<br>- Integrate Amazon Textract to extract text from PDF documents (OCR), combining with Amazon Comprehend for sentiment analysis and keyword extraction.<br>- Build interactive multimedia chatbots by combining Amazon Lex (natural language processing) and Amazon Polly (text-to-speech conversion).<br>- Analyze real-time streaming data via Amazon Kinesis Data Streams architecture.<br>- Practice loading data into large-scale Data Warehouse using Amazon Redshift and execute analytical queries.<br>- Rapidly deploy web application via AWS Elastic Beanstalk platform, automating compute resource provisioning.<br>- Optimize data retrieval speeds by configuring in-memory caching with Amazon ElastiCache (using Redis engine).<br>- Orchestrate complex workflow processes, connecting multiple independent compute functions into visual workflows using AWS Step Functions.<br>- Accelerate global application distribution and reduce latency by routing traffic over edge networks with AWS Global Accelerator.<br>- Use AWS Systems Manager (SSM) Session Manager to establish secure connections into instances without opening SSH port (Port 22) to the internet.<br>- Manage encryption data lifecycle with AWS KMS (Key Management Service), practicing custom creation and automated Key rotation (CMK).<br>- Establish audit trails for the entire account with AWS CloudTrail, combining threat detection with Amazon GuardDuty and Amazon Macie. | [Week 10](1.10-week10/) |
+| **11** | 26/06 - 02/07 | - System Design Support: Participate with team in analyzing and visualizing workflow for project. Take main responsibility for reviewing and drawing architectural diagrams, ensuring logical structure and clear component interactions.<br>- On-site Practice Labs: Visit office and directly complete new practice labs on the system.<br>- Practical Application Research: Analyze project requirements to map with learned labs. Propose deployment solutions and directly integrate AWS services into the project to optimize performance and security.<br>- Community Contribution: Synthesize knowledge, experience, and weekly practice process to draft a specialized technical blog post. Successfully published and shared article to AWS Study Vietnam community. | [Week 11](1.11-week11/) |

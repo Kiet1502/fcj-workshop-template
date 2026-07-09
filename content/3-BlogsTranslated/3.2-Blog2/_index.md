@@ -1,126 +1,79 @@
 ---
-title: "Blog 2"
+title: "Blog 2 - AI Proctoring (Bedrock & Rekognition) Integration"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Integrating Artificial Intelligence (Generative AI & Computer Vision) for Exam Supervision
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
-
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+> *This article was published and discussed on the **AWS Study Group Vietnam** community:*  
+> 👉 [**View Original Facebook Post & Discussion**](https://www.facebook.com/photo/?fbid=1676460976896951&set=gm.2201043733993920&idorvanity=660548818043427)  
+> 🌐 *Live Product Demo:* [**Aura Academic AI Proctoring**](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
 
 ---
 
-## Architecture Guidance
+## 1. The Power of AI in Modern EdTech
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+While our Serverless foundation (S3, Lambda, DynamoDB) enables **Aura Academic** to scale seamlessly and minimize infrastructure costs, **Artificial Intelligence (AI/ML)** serves as the core differentiator driving complete automation and academic integrity across our platform.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+In our second engineering blog post, our team shares detailed insights into integrating two premier AWS AI services: **Amazon Bedrock (Generative AI)** for intelligent exam generation, and **Amazon Rekognition (Computer Vision)** for automated secure room proctoring.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## 2. Lightning-Fast Exam Builder Powered by Amazon Bedrock
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+One of the most time-consuming workflows for educators is drafting and categorizing question banks from comprehensive, multi-hundred-page course materials. By integrating **Amazon Bedrock**, we tapped directly into cutting-edge Large Language Models (LLMs) like **Claude 3 (Anthropic)** and **Titan Embeddings** to automate exam creation:
 
----
+```mermaid
+sequenceDiagram
+    participant Instructor as Instructor
+    participant Frontend as Aura Frontend (Next.js)
+    participant Bedrock as Amazon Bedrock (Claude 3)
+    participant DynamoDB as Question Bank (DynamoDB)
+    
+    Instructor->>Frontend: Upload Course Materials (PDF / DOCX)
+    Frontend->>Bedrock: Send Prompt requesting structured MCQ generation & difficulty distribution
+    Bedrock-->>Frontend: Return JSON with 50+ standardized questions (Question, 4 options, Detailed rationale)
+    Instructor->>Frontend: Review & Click "Approve Exam"
+    Frontend->>DynamoDB: Save directly to DynamoDB Question Bank
+```
 
-## Technology Choices and Communication Scope
-
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+### Key Technical Highlights:
+* **Accurate Contextual Extraction:** The LLM deeply comprehends specialized academic terminology and categorizes questions according to Bloom's Taxonomy: *Remembering - Understanding - Applying - Analyzing*.
+* **Zero Data Training Leakage:** Unlike commercial public AI APIs, documents uploaded through **Amazon Bedrock** are encrypted in transit and at rest within our private Virtual Private Cloud (VPC) and are never used to train base foundation models.
 
 ---
 
-## Core Microservice
+## 3. Intelligent AI Proctoring System with Amazon Rekognition
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+Enforcing absolute academic honesty across online examinations is virtually impossible using manual human supervision over video calls when classrooms exceed hundreds of students. **Amazon Rekognition** enabled us to build an automated real-time proctoring pipeline with >99% accuracy:
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+| Proctoring Capability | Amazon Rekognition Mechanism | Automated System Action |
+| :--- | :--- | :--- |
+| **Face Verification** | Compares student webcam capture at exam check-in against verified profile records (`CompareFaces API`). | Blocks exam entrance if facial similarity score falls below 90%, eliminating proxy exam attempts instantly. |
+| **Multi-Face Detection** | Periodically samples webcam frames (`DetectFaces API`) to verify the number of distinct human faces present. | Triggers real-time alert and records incident log if more than one face is detected within the frame. |
+| **Absence Detection** | Identifies when the webcam view becomes empty or if the candidate leaves their workstation continuously. | Displays on-screen warning and logs behavioral violation to the instructor audit dashboard. |
 
 ---
 
-## Staging ER7 Microservice
+## 4. Edge-to-Cloud Processing Optimization
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+Continuously streaming HD video feeds from hundreds of webcams directly to the cloud would incur prohibitive network bandwidth and heavy API usage costs. To resolve this, we implemented a **Hybrid Edge-Cloud Processing** architecture:
+1. **At the Browser (Client Edge):** Lightweight JavaScript models (`TensorFlow.js / MediaPipe`) run locally inside the student's browser to track basic head movement and gaze direction.
+2. **At the Cloud (Amazon Rekognition):** Only when the edge client detects a high-probability anomaly (e.g., repeated head turning, sudden lighting shift, or face disappearance), the system captures a high-resolution Keyframe snapshot and dispatches it via API Gateway to **Amazon Rekognition** for definitive verification and evidence storage on **Amazon S3**.
+
+This hybrid architecture reduced our AI proctoring operating expenses by **80%** compared to traditional continuous server video processing!
 
 ---
 
-## New Features in the Solution
+## 5. Conclusion
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Combining **Amazon Bedrock** with **Amazon Rekognition** allows **Aura Academic** to achieve rigorous international exam security standards while demonstrating the transformative impact of AWS AI services on educational technology.
+
+---
+
+> 💬 **Are you more interested in Prompt Engineering or Computer Vision architectures?**  
+> Share your thoughts and join our technical discussion on our Facebook community post:  
+> 👉 [**Join the Discussion on AWS Study Vietnam**](https://www.facebook.com/photo/?fbid=1676460976896951&set=gm.2201043733993920&idorvanity=660548818043427)

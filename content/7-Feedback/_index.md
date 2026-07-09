@@ -6,42 +6,42 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud Journey program. This will help the FCJ team improve any shortcomings based on the following aspects:
+> Below are my practical evaluations and reflections (Vũ Gia Kiệt - Class 22DTHE4) after completing the internship and experiencing the **First Cloud Journey (FCJ)** program while building the **Aura Academic** system:
 
 ### Overall Evaluation
 
 **1. Working Environment**  
-The working environment is very friendly and open. FCJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+The working environment is dynamic, comfortable, and encourages proactivity. Daily communication mostly happens online, making it quick and saving travel time. A big plus is the flexible schedule, allowing students to effectively balance university studies with AWS lab exercises and project milestones.
 
 **2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+The mentors are enthusiastic, supportive, and get straight to the point. When encountering challenging errors regarding IAM permissions or debugging AWS Lambda, mentors guide us on how to troubleshoot independently rather than doing it for us, helping us retain technical concepts much longer. The team admin quickly assists with lab accounts, documentation, and procedures.
 
 **3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+The tasks align closely with my Information Technology major. Theoretical knowledge from university courses such as computer networking, databases, and software architecture was directly applied to build real-world cloud systems (Amazon S3, DynamoDB, API Gateway, Lambda).
 
 **4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+The program provides hands-on exposure to modern cloud technologies rarely covered in university curriculums, particularly Serverless architecture, CI/CD automation pipelines, and AI integration (Amazon Bedrock, Rekognition). Beyond coding, I also enhanced my system thinking, technical documentation writing, and collaborative Git workflows.
 
 **5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+Our team spirit was highly cohesive and supportive. During intense project deadlines or troubleshooting complex integration bugs, team members clearly divided tasks, collaborated actively, and respected each other's opinions.
 
 **6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+The program creates excellent conditions by providing dedicated AWS lab environments and cloud credits, enabling students to freely experiment with AWS services without personal financial risk. Internal training sessions and technical documentation were top-notch.
 
 ---
 
 ### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+
+- **What did you find most satisfying during the program?**  
+Successfully building and deploying the live **Aura Academic** platform on AWS Cloud from scratch, achieving high stability and mastering FinOps cost-optimization strategies.
+- **What do you think the program should improve for future participants?**  
+If possible, adding 1 or 2 offline networking sessions or direct workshop meetups between teams and mentors would further enhance team bonding and real-world experience sharing.
+- **If recommending to a friend, would you suggest they join? Why?**  
+Absolutely. It is an ideal hands-on training ground for IT students aiming to become Cloud Engineers or DevOps specialists, helping them gain practical industry skills rapidly.
 
 ---
 
 ### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+
+- **Suggestions for improvement:** Expanding lab topics to include advanced cloud security (such as AWS WAF rules, GuardDuty, Security Hub) or handling Big Data/Data Lake pipelines.
+- **Future expectations:** I strongly look forward to participating in advanced phases of the program and joining real-world enterprise cloud projects in the future.

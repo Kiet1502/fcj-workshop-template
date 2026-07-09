@@ -1,126 +1,78 @@
 ---
-title: "Blog 3"
+title: "Blog 3 - CI/CD Automation, CloudWatch Monitoring & WAF Security"
 date: 2024-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Automating CI/CD Pipelines, CloudWatch Monitoring & Zero-Trust Security on AWS
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
-
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+> *This article was published and discussed on the **AWS Study Group Vietnam** community:*  
+> 👉 [**View Original Facebook Post & Discussion**](https://www.facebook.com/share/p/18uKARgWds/?)  
+> 🌐 *Project Portal:* [**Aura Academic Cloud System**](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
 
 ---
 
-## Architecture Guidance
+## 1. Why DevOps and Multi-Layer Security Matter in EdTech
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+When engineering a large-scale application like **Aura Academic**, having developers continuously push updates to code repositories can easily introduce regressions, integration conflicts, or downtime if deployed manually. Furthermore, online examination systems are prime targets for malicious network attacks (DDoS, SQL Injection, XSS) attempting to manipulate grades or interrupt exam sessions.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+In our third engineering blog post, we share how our team applied industry best practices learned during the **First Cloud Journey (FCJ)** program to architect **fully automated CI/CD pipelines**, real-time **observability dashboards**, and **multi-layered web application firewalls** across AWS.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## 2. Automated CI/CD Pipeline with AWS CodePipeline & CodeBuild
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+To eliminate manual deployment risks and streamline continuous delivery, we built a serverless CI/CD pipeline integrated directly with our GitHub repository:
 
----
+```mermaid
+graph LR
+    Dev[Engineers Push Code to GitHub] --> Webhook[GitHub Webhook Trigger]
+    Webhook --> Pipeline[AWS CodePipeline]
+    Pipeline --> Build[AWS CodeBuild Automated Build & Test]
+    Build --> DeployS3[Deploy Static Frontend to Amazon S3 / CloudFront]
+    Build --> DeployLambda[Update AWS Lambda Microservices]
+```
 
-## Technology Choices and Communication Scope
-
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+### Automation Workflow:
+1. **Source Stage:** Whenever a code commit or Pull Request merges into the `main` branch on GitHub, an automated webhook triggers **AWS CodePipeline**.
+2. **Build & Test Stage:** **AWS CodeBuild** provisions an isolated ephemeral container, installs necessary dependencies, executes our automated testing suite (Unit & Integration tests), and compiles our Next.js frontend into static build artifacts.
+3. **Deploy Stage:** 
+   - For Frontend: CodeBuild syncs static assets to our **Amazon S3** origin bucket and automatically triggers a `CloudFront Cache Invalidation` so students and faculty immediately experience the latest UI updates without stale caching.
+   - For Backend: Updates code packages across our **AWS Lambda** microservices via AWS SAM / CloudFormation using **Canary Deployments** (routing 10% of live traffic initially to verify stability before shifting 100%).
 
 ---
 
-## Core Microservice
+## 3. Real-Time Observability with Amazon CloudWatch & SNS
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+High availability requires proactive observability. We established **Amazon CloudWatch** as our centralized operational intelligence hub:
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+| Operational Metric | Monitored AWS Service | Alarm Threshold (CloudWatch Alarm) | Automated Remediation Action |
+| :--- | :--- | :--- | :--- |
+| **API Error Rate (5xx Errors)** | Amazon API Gateway | > 1% of total request volume across 5 mins | Dispatches critical alert via **Amazon SNS** to engineering email/Telegram channels. |
+| **Lambda Duration & Throttling** | AWS Lambda | Execution duration exceeding 8 seconds or any throttle events | Automatically scales reserved concurrency limits and notifies backend team. |
+| **DynamoDB Consumed Capacity** | Amazon DynamoDB | Reaches 85% of Provisioned Read/Write Units | Triggers Auto-Scaling to dynamically provision additional table capacity. |
 
 ---
 
-## Staging ER7 Microservice
+## 4. Defense-in-Depth (Zero-Trust Security & AWS WAF)
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+Security is our top priority for high-stakes online examinations. We implemented a robust **Defense-in-Depth** architecture:
+* **Edge Protection:** Deployed **AWS WAF (Web Application Firewall)** directly in front of **Amazon CloudFront** and **API Gateway**. WAF is configured with AWS Managed Rules to inspect and block OWASP Top 10 vulnerabilities (SQL Injection, Cross-Site Scripting, and malicious automated bots).
+* **Sensitive Secrets Management:** All database connection strings, JWT secret keys, and third-party API tokens are securely encrypted inside **AWS Secrets Manager**, eliminating hardcoded credentials completely.
+* **Identity & Access Governance (IAM & ABAC):** Enforced strict *Least Privilege Principle*. Each Lambda microservice is granted a dedicated IAM execution role with permissions scoped restricted strictly to its assigned DynamoDB table or S3 bucket.
 
 ---
 
-## New Features in the Solution
+## 5. First Cloud Journey (FCJ) Program Reflection
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Over 11 intensive weeks of hands-on training during our **First Cloud Journey (FCJ)** internship, our engineering team transformed from cloud novices into confident builders capable of architecting scalable, secure, and cost-efficient cloud systems on AWS.
+
+We express our sincere gratitude to our technical mentors and the entire **AWS Study Group Vietnam** community for their continuous guidance, support, and inspiration!
+
+---
+
+> 💬 **Are you currently implementing CI/CD pipelines or AWS WAF in your cloud projects?**  
+> Share your questions and engineering experiences on our official community post:  
+> 👉 [**Join the Technical Discussion on Facebook**](https://www.facebook.com/share/p/18uKARgWds/?)

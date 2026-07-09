@@ -5,111 +5,77 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+# Aura Academic | Smart Exam Engine  
+## Next-Generation AI-Powered Online Examination & Proctoring Platform on AWS Cloud  
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+*Live Production & Demonstration Link:* [Aura Academic Frontend AWS S3 Hosting](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+---
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+### 1. Executive Summary  
+**Aura Academic (Smart Exam Engine)** is a revolutionary smart online assessment and examination platform developed by our team to solve critical challenges regarding academic integrity, proctoring security, and workflow optimization for universities, high schools, training institutes, and educators. By deeply integrating cutting-edge Artificial Intelligence (**AI Proctoring**, **Generative AI**) with modern **AWS Cloud & Serverless** architecture, Aura Academic delivers high scalability, ultra-low latency, and cost-effective operations.  
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+### 2. Problem Statement  
+* **Current Challenges:**  
+  - **Lack of Supervision:** Online exams often suffer from vulnerabilities to cheating, including impersonation, unauthorized material consultation, leaving the camera frame, or switching browser tabs/applications during exams.  
+  - **Time-Consuming Exam Creation:** Teachers spend countless hours manually extracting, formatting, and structuring question banks from raw textbook files (DOCX, PDF).  
+  - **Infrastructure Overload:** Traditional Learning Management Systems (LMS) often experience network bottlenecks or server crashes during peak concurrent exam sessions, and lack comprehensive analytical post-exam reporting.  
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+* **Our Breakthrough Solution - Aura Academic:**  
+  - **AI Camera / Real-Time AI Proctoring:** Leverages Computer Vision to monitor facial recognition in real-time, detecting multi-face presence, candidate swapping, leaving the frame, or suspicious audio noise within a **Secure Room** environment.  
+  - **Exam Builder / High-Speed Automated Generation:** Integrates Large Language Models (**LLMs / Generative AI**) to automatically parse learning documents (DOCX/PDF) and generate structured, multi-difficulty exam matrices with a single click.  
+  - **Auto Report & Comprehensive Analytics:** Features instant automated grading, transparent **Audit Logs**, and dynamic score distribution charts that allow educators to evaluate question quality and student performance.  
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+* **Benefits & Return on Investment (ROI):**  
+  - Reduces preparation and grading time for educators by up to **80%**.  
+  - Ensures **99%** transparency, fairness, and security across all online examinations.  
+  - Leverages AWS Cloud-Native & Serverless architecture (Amazon S3, CloudFront, Lambda, Bedrock...) to eliminate initial upfront server costs, paying only for actual operational throughput (**Pay-as-you-go**).  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### 3. Solution Architecture & AWS Cloud Integration  
+**Aura Academic** is built upon a robust, highly resilient Serverless architecture on Amazon Web Services (AWS), capable of supporting thousands of concurrent test-takers without managing physical servers:  
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+* **Frontend Hosting & CDN:**  
+  - The modern web interface (built with Next.js/React, featuring smooth Light/Dark mode transitions) is statically exported and hosted on **Amazon S3**.  
+  - Distributed globally via **Amazon CloudFront** edge network for lightning-fast delivery and built-in DDoS protection (Live URL: `http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/`).  
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+* **AI & Machine Learning Layer:**  
+  - **Amazon Bedrock:** Provides advanced Foundation Models (FMs/LLMs) powering the **Exam Builder** module to analyze study materials, generate multiple-choice questions, and provide detailed answer explanations.  
+  - **Amazon Rekognition:** Processes live video and image streams from student webcams (**AI Proctoring**), automatically identifying and flagging potential violations or suspicious behaviors.  
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+* **Serverless Backend Layer:**  
+  - **AWS Lambda & Amazon API Gateway:** Powers all backend business logic (room management, connection verification, submission handling, score calculation) as fully managed serverless microservices.  
+  - **Amazon DynamoDB:** Sub-millisecond NoSQL database storing question banks, real-time room status, student responses, and detailed Audit Logs.  
+  - **Amazon S3 (Data Storage):** Securely stores raw exam source documents and captured image evidence of exam violations.  
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+* **Security & Identity:**  
+  - **Amazon Cognito:** Manages identity verification, authentication, and Role-Based Access Control (RBAC) across Educators, Students, and School Administrators.  
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+### 4. Technical Implementation & End-to-End Workflow  
+* **Aura Academic's Comprehensive 4-Step Workflow:**  
+  1. **Exam Creation (Exam Builder):** Educators upload source documents or select existing question banks; AI automatically recommends structured exam matrices.  
+  2. **Room Configuration (Secure Room):** Educators create secure exam sessions, customize proctoring rules (camera/microphone enforcement, tab-lock), and distribute secure access codes.  
+  3. **Live Exam & AI Supervision (AI Proctoring):** Students enter the secure room; AI continuously monitors the session, tracking connection stability and automatically recovering exam states if interruptions occur.  
+  4. **Post-Exam Analytics (Auto Report):** Immediately upon submission, the system calculates final scores and generates detailed analytical reports and violation logs with photographic proof.  
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+### 5. Roadmap & Implementation Milestones (Aligned with 11-Week AWS Internship)  
+- **Phase 1 (Weeks 1 – 3):** Requirement analysis, modern UI/UX design, and static Frontend deployment on **Amazon S3 + CloudFront**.  
+- **Phase 2 (Weeks 4 – 7):** Research and integration of AWS AI/ML services (**Amazon Bedrock** for automated question generation, **Amazon Rekognition** for webcam proctoring).  
+- **Phase 3 (Weeks 8 – 10):** Development of Serverless Backend (**AWS Lambda, API Gateway, DynamoDB**), Secure Room session management, and CI/CD pipelines.  
+- **Phase 4 (Week 11 & Beyond):** Load testing, architectural documentation, blog contributions to the AWS Study Group, and real-world deployment across partner educational institutions.  
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+### 6. Infrastructure Budget Estimation (AWS Cloud)  
+By maximizing Serverless architecture and **AWS Free Tier / Credits**, monthly operational costs remain highly optimized:  
+- **Amazon S3 & CloudFront (Frontend hosting & CDN):** ~$1.50 USD/month.  
+- **AWS Lambda & API Gateway (Backend API):** ~$0.50 USD/month (well within millions of free tier requests).  
+- **Amazon DynamoDB (NoSQL Database):** ~$1.00 USD/month (On-Demand capacity mode).  
+- **Amazon Bedrock & Rekognition (AI Services):** ~$5.00 – $15.00 USD/month (depending on question generation frequency and concurrent proctored students).  
+- **Total Estimated Cost for Lab & Mid-Scale Production:** **~$8.00 – $18.00 USD/month**, achieving more than 85% cost savings compared to traditional Dedicated Servers or VPS hosting.  
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+### 7. Risk Assessment & Mitigation Strategies  
+- **Risk of Network Interruption:** The system features local caching and browser storage (Local Storage / IndexedDB) that automatically saves answers locally and syncs immediately upon network re-establishment without data loss.  
+- **Risk of False AI Flags:** AI acts as a smart flagging and alerting assistant; final disciplinary decisions always remain with human educators, backed by time-stamped image and log evidence to ensure fairness.  
 
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
-
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
-
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
-
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### 8. Expected Outcomes & Long-Term Value  
+* **Technical Advancement:** Fully replaces manual examination, question creation, and grading workflows with an automated, low-latency, highly secure cloud solution on AWS.  
+* **Long-Term Impact:** Lays the foundation for a scalable Educational Technology (EdTech) ecosystem capable of supporting hundreds of schools and learning institutions nationwide.jects.

@@ -8,14 +8,11 @@ chapter: false
     
 # Internship Report
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** [Your Name]
+&emsp; **Full Name:** Vũ Gia Kiệt
 
-&emsp; **Phone Number:** [Your Phone Number]
+&emsp; **Phone Number:** 0924770838
 
 &emsp; **Email:** vkey150204@gmail.com
 
@@ -23,7 +20,7 @@ chapter: false
 
 &emsp; **Major:** Information Technology
 
-&emsp; **Class:** [Your Class]
+&emsp; **Class:** 22DTHE4
 
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
@@ -31,7 +28,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 17/04/2026 to 10/07/2026
 
-![Your profile picture](/images/avatar.png)
+![Vũ Gia Kiệt Profile Picture](images/avatar.jpg)
 
 ### Report Content
 

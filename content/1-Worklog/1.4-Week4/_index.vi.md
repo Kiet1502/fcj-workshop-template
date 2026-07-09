@@ -1,59 +1,28 @@
----
+﻿---
 title: "Worklog Tuần 4"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+
+### Thời gian: 08/05 – 14/05
 
 ### Mục tiêu tuần 4:
+* Nghiên cứu dịch vụ Amazon Bedrock và làm quen với các mô hình Foundation Models (FMs).
+* Tìm hiểu kiến trúc RAG (Retrieval-Augmented Generation) và cơ chế Vector Search.
+* Thực hành gọi API tương tác với LLMs trên Amazon Bedrock và thử nghiệm luồng RAG cơ bản.
+* Nghiên cứu chuyên sâu về Docker và viết Dockerfile đóng gói (containerize) ứng dụng.
+* Tổng hợp minh chứng thực hành Lab (Bedrock, RAG, Docker), báo cáo tiến độ và dọn dẹp tài nguyên.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
-
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Kết quả đạt được tuần 4:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+### Các công việc và kết quả triển khai trong tuần:
+| STT | Nội dung công việc | Kết quả đạt được | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| :---: | :--- | :--- | :---: | :---: | :--- |
+| **1** | Nghiên cứu dịch vụ Amazon Bedrock và làm quen với các mô hình Foundation Models (FMs) trên môi trường AWS. | Nắm được tổng quan về Generative AI trên AWS, các dòng mô hình FMs (Claude, Titan...) trên Bedrock. | 08/05/2026 | 08/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **2** | Tìm hiểu kiến trúc RAG (Retrieval-Augmented Generation) và cơ chế hoạt động của Vector Search. | Hiểu rõ quy trình nhúng dữ liệu (Embeddings), lưu trữ vector và cơ chế truy vấn bổ sung ngữ cảnh cho LLM. | 09/05/2026 | 09/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | Thực hành gọi API tương tác với các mô hình ngôn ngữ lớn (LLMs) trên Amazon Bedrock và thử nghiệm cấu hình luồng RAG cơ bản. | Gọi API thành công thông qua Boto3/SDK, xây dựng luồng RAG cơ bản trả lời chính xác theo tài liệu nội bộ. | 10/05/2026 | 11/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | Nghiên cứu chuyên sâu về Docker và thực hành viết Dockerfile để đóng gói (containerize) ứng dụng, đảm bảo tính nhất quán cho môi trường triển khai. | Viết thành công Dockerfile tối ưu cho ứng dụng, build và chạy container mượt mà, đồng nhất trên các môi trường. | 12/05/2026 | 12/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **5** | Tổng hợp minh chứng thực hành các bài Lab (Bedrock, RAG, Docker), báo cáo tiến độ công việc tuần 4 và tiến hành dọn dẹp tài nguyên (Terminate) để tối ưu chi phí. | Hoàn thành báo cáo tuần 4 đúng hạn, dọn dẹp sạch tài nguyên AWS phát sinh chi phí. | 13/05/2026 | 14/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
