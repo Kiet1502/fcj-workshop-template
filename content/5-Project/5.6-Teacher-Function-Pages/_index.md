@@ -70,9 +70,18 @@ This section introduces the specialized functional ecosystem designed for Instru
 
 </div>
 
+<div align="center">
+
+![Figure 5.4b: AI YOLO Proctoring Violation Report Interface](image-proctoring-violations.jpg)
+
+**Figure 5.4b. AI YOLO Proctoring Automatic Violation Report Interface (YOLO Proctoring V1.0)**
+
+</div>
+
 **Key Features:**
 - **Real-Time Supervision:** Monitor exact submission states of every student in the virtual exam room (In Progress, Submitted, Disconnected).
-- **Violation Alerts & Time Extensions:** Receive instant notifications when students switch tabs/screens and provide emergency time extensions during technical difficulties.
+- **Automated YOLO AI Violation Detection:** The AI engine continuously analyzes live webcam streams via YOLO, automatically detecting and capturing 5s video buffers of suspicious behavior (e.g., "Looking down at materials", "Turning head/turning back", "Multiple people in frame"). This provides instructors with concrete, visual evidence to combat academic dishonesty.
+- **Violation Alerts & Emergency Extensions:** Receive instant notifications when students switch tabs/screens and provide emergency time extensions during technical difficulties.
 
 ---
 

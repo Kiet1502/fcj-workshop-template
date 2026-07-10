@@ -70,9 +70,18 @@ Phần này giới thiệu hệ thống chức năng chuyên biệt dành cho Gi
 
 </div>
 
+<div align="center">
+
+![Hình 5.4b: Giao diện báo cáo vi phạm tự động từ AI YOLO của học viên](image-proctoring-violations.jpg)
+
+**Hình 5.4b. Giao diện báo cáo vi phạm tự động từ AI YOLO (YOLO Proctoring V1.0)**
+
+</div>
+
 **Chức năng chính:**
 - **Theo dõi thời gian thực:** Giám sát trạng thái làm bài của từng học viên trong phòng thi (Đang làm, Đã nộp, Mất kết nối).
-- **Hỗ trợ & Kiểm soát vi phạm:** Nhận cảnh báo khi học viên rời tab/chuyển màn hình và hỗ trợ gia hạn thời gian làm bài khi xảy ra sự cố kỹ thuật.
+- **Phát hiện vi phạm tự động AI YOLO:** Hệ thống AI tự động phân tích luồng camera liên tục bằng mô hình YOLO, phát hiện và lưu lại đoạn video ngắn (5s buffer) cho các vi phạm như: "Cúi nhìn tài liệu", "Gập đầu hoặc quay lưng", "Nhiều người trong khung hình". Giúp giáo viên có bằng chứng trực quan, xác đáng để kiểm soát gian lận.
+- **Hỗ trợ kịp thời:** Nhận cảnh báo khi học viên rời tab/chuyển màn hình và hỗ trợ gia hạn thời gian làm bài khi xảy ra sự cố kỹ thuật.
 
 ---
 

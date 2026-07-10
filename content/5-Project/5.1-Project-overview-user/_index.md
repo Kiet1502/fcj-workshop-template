@@ -47,9 +47,17 @@ This section introduces the core Dashboard interface and the online examination 
 
 </div>
 
+<div align="center">
+
+![Figure 5.3b: AI YOLO Camera Proctoring Lobby Interface](image-proctoring-lobby.jpg)
+
+**Figure 5.3b. AI YOLO Camera Proctoring & Monitoring Lobby Interface (YOLO Proctoring V1.0)**
+
+</div>
+
 **Key Features:**
 - **Exam Management:** Categorizes ongoing, upcoming, and completed examinations with intuitive status filtering.
-- **Room Security:** A verification modal requires a valid room code, ensuring restricted access and secure testing environments.
+- **Room Security & YOLO AI Monitoring:** A verification modal requires a valid room code. Prior to starting the exam, students enter an AI webcam verification lobby powered by YOLO Proctoring V1.0, which continuously supervises the testing environment and triggers real-time violation alerts.
 
 ---
 

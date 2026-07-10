@@ -47,9 +47,17 @@ Phần này giới thiệu giao diện chính (Dashboard) và trải nghiệm th
 
 </div>
 
+<div align="center">
+
+![Hình 5.3b: Giao diện phòng chờ kiểm tra & giám sát Camera bằng AI YOLO (YOLO Proctoring)](image-proctoring-lobby.jpg)
+
+**Hình 5.3b. Giao diện phòng chờ kiểm tra & giám sát Camera bằng AI YOLO (YOLO Proctoring V1.0)**
+
+</div>
+
 **Chức năng chính:**
 - **Quản lý kỳ thi:** Hiển thị danh sách các kỳ thi đang diễn ra, sắp diễn ra và đã hoàn thành kèm bộ lọc trạng thái rõ ràng.
-- **Bảo mật phòng thi:** Hộp thoại (Modal) nhập mã bảo mật giúp kiểm soát quyền truy cập, đảm bảo chỉ học viên hợp lệ mới có thể tham gia thi.
+- **Bảo mật phòng thi & Giám sát AI YOLO:** Hộp thoại nhập mã bảo mật giúp kiểm soát quyền truy cập. Trước khi bắt đầu thi, học viên được đưa vào phòng chờ kiểm tra camera, nơi hệ thống AI Monitoring (YOLO Proctoring V1.0) liên tục giám sát không gian làm bài và gửi cảnh báo vi phạm theo thời gian thực.
 
 ---
 
