@@ -32,7 +32,7 @@ Trong suốt buổi sáng, 6 chủ đề được trình bày đã mang lại ch
 * **Người chia sẻ:** Anh Huỳnh Thái Lĩnh *(Đến từ chương trình First Cloud Journey - FCJ)*
 * **Cảm nhận & Bài học:** Anh Lĩnh đã mang đến một cách tiếp cận cực kỳ thú vị khi rèn luyện kỹ năng cloud: **gắn thẻ game hóa (gamification)** thông qua AWS Cloud Quest và nền tảng Floci. Thay vì việc ngồi cặm cụi đọc tài liệu AWS nhầm chán hay sợ tốn tiền khi tự bấm trên console, việc giải bài toán qua mô phỏng thành phố cloud giúp em nhớ lâu hơn rất nhiều về cách cấu hình VPC, EC2 hay IAM Security.
 
-#### 2. Giới thiệu về Hackathon – Chiến chiến và phối hợp nhóm
+#### 2. Giới thiệu về Hackathon 
 * **Nhóm chia sẻ:** The Ballers *(Huỳnh An Khương, Mai Quốc Anh, Nguyễn Trần Minh Quân)*
 * **Cảm nhận & Bài học:** Nghe nhóm The Ballers kể lại hành trình "chinh chiến" Hackathon mới thấy được áp lực thời gian lớn đến mức nào. Các bạn chỉ ra cách tìm ý tưởng, chốt nhanh tính năng cốt lõi (MVP) và quan trọng nhất là sự phối hợp nhịp nhàng giữa các thành viên. Điều này khiến em liên tưởng ngay đến dự án **Aura Academic** của nhóm em: khi thời gian thực tập chỉ có 12 tuần, việc sa đà vào các tính năng viển vông sẽ rất dễ dẫn đến bể kế hoạch. Bài học lớn nhất em rút ra là: *làm ít tính năng nhưng chạy thật mượt và có điểm nhấn rõ ràng*.
 
@@ -65,7 +65,5 @@ Sau buổi Saturday Meet up, em không chỉ mang về những kiến thức lý
 ### Một số hình ảnh khi tham gia sự kiện
 
 Dưới đây là một số khoảnh khắc thực tế trong buổi gặp gỡ, nơi em cùng các bạn chăm chú lắng nghe các phần trình bày và thảo luận sôi nổi tại không gian văn phòng AWS Tầng 26 Bitexco:
-
-![Hình ảnh tham gia sự kiện Saturday Meet up - Không gian chia sẻ](/fcj-workshop-template/images/4-EventParticipated/4.1-Event1/event-photo-1.png)
 
 ![Hình ảnh tham gia sự kiện Saturday Meet up - Kiệt tham dự trực tiếp tại văn phòng AWS Bitexco](/fcj-workshop-template/images/4-EventParticipated/4.1-Event1/event-photo-2.png)

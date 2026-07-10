@@ -6,88 +6,105 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Aura Academic | Smart Exam Engine  
-## Nền Tảng Thi Trực Tuyến & Giám Sát Tự Động Hóa Bằng Trí Tuệ Nhân Tạo Trên AWS Cloud  
-
-*Sản phẩm được phát triển và triển khai thực tế tại link:* [Aura Academic Frontend AWS S3 Hosting](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
+## AURACADEMIC
+### Nền tảng Thi trực tuyến và Giám sát bằng AI trên AWS
 
 ---
 
-### 1. Tóm tắt điều hành (Executive Summary)  
-**Aura Academic (Smart Exam Engine)** là nền tảng thi trắc nghiệm trực tuyến thông minh thế hệ mới, được nhóm chúng tôi phát triển nhằm giải quyết triệt để bài toán bảo mật, giám sát gian lận và tối ưu hóa quy trình tổ chức thi cử cho các trường đại học, trường phổ thông, trung tâm đào tạo và giảng viên. Nền tảng tích hợp sâu các công nghệ Trí tuệ nhân tạo (**AI Proctoring**, **Generative AI**) và được xây dựng trên kiến trúc **AWS Cloud & Serverless** hiện đại, đảm bảo tính khả mở cao (high scalability), độ trễ cực thấp và chi phí vận hành tối ưu.  
+### 1. Tóm tắt điều hành  
 
-### 2. Tuyên bố vấn đề (Problem Statement)  
-* **Vấn đề hiện tại:**  
-  - **Giám sát lỏng lẻo:** Các kỳ thi trực tuyến hiện nay thường thiếu cơ chế giám sát chặt chẽ, dễ xảy ra tình trạng gian lận (nhờ người thi hộ, tra cứu tài liệu trái phép, rời khỏi vùng camera, mở tab/ứng dụng khác).  
-  - **Biên soạn đề thi thủ công:** Giảng viên mất hàng giờ đồng hồ để trích xuất, định dạng và tạo ngân hàng câu hỏi từ các tài liệu thô (DOCX, PDF) hoặc sách giáo khoa.  
-  - **Hạ tầng truyền thống dễ quá tải:** Các hệ thống quản lý thi (LMS) cũ thường bị nghẽn mạng hoặc sập server khi hàng nghìn sinh viên truy cập làm bài đồng thời, thiếu báo cáo phân tích chuyên sâu sau kỳ thi.  
 
-* **Giải pháp đột phá - Aura Academic:**  
-  - **AI Camera / Proctoring AI Đỉnh Cao:** Ứng dụng công nghệ Computer Vision để nhận diện khuôn mặt thời gian thực, phát hiện đa nhân diện, đổi người thi, rời khỏi camera hoặc xuất hiện tạp âm bất thường trong phòng thi khép kín (**Secure Room**).  
-  - **Exam Builder / Biên Soạn Đề Thi Siêu Tốc:** Tích hợp mô hình ngôn ngữ lớn (**LLMs / Generative AI**) cho phép tự động trích xuất kiến thức từ tài liệu DOCX, PDF và tạo ma trận đề thi phân hóa chỉ với 1 lần chạm.  
-  - **Auto Report & Phân Tích Phổ Điểm:** Hệ thống chấm điểm tự động tức thì, thống kê nhật ký kiểm toán (**Audit Logs**) minh bạch và trực quan hóa phổ điểm chi tiết bằng biểu đồ động giúp giảng viên đánh giá chất lượng câu hỏi.  
+AuraAcademic là nền tảng thi trực tuyến tích hợp giám sát AI (Powered by Bedrock & Rekognition/YOLOv8) nhằm đảm bảo tính công bằng và minh bạch cho các kỳ thi từ xa. Hệ thống ứng dụng mô hình YOLOv8 để phát hiện gian lận qua camera theo thời gian thực. Bằng việc kết hợp kiến trúc AWS (CloudFront, ECS Fargate, EC2 GPU Spot) và các dịch vụ Serverless/Managed Services, AuraAcademic cung cấp một giải pháp giám sát tự động với độ chính xác cao nhưng chi phí vận hành chỉ bằng một phần nhỏ so với việc thuê giám thị trực tiếp, phù hợp với nhu cầu tổ chức thi trực tuyến cho các cơ sở giáo dục.
 
-* **Lợi ích & Hoàn vốn đầu tư (Benefits & ROI):**  
-  - Tiết kiệm tới **80%** thời gian chuẩn bị đề thi và chấm điểm cho giảng viên.  
-  - Đảm bảo **99%** sự công bằng, minh bạch và bảo mật trong các kỳ thi trực tuyến.  
-  - Tận dụng kiến trúc Cloud Native & Serverless của AWS (Amazon S3, CloudFront, Lambda, Bedrock...) giúp giảm chi phí đầu tư phần cứng ban đầu, chỉ trả phí theo lưu lượng sử dụng thực tế (**Pay-as-you-go**).  
+---
 
-### 3. Kiến trúc giải pháp (Solution Architecture & AWS Cloud Integration)  
-Hệ thống **Aura Academic** áp dụng kiến trúc Serverless hiện đại trên hệ sinh thái Amazon Web Services (AWS), cho phép dễ dàng chịu tải hàng nghìn thí sinh thi đồng thời mà không cần quản lý máy chủ vật lý:  
+### 2. Tuyên bố vấn đề  
+**Vấn đề hiện tại:**  
+Các nền tảng thi trực tuyến hiện nay thiếu cơ chế giám sát tự động hiệu quả, dẫn đến tình trạng gian lận dễ dàng xảy ra. Các giải pháp giám sát có ứng dụng AI trên thị trường (như Proctorio, Respondus) thường có chi phí cấp phép rất đắt đỏ, tích hợp phức tạp, và đòi hỏi băng thông lớn hoặc tài nguyên máy chủ khổng lồ.
 
-* **Frontend Hosting & CDN:**  
-  - Giao diện người dùng (xây dựng bằng Next.js/React hiện đại, hỗ trợ Dark Mode/Light Mode mượt mà) được đóng gói và triển khai hosting tĩnh trên **Amazon S3**.  
-  - Kết hợp với mạng biên phân phối nội dung toàn cầu **Amazon CloudFront**, đảm bảo tốc độ tải trang cực kỳ nhanh và chống tấn công DDoS hiệu quả (tên miền trực tiếp đang live: `http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/`).  
+**Giải pháp:**  
+AuraAcademic giải quyết bài toán này bằng cách xây dựng một hệ thống hoàn chỉnh:  
+- **Frontend (React.js):** Lưu trữ tĩnh trên Amazon S3 và phân phối qua CloudFront, mang lại trải nghiệm mượt mà.  
+- **Backend Core API (Spring Boot):** Chạy trên ECS Fargate (hoặc EC2) để xử lý logic đề thi, bài làm và xác thực.  
+- **AI Proctoring (YOLOv8/Rekognition):** Chạy trên máy chủ EC2 GPU (sử dụng Spot Instance để tiết kiệm chi phí đến 70%) nhằm phân tích video stream thời gian thực (phát hiện quay cóp, rời khỏi khung hình, có người lạ...).  
+- **Video Streaming:** Luồng video từ webcam qua WebRTC/WebSocket được gửi sang service AI để kiểm tra gian lận ngay tại thời điểm thi.  
+- **Xác thực và Bảo mật:** Sử dụng Amazon Cognito cho đăng nhập, kết hợp AWS WAF bảo vệ API.  
 
-* **AI & Machine Learning Layer:**  
-  - **Amazon Bedrock:** Cung cấp các mô hình Foundation Models (FMs/LLMs) tiên tiến phục vụ module **Exam Builder** (tự động phân tích nội dung tài liệu học tập, sinh câu hỏi trắc nghiệm và giải thích đáp án).  
-  - **Amazon Rekognition:** Xử lý và nhận diện luồng video/hình ảnh thời gian thực từ webcam của thí sinh (**AI Proctoring**), tự động chốt lỗi vi phạm khi có dấu hiệu gian lận.  
+**Lợi ích và điểm nổi bật:**  
+Hệ thống tự động phát hiện hành vi gian lận, giảm thiểu tối đa sức lực giám thị truyền thống. Bằng cách sử dụng Spot Instance cho xử lý AI và kiến trúc Serverless/Container linh hoạt, chi phí vận hành được tối ưu đáng kể, phù hợp cho các trường đại học và tổ chức giáo dục.
 
-* **Serverless Backend Layer:**  
-  - **AWS Lambda & Amazon API Gateway:** Xử lý toàn bộ logic nghiệp vụ (quản lý mã phòng thi, xác thực kết nối, nộp bài, tính điểm) dưới dạng kiến trúc microservices không máy chủ.  
-  - **Amazon DynamoDB:** Cơ sở dữ liệu NoSQL với độ trễ phản hồi dưới mili giây, lưu trữ ngân hàng câu hỏi, trạng thái phòng thi real-time và Audit Logs.  
-  - **Amazon S3 (Data Storage):** Lưu trữ an toàn tài liệu đề thi gốc và các hình ảnh chụp minh chứng vi phạm của thí sinh trong kỳ thi.  
+---
 
-* **Security & Identity:**  
-  - **Amazon Cognito:** Quản lý định danh và bảo mật đăng nhập cho các nhóm đối tượng (Giảng viên, Sinh viên, Quản trị viên nhà trường).  
+### 3. Kiến trúc giải pháp  
+AuraAcademic áp dụng kiến trúc Microservices trên AWS, phân tách rõ ràng giữa Core API và AI Processing.
 
-### 4. Triển khai kỹ thuật & Quy trình vận hành khép kín  
-* **Quy trình 4 bước toàn diện của Aura Academic:**  
-  1. **Khởi tạo & Tạo đề (Exam Builder):** Giảng viên tải tài liệu lên hệ thống hoặc sử dụng ngân hàng câu hỏi có sẵn; AI tự động gợi ý ma trận đề thi chuẩn xác.  
-  2. **Thiết lập phòng thi bảo mật (Secure Room):** Giảng viên tạo phòng thi, cài đặt các quy tắc giám sát (yêu cầu camera, micrô, khóa chuyển tab) và gửi mã phòng cho sinh viên.  
-  3. **Vận hành & Giám sát AI (Live Exams & AI Proctoring):** Thí sinh truy cập phòng thi; hệ thống AI theo dõi liên tục thời gian thực, ghi nhận sự cố mất kết nối và tự động khôi phục bài làm an toàn.  
-  4. **Báo cáo & Phân tích (Auto Report & Smart Grading):** Ngay sau khi kết thúc giờ làm bài, hệ thống xuất báo cáo phổ điểm, danh sách thí sinh vi phạm kèm hình ảnh minh chứng cụ thể.  
+**Dịch vụ AWS sử dụng:**  
+- **Amazon S3 & CloudFront:** Lưu trữ và phân phối ứng dụng web Frontend (React.js) toàn cầu với tốc độ cao.  
+- **Amazon Cognito:** Quản lý định danh và xác thực người dùng (giảng viên, sinh viên) bằng JWT.  
+- **ALB (Application Load Balancer):** Định tuyến request REST API tới ECS hoặc EC2 Backend.  
+- **Amazon ECS Fargate:** Chạy Spring Boot Backend container đóng gói các API cốt lõi.  
+- **Amazon EC2 (Spot - GPU):** Chạy Python AI service xử lý luồng video camera từ thí sinh.  
+- **AWS WAF:** Tường lửa bảo vệ ứng dụng khỏi các cuộc tấn công DDoS và web exploits thông dụng.  
+- **Amazon SES:** Gửi email thông báo, xác nhận đăng ký và cảnh báo vi phạm cho thí sinh.  
+- **VPC, Public/Private Subnets & NAT Gateway:** Đảm bảo phân tách mạng an toàn cho các dịch vụ.  
+- **Dịch vụ ngoại vi:** MongoDB Atlas (Database), Google Gemini API (Sinh câu hỏi tự động / hỗ trợ Bedrock).  
 
-### 5. Lộ trình & Mốc triển khai (Khớp với lộ trình thực tập AWS 11 Tuần)  
-- **Giai đoạn 1 (Tuần 1 – Tuần 3):** Khảo sát yêu cầu bài toán, thiết kế giao diện UI/UX trực quan và triển khai hosting Frontend lên **Amazon S3 + CloudFront**.  
-- **Giai đoạn 2 (Tuần 4 – Tuần 7):** Nghiên cứu chuyên sâu và tích hợp các dịch vụ AI/ML của AWS (**Amazon Bedrock** cho tạo đề thi, **Amazon Rekognition** cho giám sát camera).  
-- **Giai đoạn 3 (Tuần 8 – Tuần 10):** Hoàn thiện Backend Serverless (**AWS Lambda, API Gateway, DynamoDB**), xây dựng hệ thống phòng thi bảo mật (Secure Room) và luồng tự động hóa CI/CD.  
-- **Giai đoạn 4 (Tuần 11 & Tương lai):** Kiểm thử chịu tải thực tế, hoàn thiện tài liệu kiến trúc, đóng góp bài viết cho cộng đồng AWS Study Group và sẵn sàng đưa hệ thống vào ứng dụng tại các trường học.  
+**Thiết kế thành phần:**  
+- **Giao diện Web:** Sinh viên làm bài thi và bật webcam giám sát; Giảng viên quản lý đề thi và xem báo cáo vi phạm.  
+- **Core API:** Xử lý logic kỳ thi, xử lý bài đăng và xác nhận quyền qua JWT, kết nối tới Database.  
+- **AI Engine:** Nhận stream camera qua WebSocket/WebRTC, nhận diện gian lận bằng YOLOv8 và tự động cập nhật cảnh báo về cho Core API.
 
-### 6. Ước tính ngân sách hạ tầng (Budget Estimation on AWS Cloud)  
-Nhờ tận dụng tối đa kiến trúc Serverless và gói tài nguyên **AWS Free Tier / Credits**, chi phí vận hành hệ thống được tối ưu ở mức thấp nhất:  
-- **Amazon S3 & CloudFront (Frontend hosting & CDN):** ~1.50 USD/tháng.  
-- **AWS Lambda & API Gateway (Backend API):** ~0.50 USD/tháng (trong hạn mức miễn phí hàng triệu request).  
-- **Amazon DynamoDB (NoSQL Database):** ~1.00 USD/tháng (On-Demand capacity mode).  
-- **Amazon Bedrock & Rekognition (AI Services):** ~5.00 – 15.00 USD/tháng (tùy theo tần suất sinh đề thi tự động và số lượng sinh viên thi đồng thời).  
-- **Tổng chi phí dự kiến cho môi trường Lab / Triển khai thực tế quy mô vừa:** **~8.00 – 18.00 USD/tháng**, tiết kiệm hơn 85% so với việc thuê và duy trì các máy chủ riêng (Dedicated Server / VPS) truyền thống.  
+---
 
-### 7. Đánh giá rủi ro & Kế hoạch giảm thiểu (Risk Assessment & Mitigation)  
-- **Rủi ro rớt mạng/mất kết nối của thí sinh:** Hệ thống tích hợp cơ chế lưu dữ liệu bài làm tự động xuống bộ nhớ trình duyệt (Local Storage / IndexedDB) và tự động đồng bộ ngay lập tức khi đường truyền internet được khôi phục.  
-- **Rủi ro nhận diện nhầm của AI Proctoring:** AI đóng vai trò giám sát, cờ báo (flagging) và lưu trữ bằng chứng (log/hình ảnh); quyền quyết định xử lý kỷ luật cuối cùng luôn thuộc về giảng viên để đảm bảo tính công bằng tuyệt đối.  
+### 4. Triển khai kỹ thuật  
+**Các giai đoạn triển khai (Dự kiến thực tập 3 tháng):**  
+- **Tháng 1 (Khởi tạo & Thiết kế):** Phân tích kiến trúc VPC, thiết lập database (MongoDB Atlas), chuẩn bị model YOLOv8/Bedrock.  
+- **Tháng 2 (Phát triển Backend & AI):** Lập trình Spring Boot API, tích hợp Cognito, dựng service AI trên EC2 Spot.  
+- **Tháng 3 (Hoàn thiện & Triển khai):** Xây dựng UI React.js, dựng hạ tầng S3 + CloudFront + WAF + ALB, kiểm thử tải và hoàn thiện tài liệu.  
 
-### 8. Kết quả đạt được & Giá trị thực tiễn (Achieved Outcomes & Practical Value)
+**Yêu cầu kỹ thuật:**  
+- **Frontend:** React.js, Tailwind CSS, Axios, WebRTC client.  
+- **Backend:** Spring Boot, Spring Security, kết nối MongoDB Atlas.  
+- **AI Processing:** Python, FastAPI, YOLOv8/OpenCV/Rekognition, xử lý stream camera thời gian thực.  
+- **AWS Infrastructure:** S3, CloudFront, Cognito, ECS Fargate, EC2 Spot, ALB, WAF, SES, VPC.
 
-Thông qua việc phát triển và triển khai thành công nền tảng **Aura Academic** trên hệ sinh thái AWS, nhóm đã đạt được các kết quả nổi bật cả về mặt kỹ thuật lẫn giá trị ứng dụng thực tiễn:
+---
 
-#### Kết quả Kỹ thuật & Hạ tầng (Technical Outcomes & Architecture Validation)
-* **Triển khai Frontend tốc độ cao & bảo mật:** Xây dựng và phát hành thành công giao diện Next.js tĩnh trên Amazon S3 kết hợp mạng biên toàn cầu CloudFront CDN (`http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/`), đảm bảo độ trễ tải trang dưới 200ms và khả năng chịu tải hàng nghìn thí sinh truy cập đồng thời.
-* **Tích hợp Generative AI vào quy trình ra đề (Exam Builder):** Ứng dụng thành công Amazon Bedrock để tự động hóa trích xuất văn bản từ tài liệu thô (DOCX, PDF), sinh ma trận câu hỏi trắc nghiệm đa tầng và giải thích đáp án chi tiết chỉ trong vài giây.
-* **Giám sát phòng thi AI thông minh (AI Proctoring):** Nghiên cứu và tích hợp Amazon Rekognition xử lý luồng video thời gian thực từ camera thí sinh, phát hiện chính xác đa nhân diện, đổi người thi, rời khỏi khung hình hoặc gian lận trong phòng thi bảo mật (Secure Room).
-* **Kiến trúc Serverless tối ưu:** Vận hành mượt mà cụm dịch vụ không máy chủ (AWS Lambda, Amazon API Gateway, DynamoDB), giúp tự động co giãn theo lưu lượng thực tế (Auto-scaling) mà không cần quản trị máy chủ vật lý.
+### 5. Lộ trình & Mốc triển khai  
+- **Tuần 1-2:** Phân tích thiết kế hệ thống, thiết kế sơ đồ VPC và luồng dữ liệu.  
+- **Tuần 3-5:** Phát triển Core API với Spring Boot và cấu hình Cognito xác thực người dùng.  
+- **Tuần 6-8:** Xây dựng Frontend UI và tích hợp luồng thi trực tuyến kèm AI Proctoring.  
+- **Tuần 9-10:** Triển khai hạ tầng AWS (ECS Fargate, EC2 Spot, CloudFront, WAF) và kiểm thử end-to-end.  
+- **Tuần 11-12:** Tối ưu hóa hiệu năng, đánh giá chi phí và viết báo cáo thực tập hoàn kết.
 
-#### Giá trị Thực tiễn & Tác động (Practical & Educational Impact)
-* **Tiết kiệm 80% công sức cho giảng viên:** Giảm thiểu tối đa thời gian ra đề thi, định dạng tài liệu và chấm điểm thủ công nhờ hệ thống chấm điểm tự động tức thì kèm báo cáo phân tích phổ điểm trực quan.
-* **Đảm bảo 99% sự công bằng & minh bạch:** Loại bỏ các hành vi gian lận trực tuyến nhờ nhật ký kiểm toán (Audit Logs) minh bạch cùng bằng chứng vi phạm bằng hình ảnh được lưu trữ an toàn trên Amazon S3.
-* **Tối ưu chi phí hạ tầng vượt trội:** Mô hình tính phí theo mức sử dụng thực tế (Pay-as-you-go) giúp duy trì chi phí toàn bộ hệ thống chỉ từ `~8.00 – 18.00 USD/tháng`, tiết kiệm hơn 85% so với việc thuê máy chủ riêng truyền thống.
-* **Khả năng nhân rộng cao (High Scalability):** Tạo nền tảng công nghệ giáo dục (EdTech) vững chắc, sẵn sàng mở rộng và áp dụng cho hàng trăm trường đại học, trường phổ thông và trung tâm đào tạo trên toàn quốc.
+---
+
+### 6. Ước tính ngân sách  
+Sử dụng mô hình chi phí của AWS với chiến lược Spot Instance và Serverless cho môi trường thực tế (~100 sinh viên đồng thời):  
+- **Frontend (S3 + CloudFront):** ~$1.00 USD/tháng (Free Tier / chi phí truyền tải rất thấp).  
+- **ECS Fargate Spot (Backend):** ~$3.00 - 5.00 USD/tháng.  
+- **EC2 GPU Spot (AI Engine - g4dn.xlarge):** ~$0.15 - 0.20 USD/giờ (chỉ bật khi có lịch thi, ước tính ~$8.00 - 12.00 USD/tháng).  
+- **NAT Gateway (Tùy chọn / hoặc VPC Endpoints):** ~$10.00 - 15.00 USD/tháng.  
+- **Application Load Balancer (ALB):** ~$16.00 USD/tháng.  
+- **MongoDB Atlas:** ~$0.00 USD/tháng (Gói Free Tier M0).  
+- **SES & WAF:** ~$2.00 USD/tháng.  
+👉 **Tổng ước tính:** Khoảng **30 - 50 USD/tháng** (Có thể sử dụng AWS Credits để bao phủ hoàn toàn chi phí thực hành).
+
+---
+
+### 7. Đánh giá rủi ro  
+**Ma trận rủi ro:**  
+- **Spot Instance bị thu hồi đột ngột:** Ảnh hưởng: Trung bình | Khả năng xảy ra: Cao | *Ghi chú: Cần cấu hình Auto Scaling Group hoặc fallback sang On-Demand.*  
+- **Độ trễ luồng camera lớn:** Ảnh hưởng: Trung bình | Khả năng xảy ra: Trung bình | *Ghi chú: Tối ưu độ phân giải khung hình và cấu hình WebSocket/WebRTC phù hợp.*  
+- **Quá tải chi phí (Billing Surge):** Ảnh hưởng: Cao | Khả năng xảy ra: Thấp | *Ghi chú: Thiết lập CloudWatch Billing Alarms và tắt EC2 GPU ngay sau khi ca thi kết thúc.*  
+
+**Chiến lược giảm thiểu:**  
+- **Spot Instance:** Cấu hình Auto Scaling Group cùng chiến lược đa vùng (Multi-AZ) và đa loại instance, tự động chuyển sang On-Demand nếu Spot không khả dụng.  
+- **Độ trễ camera:** Chỉ gửi các khung hình (frames) quan trọng hoặc nén luồng video xuống độ phân giải vừa đủ cho AI nhận diện.  
+- **Chi phí AWS:** Đặt mức cảnh báo ngân sách AWS Budget và cấu hình tự động dừng máy chủ AI ngoài giờ thi.
+
+---
+
+### 8. Kết quả kỳ vọng  
+- **Cải tiến kỹ thuật:** Cung cấp giải pháp giám sát thi tự động với độ chính xác cao bằng AI trên nền tảng AWS, tốc độ phản hồi nhanh và bảo mật tốt.  
+- **Giá trị kinh nghiệm:** Nâng cao kỹ năng tự động hóa, thiết kế kiến trúc Cloud Microservices và vận hành hệ thống thực tế tối ưu chi phí cho môi trường giáo dục.

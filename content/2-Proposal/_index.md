@@ -6,88 +6,104 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Aura Academic | Smart Exam Engine  
-## Next-Generation AI-Powered Online Examination & Proctoring Platform on AWS Cloud  
-
-*Live Production & Demonstration Link:* [Aura Academic Frontend AWS S3 Hosting](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
+# PROPOSAL  
+## AURAACADEMIC  
+### Online Examination and AI Proctoring Platform on AWS  
 
 ---
 
 ### 1. Executive Summary  
-**Aura Academic (Smart Exam Engine)** is a revolutionary smart online assessment and examination platform developed by our team to solve critical challenges regarding academic integrity, proctoring security, and workflow optimization for universities, high schools, training institutes, and educators. By deeply integrating cutting-edge Artificial Intelligence (**AI Proctoring**, **Generative AI**) with modern **AWS Cloud & Serverless** architecture, Aura Academic delivers high scalability, ultra-low latency, and cost-effective operations.  
+AuraAcademic is an online examination platform integrated with AI proctoring (Powered by Bedrock & Rekognition/YOLOv8) to ensure fairness and transparency for remote exams. The system leverages YOLOv8 models for real-time cheating detection via webcam. By combining AWS architecture (CloudFront, ECS Fargate, EC2 GPU Spot) with Serverless and Managed Services, AuraAcademic delivers an automated proctoring solution with high accuracy at a fraction of the cost of traditional live proctoring, ideal for educational institutions.
+
+---
 
 ### 2. Problem Statement  
-* **Current Challenges:**  
-  - **Lack of Supervision:** Online exams often suffer from vulnerabilities to cheating, including impersonation, unauthorized material consultation, leaving the camera frame, or switching browser tabs/applications during exams.  
-  - **Time-Consuming Exam Creation:** Teachers spend countless hours manually extracting, formatting, and structuring question banks from raw textbook files (DOCX, PDF).  
-  - **Infrastructure Overload:** Traditional Learning Management Systems (LMS) often experience network bottlenecks or server crashes during peak concurrent exam sessions, and lack comprehensive analytical post-exam reporting.  
+**Current Problems:**  
+Existing online exam platforms lack effective automated proctoring mechanisms, making academic dishonesty easy to commit. Commercial AI proctoring solutions on the market (such as Proctorio, Respondus) often come with expensive licensing fees, complex integration, and demand high bandwidth or massive server resources.
 
-* **Our Breakthrough Solution - Aura Academic:**  
-  - **AI Camera / Real-Time AI Proctoring:** Leverages Computer Vision to monitor facial recognition in real-time, detecting multi-face presence, candidate swapping, leaving the frame, or suspicious audio noise within a **Secure Room** environment.  
-  - **Exam Builder / High-Speed Automated Generation:** Integrates Large Language Models (**LLMs / Generative AI**) to automatically parse learning documents (DOCX/PDF) and generate structured, multi-difficulty exam matrices with a single click.  
-  - **Auto Report & Comprehensive Analytics:** Features instant automated grading, transparent **Audit Logs**, and dynamic score distribution charts that allow educators to evaluate question quality and student performance.  
+**Solution:**  
+AuraAcademic solves this challenge by building a comprehensive end-to-end system:  
+- **Frontend (React.js):** Statically hosted on Amazon S3 and distributed globally via CloudFront for a smooth user experience.  
+- **Backend Core API (Spring Boot):** Hosted on ECS Fargate (or EC2) to process exam logic, submission workflows, and authentication.  
+- **AI Proctoring (YOLOv8/Rekognition):** Running on EC2 GPU instances (utilizing Spot Instances to save up to 70% in costs) to analyze live video streams (detecting looking away, leaving frame, unauthorized persons, etc.).  
+- **Video Streaming:** Webcam video streams sent via WebRTC/WebSocket to the AI service for real-time anomaly detection during the exam.  
+- **Authentication & Security:** Utilizing Amazon Cognito for user login, combined with AWS WAF to protect APIs.  
 
-* **Benefits & Return on Investment (ROI):**  
-  - Reduces preparation and grading time for educators by up to **80%**.  
-  - Ensures **99%** transparency, fairness, and security across all online examinations.  
-  - Leverages AWS Cloud-Native & Serverless architecture (Amazon S3, CloudFront, Lambda, Bedrock...) to eliminate initial upfront server costs, paying only for actual operational throughput (**Pay-as-you-go**).  
+**Benefits & Highlights:**  
+The system automatically detects cheating behaviors, minimizing manual proctoring effort. By leveraging Spot Instances for AI processing and flexible Serverless/Container architecture, operational costs are dramatically optimized for universities and educational organizations.
 
-### 3. Solution Architecture & AWS Cloud Integration  
-**Aura Academic** is built upon a robust, highly resilient Serverless architecture on Amazon Web Services (AWS), capable of supporting thousands of concurrent test-takers without managing physical servers:  
+---
 
-* **Frontend Hosting & CDN:**  
-  - The modern web interface (built with Next.js/React, featuring smooth Light/Dark mode transitions) is statically exported and hosted on **Amazon S3**.  
-  - Distributed globally via **Amazon CloudFront** edge network for lightning-fast delivery and built-in DDoS protection (Live URL: `http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/`).  
+### 3. Solution Architecture  
+AuraAcademic adopts a Microservices architecture on AWS, clearly decoupling Core API services from AI Processing pipelines.
 
-* **AI & Machine Learning Layer:**  
-  - **Amazon Bedrock:** Provides advanced Foundation Models (FMs/LLMs) powering the **Exam Builder** module to analyze study materials, generate multiple-choice questions, and provide detailed answer explanations.  
-  - **Amazon Rekognition:** Processes live video and image streams from student webcams (**AI Proctoring**), automatically identifying and flagging potential violations or suspicious behaviors.  
+**AWS Services Utilized:**  
+- **Amazon S3 & CloudFront:** Global storage and high-speed delivery of the React.js Frontend web application.  
+- **Amazon Cognito:** Identity management and user authentication (students, instructors) via JWT tokens.  
+- **ALB (Application Load Balancer):** Routing REST API requests to ECS or EC2 Backend services.  
+- **Amazon ECS Fargate:** Running containerized Spring Boot Backend core API services.  
+- **Amazon EC2 (Spot - GPU):** Running Python AI services to process student camera streams.  
+- **AWS WAF:** Web Application Firewall protecting APIs against DDoS attacks and common web exploits.  
+- **Amazon SES:** Sending automated email notifications, registration confirmations, and violation alerts to students.  
+- **VPC, Public/Private Subnets & NAT Gateway:** Ensuring secure network isolation across all services.  
+- **External Services:** MongoDB Atlas (Database), Google Gemini API (Automated question generation / Bedrock assistance).  
 
-* **Serverless Backend Layer:**  
-  - **AWS Lambda & Amazon API Gateway:** Powers all backend business logic (room management, connection verification, submission handling, score calculation) as fully managed serverless microservices.  
-  - **Amazon DynamoDB:** Sub-millisecond NoSQL database storing question banks, real-time room status, student responses, and detailed Audit Logs.  
-  - **Amazon S3 (Data Storage):** Securely stores raw exam source documents and captured image evidence of exam violations.  
+**Component Design:**  
+- **Web Interface:** Students take exams and activate monitoring webcams; Instructors manage exam papers and view violation logs.  
+- **Core API:** Processes exam business logic, submissions, and role verification via JWT, connecting directly to the Database.  
+- **AI Engine:** Receives camera streams via WebSocket/WebRTC, detects anomalies using YOLOv8, and pushes real-time alert updates back to the Core API.
 
-* **Security & Identity:**  
-  - **Amazon Cognito:** Manages identity verification, authentication, and Role-Based Access Control (RBAC) across Educators, Students, and School Administrators.  
+---
 
-### 4. Technical Implementation & End-to-End Workflow  
-* **Aura Academic's Comprehensive 4-Step Workflow:**  
-  1. **Exam Creation (Exam Builder):** Educators upload source documents or select existing question banks; AI automatically recommends structured exam matrices.  
-  2. **Room Configuration (Secure Room):** Educators create secure exam sessions, customize proctoring rules (camera/microphone enforcement, tab-lock), and distribute secure access codes.  
-  3. **Live Exam & AI Supervision (AI Proctoring):** Students enter the secure room; AI continuously monitors the session, tracking connection stability and automatically recovering exam states if interruptions occur.  
-  4. **Post-Exam Analytics (Auto Report):** Immediately upon submission, the system calculates final scores and generates detailed analytical reports and violation logs with photographic proof.  
+### 4. Technical Implementation  
+**Implementation Phases (Planned 3-Month Internship):**  
+- **Month 1 (Setup & Design):** VPC architecture analysis, MongoDB Atlas database setup, YOLOv8/Bedrock model preparation.  
+- **Month 2 (Backend & AI Development):** Spring Boot API programming, Cognito integration, AI service deployment on EC2 Spot.  
+- **Month 3 (Refinement & Deployment):** React.js UI development, S3 + CloudFront + WAF + ALB infrastructure setup, load testing, and documentation finalization.  
 
-### 5. Roadmap & Implementation Milestones (Aligned with 11-Week AWS Internship)  
-- **Phase 1 (Weeks 1 – 3):** Requirement analysis, modern UI/UX design, and static Frontend deployment on **Amazon S3 + CloudFront**.  
-- **Phase 2 (Weeks 4 – 7):** Research and integration of AWS AI/ML services (**Amazon Bedrock** for automated question generation, **Amazon Rekognition** for webcam proctoring).  
-- **Phase 3 (Weeks 8 – 10):** Development of Serverless Backend (**AWS Lambda, API Gateway, DynamoDB**), Secure Room session management, and CI/CD pipelines.  
-- **Phase 4 (Week 11 & Beyond):** Load testing, architectural documentation, blog contributions to the AWS Study Group, and real-world deployment across partner educational institutions.  
+**Technical Requirements:**  
+- **Frontend:** React.js, Tailwind CSS, Axios, WebRTC client.  
+- **Backend:** Spring Boot, Spring Security, MongoDB Atlas connection.  
+- **AI Processing:** Python, FastAPI, YOLOv8/OpenCV/Rekognition, real-time video stream processing.  
+- **AWS Infrastructure:** S3, CloudFront, Cognito, ECS Fargate, EC2 Spot, ALB, WAF, SES, VPC.
 
-### 6. Infrastructure Budget Estimation (AWS Cloud)  
-By maximizing Serverless architecture and **AWS Free Tier / Credits**, monthly operational costs remain highly optimized:  
-- **Amazon S3 & CloudFront (Frontend hosting & CDN):** ~$1.50 USD/month.  
-- **AWS Lambda & API Gateway (Backend API):** ~$0.50 USD/month (well within millions of free tier requests).  
-- **Amazon DynamoDB (NoSQL Database):** ~$1.00 USD/month (On-Demand capacity mode).  
-- **Amazon Bedrock & Rekognition (AI Services):** ~$5.00 – $15.00 USD/month (depending on question generation frequency and concurrent proctored students).  
-- **Total Estimated Cost for Lab & Mid-Scale Production:** **~$8.00 – $18.00 USD/month**, achieving more than 85% cost savings compared to traditional Dedicated Servers or VPS hosting.  
+---
 
-### 7. Risk Assessment & Mitigation Strategies  
-- **Risk of Network Interruption:** The system features local caching and browser storage (Local Storage / IndexedDB) that automatically saves answers locally and syncs immediately upon network re-establishment without data loss.  
-- **Risk of False AI Flags:** AI acts as a smart flagging and alerting assistant; final disciplinary decisions always remain with human educators, backed by time-stamped image and log evidence to ensure fairness.  
+### 5. Roadmap & Milestones  
+- **Weeks 1-2:** System architecture analysis, VPC network design, and data flow mapping.  
+- **Weeks 3-5:** Core API development with Spring Boot and Cognito authentication setup.  
+- **Weeks 6-8:** Frontend UI construction and online exam workflow integration with AI Proctoring.  
+- **Weeks 9-10:** AWS infrastructure deployment (ECS Fargate, EC2 Spot, CloudFront, WAF) and end-to-end testing.  
+- **Weeks 11-12:** Performance optimization, cost evaluation, and final internship report drafting.
 
-### 8. Achieved Outcomes & Practical Value
+---
 
-Through the successful design, architecture, and deployment of **Aura Academic** on Amazon Web Services (AWS), our team achieved significant milestones across both technical architecture validation and practical educational impact:
+### 6. Budget Estimation  
+Using AWS pricing model with Spot Instances and Serverless strategies for a production environment (~100 concurrent students):  
+- **Frontend (S3 + CloudFront):** ~$1.00 USD/month (Free Tier / very low data transfer cost).  
+- **ECS Fargate Spot (Backend):** ~$3.00 - 5.00 USD/month.  
+- **EC2 GPU Spot (AI Engine - g4dn.xlarge):** ~$0.15 - 0.20 USD/hour (activated only during exams, estimated ~$8.00 - 12.00 USD/month).  
+- **NAT Gateway (Optional / or VPC Endpoints):** ~$10.00 - 15.00 USD/month.  
+- **Application Load Balancer (ALB):** ~$16.00 USD/month.  
+- **MongoDB Atlas:** ~$0.00 USD/month (Free Tier M0 cluster).  
+- **SES & WAF:** ~$2.00 USD/month.  
+👉 **Total Estimated Budget:** Approximately **30 - 50 USD/month** (AWS Credits can be used to fully cover practical lab expenses).
 
-#### Technical Outcomes & Architecture Validation
-* **High-Speed & Secure Frontend Deployment:** Successfully built and deployed static Next.js/React frontend on Amazon S3 distributed via Amazon CloudFront CDN (`http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/`), achieving sub-200ms page load times and robust DDoS resilience under high concurrent test-taker traffic.
-* **Generative AI Integration for Exam Creation (Exam Builder):** Leveraged Amazon Bedrock to automate document parsing from raw textbook files (DOCX, PDF), generating multi-difficulty multiple-choice question matrices and detailed answer explanations within seconds.
-* **Real-Time AI Proctoring Engine:** Integrated Amazon Rekognition to analyze live webcam video streams, accurately flagging multi-face presence, candidate impersonation, leaving the frame, and unauthorized materials within a **Secure Room** environment.
-* **Serverless Scalability:** Successfully validated a fully serverless backend stack (AWS Lambda, Amazon API Gateway, DynamoDB) that automatically scales to handle peak exam loads without managing physical servers.
+---
 
-#### Practical & Educational Impact
-* **80% Workload Reduction for Educators:** Drastically reduced manual exam preparation, document formatting, and grading time via instant automated scoring and visual score distribution analytics.
-* **99% Academic Integrity:** Eliminated online exam cheating vulnerabilities through immutable, time-stamped **Audit Logs** combined with securely stored photographic evidence on Amazon S3.
-* **Cost-Effective Cloud Operations:** Pay-as-you-go serverless pricing keeps total operational infrastructure costs between `~8.00 – 18.00 USD/month`, yielding over 85% cost savings compared to traditional dedicated servers or VPS hosting.
-* **High Scalability & Nationwide Expansion:** Established a enterprise-grade EdTech foundation ready to scale across hundreds of universities, high schools, and training centers nationwide.
+### 7. Risk Assessment  
+**Risk Matrix:**  
+- **Spot Instance Sudden Interruption:** Impact: Medium | Likelihood: High | *Note: Configure Auto Scaling Group or automatic fallback to On-Demand.*  
+- **High Camera Stream Latency:** Impact: Medium | Likelihood: Medium | *Note: Optimize frame resolution and configure efficient WebSocket/WebRTC protocols.*  
+- **Billing Surge:** Impact: High | Likelihood: Low | *Note: Set up CloudWatch Billing Alarms and automatically shut down GPU EC2 instances immediately after exam sessions.*  
+
+**Mitigation Strategies:**  
+- **Spot Instances:** Configure Auto Scaling Groups with Multi-AZ and multi-instance type strategies, automatically falling back to On-Demand if Spot capacity is unavailable.  
+- **Camera Latency:** Send only critical keyframes or compress video streams to just enough resolution for accurate AI detection.  
+- **AWS Cost Control:** Set AWS Budgets alerts and configure Lambda automation to stop AI processing servers during non-exam hours.
+
+---
+
+### 8. Expected Outcomes  
+- **Technical Improvements:** Deliver an automated exam monitoring solution with high accuracy using AWS AI, rapid response latency, and robust security.  
+- **Practical Value:** Enhance skills in automation, Cloud Microservices architecture design, and cost-optimized system operations for educational environments.
