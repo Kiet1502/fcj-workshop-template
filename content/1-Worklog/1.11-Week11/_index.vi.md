@@ -1,7 +1,7 @@
-﻿---
+---
 title: "Worklog Tuần 11"
 date: 2024-01-01
-weight: 2
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
@@ -10,25 +10,22 @@ pre: " <b> 1.11. </b> "
 ### Thời gian: 26/06 - 02/07
 
 ### Mục tiêu tuần 11:
-* Hỗ trợ thiết kế hệ thống: Tham gia phân tích workflow, rà soát và vẽ sơ đồ kiến trúc dự án.
-* Thực hành trực tiếp các Lab nâng cao tại văn phòng công ty.
-* Nghiên cứu ứng dụng thực tiễn: Ánh xạ kiến thức Lab vào đồ án thực tế, đưa ra giải pháp tích hợp AWS tối ưu hiệu suất và bảo mật.
-* Đóng góp cộng đồng (Community Contribution): Soạn thảo và chia sẻ bài blog chuyên môn lên cộng đồng AWS Study Vietnam.
+* Vẽ và rà soát các sơ đồ kiến trúc hệ thống (Architecture Diagrams) cho đồ án trước khi xin góp ý của các anh chị mentor.
+* Phối hợp cùng nhóm kiểm thử lần cuối trên môi trường live host và sửa các lỗi nhỏ phát sinh sau khi deploy.
+* Lên văn phòng công ty: Ánh xạ kiến thức từ các bài lab AWS đã học vào đồ án thực tế để giải trình giải pháp kỹ thuật.
+* Viết bài blog chia sẻ kiến thức chuyên môn và kinh nghiệm thực hành, đăng tải lên cộng đồng AWS Study Vietnam.
 
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Hỗ trợ thiết kế hệ thống: Tham gia cùng team phân tích và trực quan hóa luồng làm việc (workflow) cho dự án. Chịu trách nhiệm chính trong việc rà soát và vẽ các sơ đồ kiến trúc, đảm bảo tính logic và thể hiện rõ sự tương tác giữa các thành phần trong hệ thống. | 26/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Thực hành Lab tại văn phòng: Lên công ty và trực tiếp hoàn thành các bài thực hành (lab) mới trên hệ thống. | 27/06/2026 | 28/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **3** | Nghiên cứu ứng dụng thực tiễn: Tiến hành phân tích yêu cầu của đồ án đang phát triển để ánh xạ với các bài lab đã học. Từ đó, đưa ra các phương án triển khai và tích hợp trực tiếp các dịch vụ của AWS vào dự án để tối ưu hóa hiệu suất và bảo mật. | 29/06/2026 | 30/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **4** | Đóng góp cộng đồng (Community Contribution): Tổng hợp lại các kiến thức, kinh nghiệm và quá trình thực hành trong tuần để soạn thảo thành một bài blog chuyên môn. Bài viết đã được đăng tải và chia sẻ thành công lên cộng đồng AWS Study Vietnam. | 31/07/2026 | 02/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **1** | Hỗ trợ thiết kế hệ thống: Cùng nhóm phân tích và trực quan hóa luồng làm việc (workflow) cho đồ án **Aura Academic**. Chịu trách nhiệm chính vẽ sơ đồ kiến trúc, thể hiện rõ sự kết nối giữa Frontend (Amplify/CloudFront) và Backend (API Gateway/Lambda/Bedrock). | 26/06/2026 | 26/06/2026 | |
+| **2** | Phối hợp cùng nhóm kiểm thử kỹ lưỡng ứng dụng Frontend sau khi deploy lên AWS Amplify, gỡ lỗi (fix bugs) các vấn đề về hiển thị trên thiết bị di động và căn chỉnh giao diện. | 27/06/2026 | 28/06/2026 | |
+| **3** | *Lên văn phòng công ty:* Trao đổi với các anh chị mentor, ánh xạ kiến thức từ các bài lab AWS vào kiến trúc đồ án để giải thích lý do lựa chọn từng dịch vụ và cách tối ưu bảo mật, chi phí. | 29/06/2026 | 30/06/2026 | |
+| **4** | Đóng góp cộng đồng (Community Contribution): Viết bài blog chia sẻ kiến thức chuyên môn và quá trình thực tập làm đồ án trên AWS. Bài viết đã được xuất bản và chia sẻ thành công lên cộng đồng AWS Study Vietnam. | 01/07/2026 | 02/07/2026 | |
 
 ### Kết quả đạt được tuần 11:
 
-* Hoàn thiện sơ đồ kiến trúc hệ thống chuẩn chỉnh, mô tả chi tiết luồng dữ liệu và sự tương tác giữa các microservices trên AWS.
-* Trực tiếp hoàn thành các bài lab nâng cao trên hệ thống tại văn phòng, giải quyết các vướng mắc kỹ thuật với mentor.
-* Đề xuất và tích hợp thành công kiến trúc tối ưu cho đồ án thực tiễn, áp dụng hiệu quả các dịch vụ AWS đã học giúp tăng hiệu năng và độ an toàn.
-* Bài blog chuyên môn được xuất bản và chia sẻ thành công lên cộng đồng **AWS Study Vietnam**, nhận được sự phản hồi tích cực.
-
-
-
+* Hoàn thiện bộ sơ đồ kiến trúc hệ thống rõ ràng, chuẩn chỉnh, mô tả chính xác luồng dữ liệu của ứng dụng trên AWS.
+* Các lỗi nhỏ sau khi deploy đã được sửa hoàn tất, trang web chạy ổn định và mượt mà trên môi trường live host.
+* Giải trình thuyết phục cách ứng dụng các dịch vụ AWS vào đồ án thực tế với mentor tại văn phòng.
+* Bài blog chuyên môn được chia sẻ thành công lên cộng đồng **AWS Study Vietnam**, nhận được nhiều sự quan tâm và góp ý tích cực.

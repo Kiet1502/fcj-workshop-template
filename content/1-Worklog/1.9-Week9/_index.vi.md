@@ -1,7 +1,7 @@
-﻿---
+---
 title: "Worklog Tuần 9"
 date: 2024-01-01
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
@@ -10,28 +10,22 @@ pre: " <b> 1.9. </b> "
 ### Thời gian: 12/06 – 18/06
 
 ### Mục tiêu tuần 9:
-* Khởi tạo tác nhân AI tự động bằng Amazon Bedrock Agents tích hợp AWS Lambda (Action Groups).
-* Triển khai hệ thống Event-Driven với Amazon SQS và Amazon EventBridge decouple microservices.
-* Quản trị DNS và bảo mật nâng cao với Amazon Route 53 và AWS WAF chống OWASP Top 10.
-* Phân tích dữ liệu phi cấu trúc bằng AWS Glue Crawler và truy vấn SQL trực tiếp qua Amazon Athena.
-* Bảo mật thông tin nhạy cảm (CSDL, API Keys) bằng AWS Secrets Manager và tự động xoay vòng khóa.
+* Tìm hiểu cơ chế quản trị tên miền (Route 53) và tường lửa bảo vệ ứng dụng web (AWS WAF).
+* Tập trung phát triển Frontend: Xây dựng **Giao diện Tạo đề thi tự động bằng AI (AI Exam Builder UI)**.
+* Lập trình trang Báo cáo thống kê và Biểu đồ kết quả thi trực quan cho giảng viên.
+* Phối hợp với team backend để nối API Bedrock tạo ma trận câu hỏi ngay từ trình duyệt.
 
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Thực hành kiến trúc AI Agents: Khởi tạo và định cấu hình tác nhân AI tự động bằng Amazon Bedrock Agents; thiết lập các Action Groups tích hợp với hàm AWS Lambda để AI có thể tự động phân tích yêu cầu và gọi API thực thi tác vụ. | 12/06/2026 | 12/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Triển khai hệ thống Event-Driven (Hướng sự kiện): Thực hiện chuỗi Lab cấu hình hàng đợi tin nhắn bằng Amazon SQS và thiết lập bus sự kiện trung tâm với Amazon EventBridge để tách rời (decouple) các thành phần trong hệ thống microservices. | 13/06/2026 | 13/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **3** | Quản trị DNS và Bảo mật nâng cao: Thực hiện phân giải tên miền và định tuyến lưu lượng với Amazon Route 53; triển khai tường lửa ứng dụng web AWS WAF để bảo vệ các API endpoint và CloudFront phân phối nội dung khỏi các lỗ hổng phổ biến (OWASP Top 10). | 14/06/2026 | 15/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **4** | Phân tích dữ liệu phi cấu trúc (Data Analytics): Chạy bài Lab thiết lập AWS Glue Crawler để tự động quét siêu dữ liệu (metadata) từ các file log trên Amazon S3, sau đó sử dụng Amazon Athena để viết lệnh SQL truy vấn trực tiếp dữ liệu thô này mà không cần tải vào database. | 16/06/2026 | 16/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **5** | Quản lý thông tin nhạy cảm: Triển khai AWS Secrets Manager nhằm bảo mật chuỗi kết nối cơ sở dữ liệu và các API Keys quan trọng, thực hành cơ chế tự động xoay vòng khóa (Secret rotation) để thay thế hoàn toàn việc lưu trữ biến môi trường (environment variables) dạng văn bản thuần. | 17/06/2026 | 18/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **1** | Tìm hiểu nhanh lý thuyết về bảo mật ứng dụng với Amazon Route 53 và tường lửa AWS WAF. Các lab nặng về dữ liệu lớn (Glue/Athena) được thống nhất tìm hiểu qua lý thuyết để dành thời gian cho code Frontend. | 12/06/2026 | 13/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **2** | Lập trình **Giao diện Tạo đề thi AI (AI Exam Builder UI)**, làm tính năng cho phép giảng viên tải lên file tài liệu (PDF/DOCX) hoặc gõ chủ đề/yêu cầu đề thi. | 14/06/2026 | 15/06/2026 | |
+| **3** | Phối hợp sát sao với team backend để nối API gọi sang Bedrock Agents/Lambda tự sinh ma trận đề thi. Xử lý hiển thị hiệu ứng tải (loading spinners) và cho phép giảng viên chỉnh sửa câu hỏi trước khi lưu. | 16/06/2026 | 17/06/2026 | |
+| **4** | Thiết kế và code trang Báo cáo thống kê điểm thi (Analytics Dashboard) cho giảng viên, hiển thị biểu đồ phân bổ điểm số và tỷ lệ làm đúng/sai từng câu. | 18/06/2026 | 18/06/2026 | |
 
 ### Kết quả đạt được tuần 9:
 
-* Xây dựng thành công AI Agent trên Bedrock biết tự động phân tích câu lệnh người dùng và gọi hàm Lambda tương ứng để thực hiện tác vụ thực tế.
-* Thiết lập thành công mô hình Event-Driven, kết nối ổn định SQS và EventBridge giúp hệ thống microservices hoạt động bất đồng bộ, chịu tải cao.
-* Cấu hình Route 53 trỏ tên miền chính xác, tích hợp thành công tường lửa WAF chặn hiệu quả các cuộc tấn công SQL Injection và XSS.
-* Crawler quét thành công metadata từ log S3 tạo Data Catalog, viết câu lệnh SQL trên Athena truy vấn dữ liệu thô nhanh chóng, chính xác.
-* Bảo mật tuyệt đối mật khẩu DB và API Keys trong Secrets Manager, ứng dụng lấy secret qua API an toàn, loại bỏ hoàn toàn hardcode/plaintext.
-
-
-
+* Nắm được nguyên lý bảo mật web với WAF và DNS Route 53 mà không bị mất thời gian vào các lab backend chuyên sâu.
+* Hoàn thành màn hình Tạo đề thi tự động bằng AI cực kỳ trực quan, giúp giảng viên tạo ma trận câu hỏi chỉ trong vài giây.
+* Dựng xong trang Báo cáo kết quả với các biểu đồ thống kê sinh động, dễ theo dõi.
+* Sự phối hợp ăn ý giữa Frontend và Backend giúp các tính năng AI của đồ án **Aura Academic** chạy rất mượt mà trên môi trường thực tế.

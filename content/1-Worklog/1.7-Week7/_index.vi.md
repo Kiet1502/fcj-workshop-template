@@ -1,7 +1,7 @@
-﻿---
+---
 title: "Worklog Tuần 7"
 date: 2024-01-01
-weight: 1
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
@@ -10,28 +10,23 @@ pre: " <b> 1.7. </b> "
 ### Thời gian: 29/05 – 04/06
 
 ### Mục tiêu tuần 7:
-* Đến công ty và thực hành các dịch vụ AWS.
-* Tạo và cấu hình tài khoản IAM User quyền AdministratorAccess thay thế tài khoản Root.
-* Triển khai Amazon Bedrock Knowledge Bases kết hợp mô hình Titan Embeddings G1 - Text v1.2 phục vụ RAG.
-* Cấu hình Amazon S3 làm Data Source và thiết lập vector database qua Amazon OpenSearch Serverless.
-* Thực hành gỡ lỗi quá tải yêu cầu (Error 429) và dọn dẹp OpenSearch Collections bị kẹt.
+* Lên văn phòng họp nhóm khớp luồng code và thực hành tạo tài khoản IAM User quyền AdministratorAccess thay cho Root.
+* Tìm hiểu nhanh lý thuyết về Bedrock Knowledge Bases và OpenSearch Serverless qua tài liệu hướng dẫn.
+* Tập trung phát triển Frontend: Xây dựng **Giao diện Phòng thi trực tuyến (Exam Room UI)** cho thí sinh.
+* Tích hợp khung hiển thị camera giám sát AI (Proctoring camera view) vào góc màn hình làm bài.
+* Kiểm thử luồng dữ liệu thời gian thực giữa giao diện phòng thi và backend.
 
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Đến công ty và học các dịch vụ bên dưới. | 29/05/2026 | 29/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Tạo và cấu hình tài khoản IAM User với quyền AdministratorAccess để thay thế tài khoản Root, đảm bảo tuân thủ nguyên tắc bảo mật. | 30/05/2026 | 30/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **3** | Triển khai Amazon Bedrock Knowledge Bases kết hợp mô hình Titan Embeddings G1 - Text v1.2 nhằm phục vụ kiến trúc RAG. | 31/05/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **4** | Cấu hình Amazon S3 làm nguồn cấp dữ liệu (Data Source) và thiết lập cơ sở dữ liệu vector tự động thông qua Amazon OpenSearch Serverless. | 03/07/2026 | 02/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **5** | Thực hành gỡ lỗi quá tải yêu cầu (Error 429) thông qua việc điều hướng khu vực triển khai (us-east-1) và dọn dẹp các OpenSearch Collections bị kẹt. | 04/07/2026 | 04/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **1** | *Lên văn phòng công ty:* Họp trực tiếp với team để khớp code Frontend/Backend. Thực hành tạo tài khoản IAM User có quyền AdministratorAccess để làm việc thay thế cho tài khoản Root đúng chuẩn bảo mật. | 29/05/2026 | 30/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **2** | Đọc hiểu cơ chế làm việc của Amazon Bedrock Knowledge Bases và OpenSearch Serverless để nắm được cách hệ thống RAG tra cứu tài liệu phía sau. | 31/05/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | Lập trình **Giao diện Phòng thi trực tuyến (Exam Room UI)** với các tính năng chọn đáp án, chuyển câu hỏi mượt mà, lưu nháp bài làm và bộ đếm ngược thời gian. | 02/06/2026 | 03/06/2026 | |
+| **4** | Tích hợp khung hiển thị camera (Webcam Stream) ngay góc màn hình phòng thi phục vụ cho tính năng giám sát AI (AI Proctoring), kết nối thử nghiệm luồng trả cảnh báo vi phạm từ backend. | 04/06/2026 | 04/06/2026 | |
 
 ### Kết quả đạt được tuần 7:
 
-* Trực tiếp tham gia học tập, trao đổi chuyên môn tại văn phòng công ty.
-* Thiết lập thành công IAM User, bật MFA và ngừng hoàn toàn sử dụng Root account cho các thao tác hàng ngày.
-* Cấu hình thành công Knowledge Bases trên Bedrock, kết nối với mô hình embedding Titan G1.
-* Tạo S3 Bucket chứa dữ liệu tài liệu, đồng bộ thành công sang OpenSearch Serverless Collection làm vector store.
-* Xử lý triệt để lỗi Throttling (429) bằng cách chuyển vùng triển khai và xóa bỏ tài nguyên OpenSearch kẹt để tối ưu hiệu năng.
-
-
-
+* Cấu hình thành công tài khoản IAM User bảo mật và hiểu rõ cách hoạt động của RAG trên OpenSearch.
+* Hoàn thiện màn hình Phòng thi trực tuyến (Exam Room UI) với trải nghiệm làm bài trực quan, không bị giật lag khi chuyển câu.
+* Ghép nối thành công khung webcam giám sát lên màn hình thi, tạo tiền đề để tích hợp với AI phát hiện gian lận.
+* Buổi làm việc offline tại văn phòng giúp cả nhóm giải quyết nhanh gọn nhiều vướng mắc khi nối API thực tế.

@@ -1,54 +1,29 @@
-﻿---
+---
 title: "Week 11 Worklog"
 date: 2024-01-01
-weight: 2
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
 
 
 ### Week 11 Objectives:
-
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Draw and review system architecture diagrams for the project before getting feedback from mentors.
+* Coordinate with the team to perform final testing on the live hosted environment and fix post-deployment bugs.
+* Work on-site at the office: Map learned AWS lab concepts directly to our project architecture to justify technical decisions.
+* Write a technical blog post sharing specialized cloud knowledge and internship experiences with the AWS Study Vietnam community.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :---: | :--- | :---: | :---: | :--- |
-| 2 | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations | 26/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br> | 27/06/2026 | 27/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 28/06/2026 | 29/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br> | 30/06/2026 | 30/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume | 01/07/2026 | 02/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-
+| 2 | - System Design Support: Work with the team to analyze and visualize application workflows for **Aura Academic**. Take lead responsibility for creating detailed architecture diagrams showing interactions between Frontend (Amplify/CloudFront) and Backend services (API Gateway/Lambda/Bedrock). | 26/06/2026 | 26/06/2026 | |
+| 3 | - Coordinate with teammates to thoroughly test the deployed Frontend on AWS Amplify, debugging mobile layout quirks and fixing minor UI alignment issues. | 27/06/2026 | 28/06/2026 | |
+| 5 | - *On-site office session:* Discuss technical trade-offs with mentors, mapping AWS lab learnings directly to our real-world project to justify service selection, security hardening, and cost efficiency. | 29/06/2026 | 30/06/2026 | |
+| 7 | - Community Contribution: Draft and publish a technical blog post summarizing key AWS knowledge and practical lessons learned from building our cloud application. Successfully published on the **AWS Study Vietnam** community platform. | 01/07/2026 | 02/07/2026 | |
 
 ### Week 11 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Completed clear, professional system architecture diagrams accurately reflecting data flows across AWS microservices.
+* Resolved post-deployment UI/UX quirks, ensuring smooth, stable performance across all devices on the live domain.
+* Successfully articulated technical architectures and AWS service choices during mentor reviews at the office.
+* Published a well-received technical article on **AWS Study Vietnam**, contributing valuable practical insights back to the community.

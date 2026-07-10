@@ -25,7 +25,7 @@ home = [ "HTML", "RSS", "JSON"]
 [Languages.en]
 title = "AWS Internship Report Site"
 weight = 1
-languageName = "English"
+label = "English"
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-github'></i> GitHub Repository"
@@ -42,13 +42,13 @@ weight = 20
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-linkedin'></i> LinkedIn"
 identifier = "LinkedIn Profile"
-url = "https://www.linkedin.com/"
+url = "https://www.linkedin.com/in/ki%E1%BB%87t-v%C5%A9-gia-694432403/"
 weight = 30
 
 [Languages.vi]
 title = "Website Báo Cáo Thực Tập AWS"
 weight = 2
-languageName = "Tiếng Việt"
+label = "Tiếng Việt"
 
 [[Languages.vi.menu.shortcuts]]
 name = "<i class='fab fa-github'></i> Mã nguồn GitHub"
@@ -65,7 +65,7 @@ weight = 20
 [[Languages.vi.menu.shortcuts]]
 name = "<i class='fab fa-linkedin'></i> LinkedIn"
 identifier = "LinkedIn Profile"
-url = "https://www.linkedin.com/"
+url = "https://www.linkedin.com/in/ki%E1%BB%87t-v%C5%A9-gia-694432403/"
 weight = 30
 
 [markup]

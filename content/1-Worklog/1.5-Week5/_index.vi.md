@@ -1,7 +1,7 @@
-﻿---
+---
 title: "Worklog Tuần 5"
 date: 2024-01-01
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
@@ -10,31 +10,22 @@ pre: " <b> 1.5. </b> "
 ### Thời gian: 15/05 – 21/05
 
 ### Mục tiêu tuần 5:
-* Nghiên cứu kiến trúc Serverless với AWS Lambda và Amazon API Gateway.
-* Khởi tạo hàm AWS Lambda xử lý backend logic không cần quản lý máy chủ.
-* Cấu hình Amazon API Gateway kết nối Lambda xây dựng RESTful API.
-* Tích hợp CDN Amazon CloudFront cho static web trên S3.
-* Thiết lập bảo mật HTTPS và tối ưu hóa tốc độ tải trang bằng caching của CloudFront.
-* Cập nhật minh chứng và rà soát AWS Billing tuân thủ Free Tier.
+* Tìm hiểu mô hình Serverless (không máy chủ) trên AWS với AWS Lambda và Amazon API Gateway.
+* Học cách làm việc với mạng phân phối nội dung (CDN) Amazon CloudFront kết hợp lưu trữ S3.
+* Thảo luận với nhóm về chuẩn giao tiếp RESTful API giữa Frontend và Backend.
+* Chuẩn bị nền tảng và môi trường để bắt đầu nhận vai trò phát triển Frontend từ tuần sau.
 
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Nghiên cứu kiến trúc Serverless, tìm hiểu cơ chế hoạt động của các dịch vụ AWS Lambda và Amazon API Gateway. | 15/05/2026 | 15/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Thực hành khởi tạo hàm AWS Lambda để xử lý logic backend mà không cần cấp phát hay quản lý máy chủ. | 16/05/2026 | 16/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **3** | Cấu hình Amazon API Gateway kết nối với AWS Lambda để xây dựng các endpoint RESTful API cơ bản. | 17/05/2026 | 17/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **4** | Tìm hiểu về Mạng phân phối nội dung (CDN) và thực hành tích hợp Amazon CloudFront cho giao diện web tĩnh đã host trên S3. | 18/05/2026 | 18/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **5** | Thiết lập bảo mật HTTPS và tối ưu hóa tốc độ tải trang bằng cơ chế caching của CloudFront. | 19/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **6** | Cập nhật minh chứng lên hệ thống báo cáo, rà soát AWS Billing để đảm bảo tuân thủ nghiêm ngặt giới hạn Free Tier. | 20/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **1** | Tìm hiểu cơ chế hoạt động của AWS Lambda và Amazon API Gateway. Trao đổi với các bạn làm backend trong nhóm để thống nhất danh sách các API cần thiết cho hệ thống thi. | 15/05/2026 | 16/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **2** | Tự viết một hàm Lambda nhỏ xử lý logic trả về JSON mẫu và kết nối với API Gateway để test luồng gọi API từ trình duyệt. | 17/05/2026 | 17/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | Tìm hiểu dịch vụ Amazon CloudFront, thực hành cấu hình CloudFront đứng trước một S3 bucket chứa web tĩnh để tăng tốc độ tải trang và hỗ trợ HTTPS. | 18/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | Họp team rà soát tiến độ: Thống nhất việc từ tuần sau (Tuần 6) tôi sẽ chính thức đảm nhận vai trò phát triển Frontend (Giao diện người dùng) cho đồ án nhóm. Chụp ảnh minh chứng lab và kiểm tra AWS Billing. | 20/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 5:
 
-* Nắm vững mô hình Event-driven và Serverless computing trên AWS.
-* Viết và deploy thành công hàm Lambda bằng Node.js/Python, xử lý logic mượt mà.
-* Tạo các endpoint REST API (GET, POST), tích hợp trực tiếp với Lambda trả về JSON chính xác.
-* Tạo CloudFront Distribution với Origin là S3 Bucket, phân phối nội dung toàn cầu với độ trễ thấp.
-* Trang web được bật HTTPS mặc định (SSL/TLS) và tốc độ tải cải thiện đáng kể nhờ Edge Cache.
-* Hoàn tất cập nhật minh chứng, kiểm tra bảng Billing đảm bảo chi phí 0$.
-
-
-
+* Hiểu cách hoạt động của mô hình Serverless, biết cách tạo API Gateway kết nối với Lambda.
+* Biết cách cấu hình Amazon CloudFront và S3 để host một web tĩnh có CDN tốc độ cao và bảo mật HTTPS.
+* Cùng nhóm chốt xong danh sách các API và định dạng dữ liệu (JSON payload) để chuẩn bị nối với giao diện.
+* Môi trường làm việc và kế hoạch đã chuẩn bị sẵn sàng để bước vào giai đoạn phát triển Frontend từ tuần tiếp theo.

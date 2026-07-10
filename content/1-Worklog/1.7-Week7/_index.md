@@ -1,54 +1,30 @@
-﻿---
+---
 title: "Week 7 Worklog"
 date: 2024-01-01
-weight: 1
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
 
 
 ### Week 7 Objectives:
-
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Work on-site at the office to sync code flows and set up secure IAM User accounts with AdministratorAccess.
+* Gain a conceptual overview of Bedrock Knowledge Bases and OpenSearch Serverless through course guides.
+* Focus on Frontend development: Build the **Online Examination Room UI** for students.
+* Integrate the AI Proctoring camera monitoring box directly into the test-taking screen.
+* Test real-time data communication between the exam room UI and backend services.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :---: | :--- | :---: | :---: | :--- |
-| 2 | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations | 29/05/2026 | 29/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br> | 30/05/2026 | 30/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 31/05/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br> | 02/06/2026 | 02/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume | 03/06/2026 | 04/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-
+| 2 | - *On-site office session:* Meet in person with the team to align Frontend and Backend code integration. Create and configure a secure IAM User account with AdministratorAccess privileges to replace Root account usage. | 29/05/2026 | 30/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Study how Amazon Bedrock Knowledge Bases and OpenSearch Serverless operate under the hood to support RAG document retrieval. | 31/05/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Develop the **Online Examination Room UI** featuring smooth question switching, auto-save draft answers, and a live countdown timer. | 02/06/2026 | 03/06/2026 | |
+| 6 | - Integrate the webcam video stream box directly into the exam interface for AI Proctoring and test displaying warning alerts triggered from backend models. | 04/06/2026 | 04/06/2026 | |
 
 ### Week 7 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully set up secure IAM User access and understood core RAG mechanics on OpenSearch.
+* Built a clean, highly responsive Online Examination Room UI that allows students to navigate questions seamlessly.
+* Successfully embedded the live webcam proctoring view onto the test interface, ready for face-tracking integration.
+* Productive in-person collaboration at the office helped the team resolve several API integration roadblocks.

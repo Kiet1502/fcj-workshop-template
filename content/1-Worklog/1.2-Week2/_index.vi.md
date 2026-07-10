@@ -1,7 +1,7 @@
-﻿---
+---
 title: "Worklog Tuần 2"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
@@ -10,25 +10,22 @@ pre: " <b> 1.2. </b> "
 ### Thời gian: 24/04 – 30/04
 
 ### Mục tiêu tuần 2:
-* Thiết lập hạ tầng mạng trên AWS thông qua dịch vụ Amazon Virtual Private Cloud (VPC).
-* Thực hành quản trị máy chủ ảo chuyên sâu với dịch vụ Amazon EC2.
-* Khởi tạo, quản lý và tùy biến đa dạng các máy chủ EC2 (Linux, Windows Server, t3.micro, t3.nano, t3.medium).
-* Triển khai thành công ứng dụng web (AWS FCJ Management) lên máy chủ EC2 và cấu hình bảo mật, truy cập từ internet.
+* Học lý thuyết và thực hành tự tay dựng một mạng ảo riêng Amazon VPC (Subnet, Internet Gateway, Route Table).
+* Tìm hiểu và thực hành quản trị máy chủ ảo EC2 chạy hệ điều hành Linux (Amazon Linux/Ubuntu).
+* Thử nghiệm tạo máy chủ với các cấu hình kích thước khác nhau (t3.nano, t3.micro) để kiểm tra mức độ tiêu thụ tài nguyên.
+* Cài đặt web server (`httpd`), chạy thử trang web mẫu và cấu hình Security Group để truy cập từ trình duyệt.
 
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Nghiên cứu kiến thức cơ bản và thiết lập hạ tầng mạng trên AWS thông qua dịch vụ Amazon Virtual Private Cloud (VPC). | 24/04/2026 | 24/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Tìm hiểu chuyên sâu và thực hành quản trị máy chủ ảo với dịch vụ Amazon Elastic Compute Cloud (EC2). | 25/04/2026 | 26/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **3** | Thực hành khởi tạo, giám sát và quản lý đồng thời nhiều máy chủ EC2 với các hệ điều hành khác nhau (Linux, Windows Server) và tùy biến nhiều loại cấu hình (t3.micro, t3.nano, t3.medium). | 27/04/2026 | 28/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **4** | Triển khai thành công ứng dụng web (AWS FCJ Management) lên máy chủ EC2, thực hiện cấu hình mạng và bảo mật để ứng dụng có thể hoạt động và truy cập trực tiếp từ môi trường internet. | 29/04/2026 | 30/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **1** | Học lý thuyết về hạ tầng mạng trên AWS và thực hành tạo một Amazon VPC hoàn chỉnh gồm Public/Private Subnets, Internet Gateway và Route Table. | 24/04/2026 | 24/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **2** | Tìm hiểu cách làm việc với máy chủ EC2 Linux (Amazon Linux 2023), học cách tạo SSH Key Pair và kết nối vào terminal qua SSH/Session Manager. | 25/04/2026 | 26/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **3** | Thực hành tạo thử vài máy chủ EC2 Linux với các cấu hình t3.nano và t3.micro để quan sát sự khác biệt về RAM/CPU, sau đó tắt (terminate) các máy không dùng. | 27/04/2026 | 28/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **4** | Cài đặt Apache Web Server (`httpd`) trên EC2 Linux, đưa một trang web HTML mẫu lên máy chủ và mở port 80/443 trên Security Group để truy cập thành công từ internet. | 29/04/2026 | 30/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 2:
 
-* Nắm vững kiến trúc VPC, Subnets (Public/Private), Internet Gateway, Route Tables và thực hành thiết lập VPC hoàn chỉnh.
-* Hiểu rõ quy trình quản trị vòng đời máy chủ EC2, cấu hình bảo mật với Security Groups.
-* Khởi tạo thành công và vận hành ổn định các máy chủ Linux (Amazon Linux/Ubuntu) và Windows Server trên nhiều loại instance type khác nhau.
-* Ứng dụng **AWS FCJ Management** chạy mượt mà trên EC2, được bảo vệ an toàn và có thể truy cập thành công qua Public IP/DNS từ internet.
-
-
-
+* Nắm rõ cách hoạt động của VPC, Subnet, Route Table và tự tạo được mạng ảo VPC riêng trên AWS.
+* Biết cách tạo SSH Key Pair, kết nối vào máy chủ Linux và sử dụng các lệnh terminal cơ bản.
+* Hiểu được cách chọn cấu hình EC2 (Instance Type) phù hợp với nhu cầu để không bị lãng phí chi phí.
+* Tự tay cài đặt web server Linux và chạy thành công trang web đầu tiên có thể truy cập qua Public IP từ trình duyệt.

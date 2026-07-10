@@ -1,54 +1,29 @@
-﻿---
+---
 title: "Week 5 Worklog"
 date: 2024-01-01
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
 
 ### Week 5 Objectives:
-
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Study Serverless architecture on AWS with AWS Lambda and Amazon API Gateway.
+* Learn how Content Delivery Networks (CDNs) work using Amazon CloudFront combined with S3 storage.
+* Discuss RESTful API communication standards between Frontend and Backend with the team.
+* Prepare the technical environment to take on the primary Frontend Developer role starting next week.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :---: | :--- | :---: | :---: | :--- |
-| 2 | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations | 15/05/2026 | 15/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br> | 16/05/2026 | 16/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 17/05/2026 | 18/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br> | 19/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume | 20/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-
+| 2 | - Study how AWS Lambda and Amazon API Gateway work. Sync with backend teammates to agree on the exact list of API endpoints required for the exam platform. | 15/05/2026 | 16/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Write a small sample Lambda function to return dummy JSON data and connect it to API Gateway to verify API calls from a browser. | 17/05/2026 | 17/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Study Amazon CloudFront and practice configuring a CloudFront distribution in front of a static S3 bucket to improve loading speeds and enable HTTPS. | 18/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 7 | - Team alignment meeting: Confirmed that starting next week (Week 6), I will officially take charge of Frontend (User Interface) development for our group project. Capture lab proof and check AWS Billing. | 20/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Understood the mechanics of Serverless computing and learned how to link API Gateway to Lambda functions.
+* Learned how to configure Amazon CloudFront and S3 for high-speed, secure HTTPS static web hosting.
+* Finalized the list of required APIs and JSON payload structures with teammates in preparation for UI integration.
+* Fully prepped the development setup and workflow ready to dive into Frontend coding next week.
