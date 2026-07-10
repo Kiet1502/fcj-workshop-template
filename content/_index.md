@@ -28,7 +28,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 17/04/2026 to 10/07/2026
 
-![Vũ Gia Kiệt Profile Picture](images/avatar.jpg)
+![Vũ Gia Kiệt Profile Picture](/images/avatar.jpg)
 
 ### Report Content
 
@@ -36,6 +36,7 @@ chapter: false
 2.  [Proposal](2-Proposal/)
 3.  [Translated Blogs](3-BlogsTranslated/)
 4.  [Events Participated](4-EventParticipated/)
-5.  [Workshop](5-Workshop/)
-6.  [Self-evaluation](6-Self-evaluation/)
-7.  [Sharing and Feedback](7-Feedback/)
+5.  [Project](5-Project/)
+6.  [Workshop](6-Workshop/)
+7.  [Self-evaluation](7-Self-evaluation/)
+8.  [Sharing and Feedback](8-Feedback/)

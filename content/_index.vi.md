@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 17/04/2026 đến ngày 10/07/2026
 
-![Ảnh đại diện của Vũ Gia Kiệt](images/avatar.jpg)
+![Ảnh đại diện của Vũ Gia Kiệt](/images/avatar.jpg)
 
 
 
@@ -35,6 +35,7 @@ chapter: false
 2.  [Proposal](2-Proposal/)
 3.  [Các bài blogs đã dịch](3-BlogsTranslated/)
 4.  [Các events đã tham gia](4-EventParticipated/)
-5.  [Workshop](5-Workshop/)
-6.  [Tự đánh giá](6-Self-evaluation/)
-7.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
+5.  [Project](5-Project/)
+6.  [Workshop](6-Workshop/)
+7.  [Tự đánh giá](7-Self-evaluation/)
+8.  [Chia sẻ, đóng góp ý kiến](8-Feedback/)

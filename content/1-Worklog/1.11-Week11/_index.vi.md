@@ -27,5 +27,4 @@ pre: " <b> 1.11. </b> "
 
 * Hoàn thiện bộ sơ đồ kiến trúc hệ thống rõ ràng, chuẩn chỉnh, mô tả chính xác luồng dữ liệu của ứng dụng trên AWS.
 * Các lỗi nhỏ sau khi deploy đã được sửa hoàn tất, trang web chạy ổn định và mượt mà trên môi trường live host.
-* Giải trình thuyết phục cách ứng dụng các dịch vụ AWS vào đồ án thực tế với mentor tại văn phòng.
-* Bài blog chuyên môn được chia sẻ thành công lên cộng đồng **AWS Study Vietnam**, nhận được nhiều sự quan tâm và góp ý tích cực.
+* Bài blog chuyên môn được chia sẻ thành công lên cộng đồng **AWS Study Vietnam**.
