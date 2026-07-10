@@ -7,21 +7,37 @@ pre: " <b> 1. </b> "
 ---
 
 
-**Trong trang này** là tổng hợp chi tiết nhật ký công việc (Worklog) trong suốt quá trình thực tập **12 tuần** (từ ngày **17/04** đến **10/07**).
+# NHẬT KÝ CÔNG VIỆC
 
-Dưới đây là bảng tổng hợp lộ trình và nội dung thực hiện từng tuần theo kế hoạch và thực tế triển khai:
+### Giới thiệu
+Nhật ký công việc (Worklog) ghi lại toàn bộ quá trình tham gia chương trình thực tập **First Cloud Journey (FCAJ)** trong thời gian **12 tuần**. Nội dung bao gồm các công việc đã thực hiện, các bài lab AWS đã hoàn thành, quá trình phát triển project nhóm, tham gia các buổi thực tập tại công ty, meeting của chương trình và hoàn thiện báo cáo, workshop.
 
-| Tuần | Ngày | Nội dung | Chi tiết |
-| :---: | :---: | :--- | :---: |
-| **1** | 17/04 – 23/04 | - Làm quen với các bạn trong nhóm, nắm rõ nội quy và lộ trình thực tập AWS 3 tháng.<br>- Tìm hiểu các khái niệm cloud cơ bản và các nhóm dịch vụ chính (Compute, Storage, Network, Database...).<br>- Tạo tài khoản AWS Free Tier, xử lý xong vấn đề xác minh thẻ Visa nhờ hỗ trợ từ AWS Support.<br>- Cài đặt AWS CLI trên máy cá nhân, học cách cấu hình Access/Secret Key và làm quen với AWS Console.<br>- Tìm hiểu lý thuyết về dịch vụ máy chủ ảo Amazon EC2 (AMI, Instance Type, Security Group).<br>- Làm 5 bài lab cơ bản theo hướng dẫn để nhận 100$ AWS Credits làm tài nguyên chạy thực hành sau này. | [Tuần 1](1.1-week1/) |
-| **2** | 24/04 – 30/04 | - Học lý thuyết và tự tay thực hành dựng một mạng ảo riêng Amazon VPC (gồm Subnet, Internet Gateway, Route Table).<br>- Tập quản trị máy chủ ảo EC2 chạy hệ điều hành Linux (Amazon Linux/Ubuntu), học tạo SSH Key Pair và kết nối qua terminal.<br>- Thử nghiệm tạo máy chủ với các cấu hình kích thước khác nhau (t3.nano, t3.micro) để kiểm tra mức tiêu thụ tài nguyên.<br>- Cài đặt Apache Web Server (`httpd`), chạy thử một trang web mẫu và mở port 80/443 trên Security Group để truy cập từ trình duyệt. | [Tuần 2](1.2-week2/) |
-| **3** | 01/05 - 07/05 | - Thực hành tạo và kết nối vào máy chủ EC2 chạy hệ điều hành Windows Server thông qua Remote Desktop (RDP).<br>- Đưa ứng dụng của chương trình (**AWS FCJ Management**) lên máy chủ và cấu hình firewall để chạy ổn định.<br>- Tìm hiểu dịch vụ lưu trữ object Amazon S3 (tạo bucket, phân quyền IAM, Bucket Policy).<br>- Thực hành đưa giao diện web tĩnh lên Amazon S3 và bật tính năng Static Website Hosting.<br>- *Lên văn phòng:* Học về cơ sở dữ liệu Amazon RDS (MySQL), cài đặt Docker Engine lên EC2 và chạy thử container mẫu.<br>- Viết báo cáo tuần, kiểm tra lại AWS Billing và xóa (terminate) các máy chủ không dùng để tránh tốn phí. | [Tuần 3](1.3-week3/) |
-| **4** | 08/05 – 14/05 | - Tìm hiểu lý thuyết cơ bản về AI trên cloud với Amazon Bedrock (Foundation Models) và kiến trúc RAG.<br>- Thực hành gọi API của Bedrock trên terminal và làm bài lab nhỏ về RAG nhúng tài liệu mẫu.<br>- Học cách dùng Docker, tự tay viết Dockerfile để đóng gói ứng dụng backend thành container.<br>- Họp với nhóm dự án **Aura Academic** để bàn về ý tưởng và chia module công việc.<br>- Nhóm thống nhất làm gọn các bài lab cá nhân để cùng nhau lên khung kiến trúc và thảo luận cách dùng AI (Bedrock) tự động tạo đề thi. | [Tuần 4](1.4-week4/) |
-| **5** | 15/05 – 21/05 | - Học về mô hình Serverless trên AWS với AWS Lambda và Amazon API Gateway.<br>- Tự viết một hàm Lambda nhỏ trả về dữ liệu JSON mẫu và nối với API Gateway để test luồng gọi API.<br>- Tìm hiểu dịch vụ CDN Amazon CloudFront, thực hành cấu hình CloudFront đứng trước S3 bucket để web tải nhanh hơn và có HTTPS.<br>- Họp team: Thống nhất danh sách API endpoints cần thiết cho app và chốt từ tuần sau (Tuần 6) tôi sẽ phụ trách mảng Frontend của đồ án. | [Tuần 5](1.5-week5/) |
-| **6** | 22/05 - 28/05 | - Làm bài lab ngắn tìm hiểu cách theo dõi hệ thống bằng Amazon CloudWatch và khái niệm IaC với AWS CloudFormation.<br>- Chính thức bắt tay vào vai trò **Phát triển Frontend (Giao diện người dùng)** cho đồ án nhóm **Aura Academic**.<br>- Khởi tạo project Frontend, thiết lập bộ thư viện CSS, routing và dựng các trang cơ bản (Landing Page, Đăng nhập/Đăng ký).<br>- Dựng màn hình Bảng điều khiển sinh viên (Student Dashboard) và họp nhóm trao đổi tiến độ.<br>- *Thứ 7 (30/05):* Tham gia meeting First Cloud Journey, lắng nghe chia sẻ công nghệ và thảo luận ý tưởng phân chia công việc nhóm. | [Tuần 6](1.6-week6/) |
-| **7** | 29/05 – 04/06 | - *Lên văn phòng:* Họp trực tiếp với team để khớp code Frontend/Backend. Thực hành tạo tài khoản IAM User quyền AdministratorAccess thay cho Root.<br>- Đọc hiểu lý thuyết về Bedrock Knowledge Bases và OpenSearch Serverless để nắm nguyên lý tra cứu RAG.<br>- Lập trình **Giao diện Phòng thi trực tuyến (Exam Room UI)** với tính năng chọn đáp án, chuyển câu hỏi mượt mà và bộ đếm ngược thời gian.<br>- Tích hợp khung hiển thị camera (Webcam Stream) góc màn hình phục vụ giám sát AI (AI Proctoring) và test kết nối API real-time. | [Tuần 7](1.7-week7/) |
-| **8** | 05/06 – 11/06 | - Tìm hiểu dịch vụ quản lý người dùng Amazon Cognito. Dành thời gian dồn lực cho việc tích hợp Cognito thay vì làm lab container nặng nề.<br>- Tích hợp thành công luồng xác thực (Login/Sign-up, Quên mật khẩu) vào code Frontend **Aura Academic**, xử lý lưu token an toàn.<br>- Kết nối repo GitHub với AWS Amplify, cấu hình CI/CD tự động deploy trang web mỗi khi push code lên nhánh chính.<br>- Họp nhóm rà soát tính năng phân quyền (Sinh viên vs Giảng viên) và kiểm thử giao diện trên cả máy tính lẫn điện thoại. | [Tuần 8](1.8-week8/) |
-| **9** | 12/06 – 18/06 | - Tìm hiểu nhanh lý thuyết về bảo mật Route 53 và tường lửa web AWS WAF. Lược bỏ các lab dữ liệu lớn (Glue/Athena) để tập trung code Frontend.<br>- Lập trình **Giao diện Tạo đề thi AI (AI Exam Builder UI)**, cho phép giảng viên upload file PDF/DOCX hoặc gõ chủ đề để sinh đề.<br>- Phối hợp cùng team backend nối API Bedrock tạo ma trận câu hỏi, xử lý hiệu ứng tải và cho phép chỉnh sửa câu hỏi trước khi lưu.<br>- Thiết kế và code trang Báo cáo thống kê điểm thi (Analytics Dashboard) hiển thị biểu đồ phổ điểm và tỷ lệ đúng/sai từng câu. | [Tuần 9](1.9-week9/) |
-| **10** | 19/06 – 25/06 | - Tìm hiểu nhanh lý thuyết Amazon Rekognition (nhận diện khuôn mặt) và AWS CloudTrail (ghi log kiểm toán).<br>- Rà soát và trau chuốt toàn bộ giao diện (UX/UI Polish): chuẩn hóa font chữ, bảng màu, thêm animation và đảm bảo responsive đẹp mắt.<br>- Cùng team kiểm thử tích hợp toàn phần (Integration Testing) tất cả các luồng từ lúc đăng nhập, tạo đề AI đến khi nộp bài và chấm điểm.<br>- Họp tổng kết toàn nhóm gỡ lỗi (fix bugs) nhỏ phát sinh và thống nhất chốt phiên bản Release Candidate (RC) hoàn chỉnh. | [Tuần 10](1.10-week10/) |
-| **11** | 26/06 - 02/07 | - Hỗ trợ thiết kế hệ thống: Cùng nhóm rà soát và vẽ các sơ đồ kiến trúc (Architecture Diagrams) mô tả kết nối giữa Frontend và Backend.<br>- Phối hợp cùng nhóm kiểm thử lần cuối trên môi trường live host và sửa các lỗi nhỏ (responsive, alignment) sau khi deploy lên Amplify.<br>- *Lên văn phòng:* Trao đổi với mentor, ánh xạ kiến thức lab AWS vào đồ án thực tế để giải thích lý do chọn dịch vụ và cách tối ưu bảo mật.<br>- Đóng góp cộng đồng: Viết bài blog chia sẻ kiến thức và kinh nghiệm thực hành, đăng tải thành công lên cộng đồng AWS Study Vietnam (`01/07 - 02/07`). | [Tuần 11](1.11-week11/) |
-| **12** | 03/07 – 10/07 | - Viết dự thảo và hoàn thiện báo cáo tổng kết thực tập AWS 3 tháng theo đúng định dạng chuẩn của chương trình First Cloud Journey (FCJ).<br>- Tổng hợp hình ảnh minh chứng các bài lab, sơ đồ kiến trúc và đóng gói link demo đồ án **Aura Academic**.<br>- Kiểm tra và chuẩn hóa tài liệu hướng dẫn workshop (documentation) của nhóm kèm hình ảnh minh họa chi tiết.<br>- Họp nhóm kiểm tra chéo lần cuối và chính thức nộp báo cáo (`10/07/2026`), hoàn tất thủ tục kết thúc chương trình thực tập. | [Tuần 12](1.12-week12/) |
+Thông qua worklog, có thể theo dõi quá trình học tập, thực hành và phát triển kỹ năng trên nền tảng Amazon Web Services (AWS) cũng như quá trình tham gia thực tế tại doanh nghiệp.
+
+---
+
+### Nội dung các tuần
+
+**Tuần 1:** [Làm quen với AWS, AWS Free Tier, AWS Management Console, AWS CLI và Amazon EC2](1.1-week1/)
+
+**Tuần 2:** [Thực hành Amazon VPC, Amazon EC2 Linux, Apache Web Server và Security Groups](1.2-week2/)
+
+**Tuần 3:** [Thực hành EC2 Windows Server, ứng dụng FCJ Management, Amazon S3, RDS MySQL và Docker](1.3-week3/)
+
+**Tuần 4:** [Tìm hiểu Amazon Bedrock (AI/RAG), Docker và thảo luận ý tưởng tích hợp AI vào đồ án nhóm](1.4-week4/)
+
+**Tuần 5:** [Tìm hiểu AWS Lambda, API Gateway, CloudFront và xác định vai trò Frontend Developer](1.5-week5/)
+
+**Tuần 6:** [Xây dựng giao diện Landing Page, Student Dashboard cho Aura Academic và tham gia meeting First Cloud Journey (30/05)](1.6-week6/)
+
+**Tuần 7:** [Thực tập tại công ty, phát triển Phòng thi trực tuyến AI Proctoring và tìm hiểu Bedrock Knowledge Bases](1.7-week7/)
+
+**Tuần 8:** [Tích hợp xác thực Amazon Cognito User Pool và thiết lập CI/CD tự động trên AWS Amplify](1.8-week8/)
+
+**Tuần 9:** [Xây dựng Giao diện Tạo đề thi tự động bằng AI (AI Exam Builder UI) và trang Báo cáo thống kê](1.9-week9/)
+
+**Tuần 10:** [Hoàn thiện toàn bộ giao diện Aura Academic, kiểm thử tích hợp tổng thể và tối ưu hiệu năng](1.10-week10/)
+
+**Tuần 11:** [Thiết kế sơ đồ kiến trúc hệ thống, kiểm thử trên AWS Amplify, làm việc tại văn phòng và đăng bài blog cộng đồng](1.11-week11/)
+
+**Tuần 12:** [Hoàn thiện báo cáo thực tập, tài liệu workshop và chuẩn hóa theo Template First Cloud Journey (FCAJ)](1.12-week12/)
