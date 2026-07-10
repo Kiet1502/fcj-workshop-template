@@ -26,6 +26,8 @@ home = [ "HTML", "RSS", "JSON"]
 title = "AWS Internship Report Site"
 weight = 1
 label = "English"
+[Languages.en.params]
+  author = "Vu Gia Kiet"
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-github'></i> GitHub Repository"
@@ -46,9 +48,11 @@ url = "https://www.linkedin.com/in/ki%E1%BB%87t-v%C5%A9-gia-694432403/"
 weight = 30
 
 [Languages.vi]
-title = "Website Báo Cáo Thực Tập AWS"
+title = "Báo Cáo Thực Tập AWS - Vũ Gia Kiệt"
 weight = 2
 label = "Tiếng Việt"
+[Languages.vi.params]
+  author = "Vũ Gia Kiệt"
 
 [[Languages.vi.menu.shortcuts]]
 name = "<i class='fab fa-github'></i> Mã nguồn GitHub"

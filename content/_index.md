@@ -10,7 +10,7 @@ chapter: false
 
 
 ### Student Information:
-&emsp; **Full Name:** Vũ Gia Kiệt
+&emsp; **Full Name:** Vu Gia Kiet
 
 &emsp; **Phone Number:** 0924770838
 
@@ -28,7 +28,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 17/04/2026 to 10/07/2026
 
-![Vũ Gia Kiệt Profile Picture](/images/avatar.jpg)
+![Vu Gia Kiet Profile Picture](/images/avatar.jpg)
 
 ### Report Content
 

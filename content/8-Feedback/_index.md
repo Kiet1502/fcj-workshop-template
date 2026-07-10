@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 8. </b> "
 ---
 
-> Below are my practical evaluations and reflections (Vũ Gia Kiệt - Class 22DTHE4) after completing the internship and experiencing the **First Cloud Journey (FCJ)** program while building the **Aura Academic** system:
+> Below are my practical evaluations and reflections (Vu Gia Kiet - Class 22DTHE4) after completing the internship and experiencing the **First Cloud Journey (FCJ)** program while building the **Aura Academic** system:
 
 ### Overall Evaluation
 
