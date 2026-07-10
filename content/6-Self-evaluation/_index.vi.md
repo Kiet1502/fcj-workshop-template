@@ -17,9 +17,9 @@ Về tác phong, tôi luôn chủ động hoàn thành đúng hạn các nhiệm
 
 | STT | Tiêu chí                            | Mô tả                                                                                            | Tốt | Khá | Trung bình |
 | --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | --- | --- | ---------- |
-| 1   | **Kiến thức và kỹ năng chuyên môn** | Hiểu biết về ngành, áp dụng kiến thức vào thực tế, kỹ năng sử dụng công cụ, chất lượng công việc | ✅   | ☐   | ☐          |
+| 1   | **Kiến thức và kỹ năng chuyên môn** | Hiểu biết về ngành, áp dụng kiến thức vào thực tế, kỹ năng sử dụng công cụ, chất lượng công việc | ☐   |  ✅  | ☐          |
 | 2   | **Khả năng học hỏi**                | Tiếp thu kiến thức mới, học hỏi nhanh                                                            | ☐   | ✅   | ☐          |
-| 3   | **Chủ động**                        | Tự tìm hiểu, nhận nhiệm vụ mà không chờ chỉ dẫn                                                  | ☐   | ✅   | ☐          |
+| 3   | **Chủ động**                        | Tự tìm hiểu, nhận nhiệm vụ mà không chờ chỉ dẫn                                                  | ✅   | ☐   | ☐          |
 | 4   | **Tinh thần trách nhiệm**           | Hoàn thành công việc đúng hạn, đảm bảo chất lượng                                                | ✅   | ☐   | ☐          |
 | 5   | **Kỷ luật**                         | Tuân thủ giờ giấc, nội quy, quy trình làm việc                                                   | ✅   | ☐   | ☐          |
 | 6   | **Tính cầu tiến**                   | Sẵn sàng nhận feedback và cải thiện bản thân                                                     | ☐   | ✅   | ☐          |
@@ -35,3 +35,8 @@ Về tác phong, tôi luôn chủ động hoàn thành đúng hạn các nhiệm
 * Cần chủ động hơn nữa trong việc tự tìm tòi và đề xuất các ý tưởng kỹ thuật mới cho nhóm thay vì đợi phân công nhiệm vụ.
 * Rèn luyện thêm tư duy logic và cách tiếp cận, xử lý các bài toán hệ thống phức tạp khi gặp lỗi mới trên AWS.
 * Tiếp tục trau dồi khả năng đọc hiểu tài liệu tiếng Anh chuyên ngành để tiếp cận các công nghệ mới nhanh hơn.
+
+### Kết luận
+
+* Qua 12 tuần tham gia chương trình thực tập First Cloud Journey (FCAJ), tôi đã tích lũy thêm nhiều kiến thức thực tế về AWS, Cloud Computing và quy trình phát triển một dự án công nghệ. Chương trình đã giúp tôi hiểu rõ hơn về cách xây dựng, triển khai và vận hành hệ thống trên nền tảng Cloud.
+* Ngoài ra còn học được nhiều về tác phong làm việc, môi trường làm việc, còn được rèn luyện thêm kỹ năng giao tiếp và làm việc nhóm.

@@ -28,6 +28,6 @@ During my internship, I had the opportunity to attend the offline **Saturday Mee
 
 &emsp;**Location:** Floor 26, Bitexco Financial Tower, No. 2 Hai Trieu Street, Ben Nghe Ward, District 1, Ho Chi Minh City  
 
-&emsp;**Role:** Attendee  
+&emsp;**Role:** Attendee (FCJ Intern / Frontend Developer for Aura Academic)  
 
-&emsp;**Brief Description:** An in-depth offline tech meetup focusing on practical cloud learning via AWS Cloud Quest, product development insights from Hackathons (Floci), DevOps workflows in real-world operations, and personal skill growth. 
+&emsp;**Brief Description:** An engaging offline tech meetup at the AWS Bitexco office featuring 6 practical sessions: (1) Gamified AWS Learning via Cloud Quest & Floci, (2) Hackathon Product Strategy (The Ballers), (3) Building Tech Confidence (Why We Always Need Confidence), (4) Case study of Tu Vi Dai Viet web app, (5) DevOps Culture & Automation (DevOps Before Disaster), and (6) Overcoming Procrastination in Engineering. 

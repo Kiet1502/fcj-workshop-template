@@ -28,7 +28,7 @@ Trong quá trình thực tập, em đã có cơ hội tham gia sự kiện offli
 
 &emsp;**Địa điểm:** Tầng 26, Bitexco Financial Tower, Số 2 Hải Triều, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh  
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự  
+&emsp;**Vai trò trong sự kiện:** Người tham dự (Thực tập sinh FCJ / Frontend Developer dự án Aura Academic)  
 
-&emsp;**Mô tả ngắn:** Sự kiện chia sẻ kiến thức chuyên sâu về trải nghiệm tự học AWS qua Cloud Quest, kinh nghiệm phát triển sản phẩm từ các cuộc thi Hackathon (Floci), tư duy DevOps trong vận hành hệ thống thực tế và kỹ năng phát triển bản thân.
+&emsp;**Mô tả ngắn:** Buổi gặp gỡ, kết nối mở cùng các chuyên gia và mentor AWS xoay quanh 6 phần chia sẻ thực chiến: (1) Game hóa việc học AWS với Cloud Quest & Floci, (2) Kinh nghiệm triển khai Hackathon (The Ballers), (3) Tầm quan trọng của sự tự tin (Why We Always Need Confidence), (4) Case study sản phẩm web Tử Vi Đại Việt, (5) Tảng băng chìm DevOps (DevOps Before Disaster), và (6) Khắc phục tâm lý trì hoãn trong học tập và công việc.
 
