@@ -67,4 +67,4 @@ Since all resources are located in the Public Subnet, the Security Group (SG) ac
      - (There is NO NEED to open Port 22 for SSH, because we will use AWS Systems Manager (Session Manager) to securely connect to the Private Subnet).
 ---
 
-At this point, the super cost-effective and secure network backbone of the system is ready! We can move on to the [Next Stage](../6.3-ECS-Backend) to configure the Backend.
+At this point, the super cost-effective and secure network backbone of the system is ready! We can move on to the [Next Stage](../6.3-ecs-backend) to configure the Backend.

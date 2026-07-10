@@ -66,4 +66,4 @@ When the Backend application runs on Amazon ECS Fargate, it needs to borrow an A
 
 ---
 
-After completing the User creation and basic permissions configuration, your system is ready for the [Next phase](../6.2-VPC-Network).
+After completing the User creation and basic permissions configuration, your system is ready for the [Next phase](../6.2-vpc-network).

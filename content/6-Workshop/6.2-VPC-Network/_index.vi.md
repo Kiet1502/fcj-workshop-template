@@ -81,4 +81,4 @@ Security Group (SG) đóng vai trò là "chốt chặn sống còn" để kiểm
 
 ---
 
-Đến đây, khung xương hạ tầng mạng Enterprise vững chắc của hệ thống đã sẵn sàng! Chúng ta có thể chuyển sang [Giai đoạn tiếp theo](../6.3-ECS-Backend) để cấu hình Backend.
+Đến đây, khung xương hạ tầng mạng Enterprise vững chắc của hệ thống đã sẵn sàng! Chúng ta có thể chuyển sang [Giai đoạn tiếp theo](../6.3-ecs-backend) để cấu hình Backend.

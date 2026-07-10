@@ -66,4 +66,4 @@ Khi ứng dụng Backend chạy trên Amazon ECS Fargate, nó cần mượn mộ
 
 ---
 
-Sau khi hoàn thành tạo User và cấu hình các quyền cơ bản này, hệ thống của bạn đã sẵn sàng cho [Giai đoạn tiếp theo](../6.2-VPC-Network).
+Sau khi hoàn thành tạo User và cấu hình các quyền cơ bản này, hệ thống của bạn đã sẵn sàng cho [Giai đoạn tiếp theo](../6.2-vpc-network).
