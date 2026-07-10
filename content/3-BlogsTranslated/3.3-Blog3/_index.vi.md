@@ -1,78 +1,48 @@
 ---
-title: "Blog 3 - Tự động hóa CI/CD, Giám sát CloudWatch & Bảo mật WAF"
-date: 2024-01-01
+title: "AWS Security Agent: Một agent, phủ kín cả vòng đời phát triển application"
+date: 2026-06-15
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# Tự động hóa CI/CD Pipeline, Giám sát CloudWatch và Bảo mật Zero-Trust trên AWS
+Một trong những vấn đề muôn thuở của security là nó luôn bị tách rời khỏi quy trình dev: designer thiết kế xong, dev code xong, rồi mới đến lượt security team ngồi soi lại — thường là khi đã quá muộn để sửa rẻ. AWS Security Agent (nằm trong AWS Continuum) đang cố gắng xóa bỏ sự tách rời đó, bằng cách phủ security xuyên suốt ba giai đoạn: lúc thiết kế, lúc code, và lúc deploy — tất cả trong một agentic service duy nhất.
 
-> *Bài viết được chia sẻ và thảo luận trên cộng đồng **AWS Study Group Vietnam**:*  
-> 👉 [**Xem bài đăng gốc & bình luận trên Facebook**](https://www.facebook.com/share/p/18uKARgWds/?)  
-> 🌐 *Cổng thông tin dự án:* [**Aura Academic Cloud System**](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
+Đợt cập nhật mới nhất (giữa tháng 6/2026) bổ sung thêm threat modeling, mở rộng code review sang nhiều Git platform, và cho phép chạy mọi thứ ngay trong IDE. Dưới đây là những gì đáng chú ý.
 
----
+## Threat modeling: đưa security vào từ lúc còn trên giấy
 
-## 1. Tầm quan trọng của DevOps và Bảo mật trong hệ thống EdTech
+Đây là tính năng mới và có lẽ đáng chú ý nhất. Thay vì chờ code chạy xong mới quét lỗ hổng, Security Agent đọc trực tiếp design document hoặc source code, tự dựng lại data flow, architecture và trust boundary của application — rồi từ đó xác định threat actor, attack vector có thể xảy ra, và ưu tiên threat nào cần xử lý trước theo framework STRIDE (6 nhóm: giả danh identity, tampering dữ liệu, mất khả năng truy vết, lộ thông tin, denial of service, và leo thang quyền hạn).
 
-Khi phát triển một ứng dụng quy mô lớn như **Aura Academic**, việc các kỹ sư liên tục đẩy code mới lên repository hàng ngày rất dễ phát sinh lỗi hoặc xung đột hệ thống nếu làm thủ công. Đồng thời, các hệ thống thi cử trực tuyến luôn là đích nhắm của các cuộc tấn công mạng (DDoS, SQL Injection, XSS) nhằm thay đổi điểm số hoặc đánh sập phòng thi.
+Điểm hay là nó hoạt động được ngay từ giai đoạn design — tức là lúc chi phí sửa một lỗ hổng vẫn còn rẻ, chưa cần refactor code đã ship.
 
-Trong bài viết thứ 3 này, chúng tôi chia sẻ cách nhóm đã áp dụng các phương pháp tốt nhất (Best Practices) từ chương trình **First Cloud Journey (FCJ)** để xây dựng hệ thống **CI/CD hoàn toàn tự động**, quản trị **giám sát thời gian thực** và thiết lập **tường lửa nhiều lớp** trên AWS.
+## Code review: mở rộng nền tảng, đào sâu hơn pattern-matching
 
----
+Trước đây Security Agent chỉ scan được trên GitHub. Giờ đã thêm GitLab và Bitbucket (cả bản SaaS và self-hosted), cùng khả năng kéo documentation từ Confluence vào làm context cho review.
 
-## 2. Luồng CI/CD Pipeline Tự động hóa với AWS CodePipeline & CodeBuild
+Cách nó review cũng không đơn giản là match theo pattern lỗi đã biết như linter truyền thống — mà dùng reasoning để tìm ra vulnerability phức tạp hơn, đối chiếu với security requirement riêng của tổ chức, và quan trọng là validate lại trong môi trường simulation để xác nhận lỗ hổng đó thực sự khai thác được, tránh báo false positive tràn lan làm dev mất thời gian check nhầm.
 
-Để loại bỏ hoàn toàn việc triển khai thủ công (Manual Deployment) và giảm thiểu lỗi con người, chúng tôi đã xây dựng pipeline CI/CD tích hợp trực tiếp với GitHub Repository:
+Ngoài ra, design review cũng được nâng cấp với các compliance pack có sẵn (AWS Well-Architected Framework, NIST CSF, PCI DSS...) hoặc import security requirement riêng từ document nội bộ. Mọi finding đều map ngược lại được vào compliance posture, giúp team luôn ở trạng thái sẵn sàng cho audit.
 
-```mermaid
-graph LR
-    Dev[Kỹ sư đẩy Code lên GitHub] --> Webhook[GitHub Webhook Trigger]
-    Webhook --> Pipeline[AWS CodePipeline]
-    Pipeline --> Build[AWS CodeBuild Tự động Test & Compile]
-    Build --> DeployS3[Deploy Frontend lên Amazon S3 / CloudFront]
-    Build --> DeployLambda[Cập nhật Microservices AWS Lambda]
-```
+## Chạy thẳng trong IDE, không cần đổi tab
 
-### Quy trình tự động hóa:
-1. **Source Stage:** Ngay khi một commit hoặc Pull Request được merge vào nhánh `main` trên GitHub, webhook sẽ lập tức kích hoạt **AWS CodePipeline**.
-2. **Build & Test Stage:** **AWS CodeBuild** khởi tạo một container tạm thời, cài đặt các dependencies, chạy bộ kiểm thử tự động (Unit Tests / Integration Tests), và compile source code Next.js thành gói tĩnh (build artifacts).
-3. **Deploy Stage:** 
-   - Đối với Frontend: CodeBuild tự động đồng bộ (sync) các file mới lên **Amazon S3** và gọi lệnh `Invalidate Cache` trên **Amazon CloudFront** để người dùng lập tức thấy giao diện mới mà không bị lưu cache cũ.
-   - Đối với Backend: Cập nhật code mới cho các hàm **AWS Lambda** thông qua AWS SAM / CloudFormation với cơ chế **Canary Deployment** (chuyển dần 10% traffic sang version mới để kiểm tra độ ổn định trước khi chuyển 100%).
+Phần này giải quyết một pain point rất thực tế: trước đây muốn xem finding hay threat model, dev phải rời IDE, mở console riêng. Giờ với Kiro power, Claude Code plugin (tên chính thức: AWS Agents for DevSecOps), và MCP integration mở cho bất kỳ AI IDE nào, mọi thứ chạy ngay trong editor bằng prompt tự nhiên, ví dụ:
 
----
+- `"Run a full security scan on this repo"` → scan toàn bộ repo
+- `"Build a threat model for this application"` → threat model lưu vào file `.security-agent/threat_model.md` trong workspace
+- `"help me remediate my findings"` → agent pull finding về, ưu tiên finding nghiêm trọng nhất, và mở luôn bugfix session để sửa
 
-## 3. Giám sát hệ thống thời gian thực với Amazon CloudWatch & SNS
+Cách làm này khá hợp lý: security agent không cố thay thế dev, mà cố gắng "gặp" dev ngay tại chỗ dev đang làm việc.
 
-Một hệ thống High Availability không cho phép kỹ sư "đợi khách hàng báo lỗi mới biết server sập". Chúng tôi cấu hình **Amazon CloudWatch** làm trung tâm giám sát sức khỏe toàn diện:
+## Một vài lưu ý khi thử
 
-| Chỉ số giám sát (Metrics) | Dịch vụ theo dõi | Ngưỡng cảnh báo (CloudWatch Alarm) | Hành động phản ứng tự động |
-| :--- | :--- | :--- | :--- |
-| **API Error Rate (5xx Errors)** | Amazon API Gateway | > 1% tổng số request trong 5 phút | Gửi cảnh báo khẩn cấp qua email/telegram qua **Amazon SNS**. |
-| **Lambda Throttling / Duration** | AWS Lambda | Thời gian thực thi vượt quá 8 giây hoặc có Throttling | Tự động tăng Concurrency limit và cảnh báo team Backend. |
-| **DynamoDB Consumed Capacity** | Amazon DynamoDB | Chạm ngưỡng 85% Provisioned Capacity | Kích hoạt Auto-Scaling mở rộng read/write capacity tức thì. |
+Threat modeling và code review nâng cấp hiện vẫn ở dạng Preview, nên behavior có thể còn thay đổi. Nếu muốn nghịch thử, Security Agent có free trial 2 tháng — nhưng vẫn nên canh account/credit cẩn thận để tránh phát sinh chi phí ngoài dự kiến. Một điểm cũng nên nhớ: agent đọc trực tiếp source code để build threat model, nên nếu repo có chứa secret hay credential thì nên clean trước khi cho agent scan.
+
+## Kết Luận
+
+Nhìn tổng thể, hướng đi của AWS Security Agent là biến security từ một bước kiểm tra rời rạc, chạy sau cùng, thành một phần liên tục nằm ngay trong workflow — từ lúc còn là design doc, qua từng pull request, đến lúc deploy. Với các bạn đang làm project có xử lý dữ liệu nhạy cảm (như upload ảnh/video người dùng), đây là một tool đáng thử để vừa bảo vệ hệ thống tốt hơn, vừa là cách thực hành thêm về tư duy threat modeling một cách bài bản.
 
 ---
 
-## 4. Bảo mật nhiều lớp (Zero-Trust Security & AWS WAF)
-
-Bảo mật là ưu tiên số 1 trong các kỳ thi trực tuyến. Chúng tôi triển khai mô hình bảo mật theo chiều sâu (**Defense in Depth**):
-* **Bảo vệ biên (Edge Protection):** Tích hợp **AWS WAF (Web Application Firewall)** ngay phía trước **Amazon CloudFront** và **API Gateway**. WAF được cấu hình các bộ quy tắc (Managed Rules) của AWS để chặn đứng OWASP Top 10 (SQL Injection, Cross-Site Scripting, Bad Bots).
-* **Quản lý thông tin nhạy cảm:** Toàn bộ DB Connection Strings, JWT Secrets và API Keys được lưu trữ an toàn trong **AWS Secrets Manager**, tuyệt đối không hard-code trong source code.
-* **Quản trị định danh IAM & ABAC:** Áp dụng nguyên tắc quyền hạn tối thiểu (*Least Privilege Principle*), mỗi hàm Lambda chỉ được cấp một IAM Role duy nhất với quyền truy cập đúng bảng DynamoDB hoặc S3 Bucket mà nó phụ trách.
-
----
-
-## 5. Tổng kết hành trình First Cloud Journey (FCJ)
-
-Trải qua 11 tuần thực tập và rèn luyện cường độ cao tại **First Cloud Journey (FCJ)**, từ những sinh viên còn bỡ ngỡ với khái niệm Cloud, nhóm chúng tôi đã tự tin làm chủ và kiến thiết những hệ thống thực tế quy mô lớn, an toàn và tối ưu chi phí trên AWS.
-
-Xin gửi lời cảm ơn sâu sắc đến các Mentor và cộng đồng **AWS Study Group Vietnam** đã luôn đồng hành, hướng dẫn và truyền cảm hứng!
-
----
-
-> 💬 **Bạn có đang áp dụng CI/CD hay AWS WAF cho dự án của mình không?**  
-> Hãy cùng trao đổi kinh nghiệm và câu hỏi tại bài đăng chính thức của nhóm:  
-> 👉 [**Tham gia thảo luận trên Facebook tại đây**](https://www.facebook.com/share/p/18uKARgWds/?)
+## Tài liệu tham khảo
+- [AWS Security Agent adds threat modeling, Kiro power, and Claude Code plugin, and more](https://aws.amazon.com/vi/blogs/aws/aws-security-agent-adds-threat-modeling-kiro-power-and-claude-code-plugin-and-more/)

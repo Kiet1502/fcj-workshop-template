@@ -1,78 +1,48 @@
 ---
-title: "Blog 3 - CI/CD Automation, CloudWatch Monitoring & WAF Security"
-date: 2024-01-01
+title: "AWS Security Agent: A single agent covering the entire application development lifecycle"
+date: 2026-06-15
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# Automating CI/CD Pipelines, CloudWatch Monitoring & Zero-Trust Security on AWS
+One of the eternal problems in security is that it is often isolated from the development process: designers design, developers write code, and only then does the security team review it—usually when it is too late and expensive to fix. AWS Security Agent (part of AWS Continuum) is trying to eliminate that gap by embedding security across three stages: during design, during coding, and during deployment—all within a single agentic service.
 
-> *This article was published and discussed on the **AWS Study Group Vietnam** community:*  
-> 👉 [**View Original Facebook Post & Discussion**](https://www.facebook.com/share/p/18uKARgWds/?)  
-> 🌐 *Project Portal:* [**Aura Academic Cloud System**](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
+The latest update (mid-June 2026) introduces threat modeling, expands code review to multiple Git platforms, and allows everything to run directly within the IDE. Here are the highlights.
 
----
+## Threat modeling: Integrating security from the design phase
 
-## 1. Why DevOps and Multi-Layer Security Matter in EdTech
+This is a new and perhaps the most notable feature. Instead of waiting for the code to run before scanning for vulnerabilities, the Security Agent directly reads design documents or source code, reconstructing the data flow, architecture, and trust boundaries of the application. From there, it identifies potential threat actors and attack vectors, prioritizing which threats need to be addressed first based on the STRIDE framework (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege).
 
-When engineering a large-scale application like **Aura Academic**, having developers continuously push updates to code repositories can easily introduce regressions, integration conflicts, or downtime if deployed manually. Furthermore, online examination systems are prime targets for malicious network attacks (DDoS, SQL Injection, XSS) attempting to manipulate grades or interrupt exam sessions.
+The great thing is that it works right from the design phase—when the cost of fixing a vulnerability is still cheap, without the need to refactor already shipped code.
 
-In our third engineering blog post, we share how our team applied industry best practices learned during the **First Cloud Journey (FCJ)** program to architect **fully automated CI/CD pipelines**, real-time **observability dashboards**, and **multi-layered web application firewalls** across AWS.
+## Code review: Expanding platforms, deeper pattern-matching
 
----
+Previously, the Security Agent could only scan on GitHub. Now, it has added support for GitLab and Bitbucket (both SaaS and self-hosted versions), along with the ability to pull documentation from Confluence for review context.
 
-## 2. Automated CI/CD Pipeline with AWS CodePipeline & CodeBuild
+Its review methodology is not simply matching known error patterns like traditional linters. Instead, it uses reasoning to find complex vulnerabilities, checks them against the organization's specific security requirements, and crucially, validates them in a simulation environment to confirm if the vulnerability is actually exploitable. This avoids flooding developers with false positives that waste their time.
 
-To eliminate manual deployment risks and streamline continuous delivery, we built a serverless CI/CD pipeline integrated directly with our GitHub repository:
+Furthermore, design reviews have been upgraded with built-in compliance packs (AWS Well-Architected Framework, NIST CSF, PCI DSS, etc.) or the ability to import custom security requirements from internal documents. Every finding maps back to the compliance posture, keeping the team audit-ready at all times.
 
-```mermaid
-graph LR
-    Dev[Engineers Push Code to GitHub] --> Webhook[GitHub Webhook Trigger]
-    Webhook --> Pipeline[AWS CodePipeline]
-    Pipeline --> Build[AWS CodeBuild Automated Build & Test]
-    Build --> DeployS3[Deploy Static Frontend to Amazon S3 / CloudFront]
-    Build --> DeployLambda[Update AWS Lambda Microservices]
-```
+## Running directly in the IDE without switching tabs
 
-### Automation Workflow:
-1. **Source Stage:** Whenever a code commit or Pull Request merges into the `main` branch on GitHub, an automated webhook triggers **AWS CodePipeline**.
-2. **Build & Test Stage:** **AWS CodeBuild** provisions an isolated ephemeral container, installs necessary dependencies, executes our automated testing suite (Unit & Integration tests), and compiles our Next.js frontend into static build artifacts.
-3. **Deploy Stage:** 
-   - For Frontend: CodeBuild syncs static assets to our **Amazon S3** origin bucket and automatically triggers a `CloudFront Cache Invalidation` so students and faculty immediately experience the latest UI updates without stale caching.
-   - For Backend: Updates code packages across our **AWS Lambda** microservices via AWS SAM / CloudFormation using **Canary Deployments** (routing 10% of live traffic initially to verify stability before shifting 100%).
+This solves a very real pain point: previously, developers had to leave the IDE and open a separate console to view findings or threat models. Now, with Kiro power, the Claude Code plugin (officially named: AWS Agents for DevSecOps), and MCP integration open to any AI IDE, everything runs right inside the editor using natural prompts, for example:
 
----
+- `"Run a full security scan on this repo"` → scans the entire repository
+- `"Build a threat model for this application"` → saves the threat model to `.security-agent/threat_model.md` in the workspace
+- `"help me remediate my findings"` → the agent pulls findings, prioritizes the most severe ones, and immediately opens a bugfix session to resolve them
 
-## 3. Real-Time Observability with Amazon CloudWatch & SNS
+This approach makes sense: the security agent is not trying to replace the developer, but rather trying to "meet" the developer right where they are working.
 
-High availability requires proactive observability. We established **Amazon CloudWatch** as our centralized operational intelligence hub:
+## A few notes when testing
 
-| Operational Metric | Monitored AWS Service | Alarm Threshold (CloudWatch Alarm) | Automated Remediation Action |
-| :--- | :--- | :--- | :--- |
-| **API Error Rate (5xx Errors)** | Amazon API Gateway | > 1% of total request volume across 5 mins | Dispatches critical alert via **Amazon SNS** to engineering email/Telegram channels. |
-| **Lambda Duration & Throttling** | AWS Lambda | Execution duration exceeding 8 seconds or any throttle events | Automatically scales reserved concurrency limits and notifies backend team. |
-| **DynamoDB Consumed Capacity** | Amazon DynamoDB | Reaches 85% of Provisioned Read/Write Units | Triggers Auto-Scaling to dynamically provision additional table capacity. |
+The upgraded threat modeling and code review features are currently in Preview, so their behavior might change. If you want to try it out, the Security Agent offers a 2-month free trial—but you should still monitor your account and credits carefully to avoid unexpected costs. Also, remember: the agent reads source code directly to build the threat model, so if your repository contains secrets or credentials, you should clean them before letting the agent scan.
+
+## Conclusion
+
+Overall, the direction of AWS Security Agent is to transform security from an isolated, final check into a continuous part of the workflow—from the design document, through each pull request, to deployment. For those working on projects that handle sensitive data (like uploading user photos/videos), this is a tool worth trying to better protect your system and practice systematic threat modeling thinking.
 
 ---
 
-## 4. Defense-in-Depth (Zero-Trust Security & AWS WAF)
-
-Security is our top priority for high-stakes online examinations. We implemented a robust **Defense-in-Depth** architecture:
-* **Edge Protection:** Deployed **AWS WAF (Web Application Firewall)** directly in front of **Amazon CloudFront** and **API Gateway**. WAF is configured with AWS Managed Rules to inspect and block OWASP Top 10 vulnerabilities (SQL Injection, Cross-Site Scripting, and malicious automated bots).
-* **Sensitive Secrets Management:** All database connection strings, JWT secret keys, and third-party API tokens are securely encrypted inside **AWS Secrets Manager**, eliminating hardcoded credentials completely.
-* **Identity & Access Governance (IAM & ABAC):** Enforced strict *Least Privilege Principle*. Each Lambda microservice is granted a dedicated IAM execution role with permissions scoped restricted strictly to its assigned DynamoDB table or S3 bucket.
-
----
-
-## 5. First Cloud Journey (FCJ) Program Reflection
-
-Over 11 intensive weeks of hands-on training during our **First Cloud Journey (FCJ)** internship, our engineering team transformed from cloud novices into confident builders capable of architecting scalable, secure, and cost-efficient cloud systems on AWS.
-
-We express our sincere gratitude to our technical mentors and the entire **AWS Study Group Vietnam** community for their continuous guidance, support, and inspiration!
-
----
-
-> 💬 **Are you currently implementing CI/CD pipelines or AWS WAF in your cloud projects?**  
-> Share your questions and engineering experiences on our official community post:  
-> 👉 [**Join the Technical Discussion on Facebook**](https://www.facebook.com/share/p/18uKARgWds/?)
+## References
+- [AWS Security Agent adds threat modeling, Kiro power, and Claude Code plugin, and more](https://aws.amazon.com/vi/blogs/aws/aws-security-agent-adds-threat-modeling-kiro-power-and-claude-code-plugin-and-more/)

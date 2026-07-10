@@ -1,79 +1,158 @@
 ---
-title: "Blog 2 - AI Proctoring (Bedrock & Rekognition) Integration"
-date: 2024-01-01
+title: "Amazon S3 Files – When Amazon S3 Becomes More Than Object Storage"
+date: 2026-07-08
 weight: 2
 chapter: false
+disableToc: true
 pre: " <b> 3.2. </b> "
 ---
 
-# Integrating Artificial Intelligence (Generative AI & Computer Vision) for Exam Supervision
 
-> *This article was published and discussed on the **AWS Study Group Vietnam** community:*  
-> 👉 [**View Original Facebook Post & Discussion**](https://www.facebook.com/photo/?fbid=1676460976896951&set=gm.2201043733993920&idorvanity=660548818043427)  
-> 🌐 *Live Product Demo:* [**Aura Academic AI Proctoring**](http://aura-academic-fe-2024.s3-website-ap-southeast-1.amazonaws.com/vi/)
 
----
 
-## 1. The Power of AI in Modern EdTech
+## Introduction
 
-While our Serverless foundation (S3, Lambda, DynamoDB) enables **Aura Academic** to scale seamlessly and minimize infrastructure costs, **Artificial Intelligence (AI/ML)** serves as the core differentiator driving complete automation and academic integrity across our platform.
+If you have studied or worked with AWS, you are probably familiar with **Amazon S3 (Simple Storage Service)**, one of AWS's most widely used object storage services. Amazon S3 is well known for its virtually unlimited scalability, exceptional durability of **99.999999999% (11 nines)**, and cost-effective storage.
 
-In our second engineering blog post, our team shares detailed insights into integrating two premier AWS AI services: **Amazon Bedrock (Generative AI)** for intelligent exam generation, and **Amazon Rekognition (Computer Vision)** for automated secure room proctoring.
+However, one limitation has always existed for many traditional applications: **Amazon S3 is Object Storage, not File Storage**.
 
----
+Instead of opening a file using familiar operations such as `open()`, `read()`, or `write()`, developers must use the AWS SDK or REST APIs to interact with stored objects. For applications originally designed to work with traditional file systems, this can become a significant challenge.
 
-## 2. Lightning-Fast Exam Builder Powered by Amazon Bedrock
-
-One of the most time-consuming workflows for educators is drafting and categorizing question banks from comprehensive, multi-hundred-page course materials. By integrating **Amazon Bedrock**, we tapped directly into cutting-edge Large Language Models (LLMs) like **Claude 3 (Anthropic)** and **Titan Embeddings** to automate exam creation:
-
-```mermaid
-sequenceDiagram
-    participant Instructor as Instructor
-    participant Frontend as Aura Frontend (Next.js)
-    participant Bedrock as Amazon Bedrock (Claude 3)
-    participant DynamoDB as Question Bank (DynamoDB)
-    
-    Instructor->>Frontend: Upload Course Materials (PDF / DOCX)
-    Frontend->>Bedrock: Send Prompt requesting structured MCQ generation & difficulty distribution
-    Bedrock-->>Frontend: Return JSON with 50+ standardized questions (Question, 4 options, Detailed rationale)
-    Instructor->>Frontend: Review & Click "Approve Exam"
-    Frontend->>DynamoDB: Save directly to DynamoDB Question Bank
-```
-
-### Key Technical Highlights:
-* **Accurate Contextual Extraction:** The LLM deeply comprehends specialized academic terminology and categorizes questions according to Bloom's Taxonomy: *Remembering - Understanding - Applying - Analyzing*.
-* **Zero Data Training Leakage:** Unlike commercial public AI APIs, documents uploaded through **Amazon Bedrock** are encrypted in transit and at rest within our private Virtual Private Cloud (VPC) and are never used to train base foundation models.
+To solve this problem, AWS introduced **Amazon S3 Files**, a new capability that allows Amazon S3 buckets to be accessed similarly to a traditional file system, making application development and migration to AWS much easier.
 
 ---
 
-## 3. Intelligent AI Proctoring System with Amazon Rekognition
+## What is Amazon S3 Files?
 
-Enforcing absolute academic honesty across online examinations is virtually impossible using manual human supervision over video calls when classrooms exceed hundreds of students. **Amazon Rekognition** enabled us to build an automated real-time proctoring pipeline with >99% accuracy:
+Amazon S3 Files allows users to **mount an Amazon S3 bucket as a file system**, enabling applications to perform familiar file operations such as:
 
-| Proctoring Capability | Amazon Rekognition Mechanism | Automated System Action |
-| :--- | :--- | :--- |
-| **Face Verification** | Compares student webcam capture at exam check-in against verified profile records (`CompareFaces API`). | Blocks exam entrance if facial similarity score falls below 90%, eliminating proxy exam attempts instantly. |
-| **Multi-Face Detection** | Periodically samples webcam frames (`DetectFaces API`) to verify the number of distinct human faces present. | Triggers real-time alert and records incident log if more than one face is detected within the frame. |
-| **Absence Detection** | Identifies when the webcam view becomes empty or if the candidate leaves their workstation continuously. | Displays on-screen warning and logs behavioral violation to the instructor audit dashboard. |
+- Read files
+- Write files
+- Rename files
+- Delete files
+- Browse directories
 
----
+Although applications interact with files in a familiar way, **the data is still stored as objects in Amazon S3**. Amazon S3 Files simply provides a file-system interface that allows applications to work with S3 data without requiring extensive AWS SDK integration.
 
-## 4. Edge-to-Cloud Processing Optimization
-
-Continuously streaming HD video feeds from hundreds of webcams directly to the cloud would incur prohibitive network bandwidth and heavy API usage costs. To resolve this, we implemented a **Hybrid Edge-Cloud Processing** architecture:
-1. **At the Browser (Client Edge):** Lightweight JavaScript models (`TensorFlow.js / MediaPipe`) run locally inside the student's browser to track basic head movement and gaze direction.
-2. **At the Cloud (Amazon Rekognition):** Only when the edge client detects a high-probability anomaly (e.g., repeated head turning, sudden lighting shift, or face disappearance), the system captures a high-resolution Keyframe snapshot and dispatches it via API Gateway to **Amazon Rekognition** for definitive verification and evidence storage on **Amazon S3**.
-
-This hybrid architecture reduced our AI proctoring operating expenses by **80%** compared to traditional continuous server video processing!
+In other words, Amazon S3 Files acts as a bridge between **Object Storage** and **File Systems**.
 
 ---
 
-## 5. Conclusion
+## What Challenges Did We Face Before?
 
-Combining **Amazon Bedrock** with **Amazon Rekognition** allows **Aura Academic** to achieve rigorous international exam security standards while demonstrating the transformative impact of AWS AI services on educational technology.
+For cloud-native applications, interacting with Amazon S3 through APIs is generally not a problem.
+
+However, many applications—including:
+
+- Legacy applications
+- Data processing tools
+- AI and Machine Learning frameworks
+- Traditional Linux software
+
+were originally built to work with file systems instead of object storage.
+
+To overcome this limitation, many organizations deployed additional services such as:
+
+- Amazon EFS
+- Amazon FSx
+
+They then synchronized data between File Storage and Amazon S3.
+
+This approach often resulted in:
+
+- Higher infrastructure costs
+- More complex system architectures
+- Increased operational overhead
+- More difficult scalability and maintenance
+
+Amazon S3 Files was introduced to simplify this architecture.
 
 ---
 
-> 💬 **Are you more interested in Prompt Engineering or Computer Vision architectures?**  
-> Share your thoughts and join our technical discussion on our Facebook community post:  
-> 👉 [**Join the Discussion on AWS Study Vietnam**](https://www.facebook.com/photo/?fbid=1676460976896951&set=gm.2201043733993920&idorvanity=660548818043427)
+# Key Benefits
+
+## 1. Simplified Application Development
+
+Instead of using APIs to upload and download data, applications can directly access files through familiar file operations.
+
+This helps developers:
+
+- Write less code
+- Improve maintainability
+- Accelerate application development
+
+---
+
+## 2. Cost-Effective Storage
+
+Since data remains stored directly in Amazon S3, users continue to benefit from:
+
+- Low storage costs
+- Virtually unlimited scalability
+- Industry-leading durability
+
+In many scenarios, organizations can reduce or eliminate the need for separate file storage services.
+
+---
+
+## 3. Virtually Unlimited Scalability
+
+Amazon S3 has long been recognized for its ability to store massive amounts of data.
+
+Amazon S3 Files inherits this advantage, allowing applications to process large volumes of files without worrying about storage capacity.
+
+---
+
+## 4. Seamless Integration with the AWS Ecosystem
+
+Amazon S3 Files integrates well with many AWS services, including:
+
+- Amazon EC2
+- Amazon ECS
+- Amazon EKS
+- AI and Machine Learning services
+- Data analytics services
+
+This allows multiple applications to access the same dataset without maintaining multiple copies.
+
+---
+
+## Common Use Cases
+
+Amazon S3 Files is particularly suitable for:
+
+- AI and Machine Learning model training
+- Building Data Lakes
+- Large-scale data analytics
+- Image and video processing
+- Digital document storage
+- Running Kubernetes workloads on Amazon EKS
+- Migrating legacy applications to AWS with minimal code changes
+
+---
+
+## Things to Consider
+
+Although Amazon S3 Files provides a file system-like experience, **Amazon S3 remains an Object Storage service**.
+
+As a result, some behaviors and advanced features commonly found in traditional file systems may differ or may not yet be fully supported.
+
+Additionally, Amazon S3 Files is still a relatively new AWS capability. Before deploying it into production environments, users should carefully review the official AWS documentation and validate it with real-world workloads.
+
+---
+
+## Conclusion
+
+Amazon S3 Files represents an important step forward in bridging the gap between **Object Storage** and **File Storage**.
+
+By providing a familiar file-system interface while retaining the scalability, durability, and cost efficiency of Amazon S3, it enables organizations to simplify application development and storage architectures.
+
+For organizations building AI, Machine Learning, Data Analytics, or large-scale file processing solutions on AWS, Amazon S3 Files has the potential to reduce infrastructure complexity, lower operational costs, and accelerate development.
+
+If you are learning AWS or exploring cloud storage services, Amazon S3 Files is definitely a feature worth understanding and experimenting with.
+
+---
+
+## References
+
+- https://aws.amazon.com/blogs/aws/launching-s3-files-making-s3-buckets-accessible-as-file-systems/
