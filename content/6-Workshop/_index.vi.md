@@ -1,48 +1,31 @@
 ---
-title: "Workshop"
+title: "Triển khai Thực tế (Workshop)"
 date: 2024-01-01
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Hướng dẫn Triển khai AuraAcademic lên AWS (Step-by-Step)
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Trong phần này, chúng ta sẽ bắt tay vào thực hành triển khai toàn bộ kiến trúc hệ thống của **AuraAcademic** lên môi trường điện toán đám mây Amazon Web Services (AWS) thực tế.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+**Lưu ý quan trọng về Kiến trúc triển khai (Cost-Optimized vs Enterprise):**
+- **Sơ đồ kiến trúc (Enterprise):** Trong thiết kế lý thuyết, chúng ta sử dụng **Private Subnets** và **NAT Gateways** để đảm bảo bảo mật tối đa (High Security & High Availability).
+- **Triển khai thực tế (Cost-Optimized):** Do NAT Gateway có chi phí duy trì rất cao (~$86/tháng), trong bài thực hành này, chúng ta sẽ áp dụng **Kiến trúc Tối ưu chi phí cho sinh viên**. Các máy chủ ECS và EC2 sẽ được đặt trong **Public Subnets** và được bảo vệ nghiêm ngặt bằng **Security Groups (Tường lửa)**. Cách này giúp bạn hoàn thành đồ án xuất sắc với chi phí duy trì chỉ khoảng $30-$50/tháng (thậm chí chưa tới $10 nếu dùng Spot Instances).
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+#### Nội dung thực hành
 
-#### Nội dung
+Quá trình triển khai được chia thành 7 giai đoạn chính:
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Giai đoạn 1: Thiết lập Phân quyền (IAM)](6.1-IAM-Security/) - Tạo tài khoản và cấp quyền cho GitHub Actions, ECS.
+2. [Giai đoạn 2: Khởi tạo Mạng ảo (VPC)](6.2-VPC-Network/) - Xây dựng kiến trúc Public Subnets và Routing tối ưu chi phí.
+3. [Giai đoạn 3: Triển khai Backend (ECS Fargate)](6.3-ECS-Backend/) - Đưa Spring Boot API lên Container Serverless.
+4. [Giai đoạn 4: Triển khai AI Engine (EC2 GPU)](6.4-EC2-GPU-AI/) - Cài đặt máy ảo chạy YOLOv8 và LiteLLM xử lý luồng WebSockets.
+5. [Giai đoạn 5: Triển khai Frontend (S3 & CloudFront)](6.5-S3-CloudFront-Frontend/) - Lưu trữ web tĩnh và CDN phân phối toàn cầu.
+6. [Giai đoạn 6: Tự động hóa CI/CD (GitHub Actions)](6.6-CICD-Github/) - Gắn kết quy trình đẩy code tự động.
+7. [Dọn dẹp tài nguyên (Cleanup)](6.7-Cleanup/) - Hướng dẫn xóa các dịch vụ để tránh phát sinh chi phí.
 
----
-
-### Kết quả đạt được & Giá trị thực chiến (Workshop Outcomes & Key Takeaways)
-
-Hoàn thành chuỗi bài thực hành **VPC Endpoint (AWS PrivateLink) cho Amazon S3**, học viên/kỹ sư đạt được các năng lực kỹ thuật và giá trị vận hành chuyên sâu sau:
-
-#### 1. Năng lực Kỹ thuật & Kiến trúc đạt được (Technical Mastery)
-* **Làm chủ kiến trúc Hybrid Cloud an toàn:** Hiểu sâu và thiết kế thành công mô hình kết nối bảo mật tuyệt đối giữa Trung tâm dữ liệu doanh nghiệp (On-premises / VPN Site-to-Site) và hệ sinh thái AWS Cloud.
-* **Phân biệt & Triển khai 2 loại VPC Endpoint cho S3:**
-  - **Gateway VPC Endpoint:** Thiết lập bảng định tuyến (Route Tables) điều hướng lưu lượng từ các EC2/Workload nội bộ trong VPC đến Amazon S3 bằng địa chỉ IP riêng (Private IP), với chi phí điểm cuối hoàn toàn **miễn phí (0 USD)**.
-  - **Interface VPC Endpoint (AWS PrivateLink):** Sử dụng các Private IP trong Subnet và cấu hình phân giải DNS nội bộ để cho phép các máy chủ từ On-premises truy cập S3 một cách riêng tư mà không cần đi qua Internet công cộng hay VPN NAT.
-* **Kiểm soát bảo mật tầng điểm cuối (VPC Endpoint Policies):** Viết và áp dụng thành công các chính sách IAM trên VPC Endpoint (Endpoint Policies), chỉ cho phép truy cập vào các S3 Bucket hợp lệ của tổ chức và chặn đứng mọi nỗ lực kết nối đến các S3 Bucket bên ngoài (chống thất thoát dữ liệu - **Data Exfiltration Prevention**).
-
-#### 2. Giá trị Vận hành & Tối ưu hóa (Operational Value & Optimization)
-* **Bảo mật tuyệt đối (Zero-Trust Network):** Loại bỏ hoàn toàn sự phụ thuộc vào Internet Gateway, NAT Gateway hay địa chỉ IP công cộng (Public IP) khi giao tiếp với Amazon S3, giảm thiểu tối đa diện tích tấn công mạng (DDoS, Man-in-the-Middle).
-* **Tối ưu chi phí truyền dữ liệu (Data Transfer Cost Reduction):** Giảm đáng kể chi phí băng thông (NAT Gateway Data Processing Fee ~0.045 USD/GB) cho các hệ thống có lưu lượng đọc/ghi dữ liệu lớn trên S3 (như Big Data, Backup, Log Analytics).
-* **Tăng tốc độ & Độ trễ ổn định:** Đường truyền dữ liệu đi qua hạ tầng mạng riêng trục chính (AWS Global Network) với băng thông cao và độ trễ thấp, đảm bảo hiệu suất tối đa cho các ứng dụng nghiệp vụ cốt lõi.
+> **Lưu ý:** Hãy chuẩn bị sẵn sàng tài khoản AWS và bắt đầu đi tuần tự từng bước nhé!
