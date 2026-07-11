@@ -19,12 +19,11 @@ pre: " <b> 1.3. </b> "
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :---: | :--- | :---: | :---: | :--- |
 | 2 | - Practice launching a Windows Server EC2 instance, retrieving the Administrator password, and connecting via Remote Desktop (RDP). | 01/05/2026 | 01/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Deploy the **AWS FCJ Management** workshop application onto the EC2 instance and verify runtime dependencies. | 02/05/2026 | 02/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Configure Security Groups and verify Route Tables to ensure the web application is smoothly accessible over the public internet. | 03/05/2026 | 03/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Study Amazon S3 storage fundamentals, Storage Classes, and security access mechanisms (IAM Roles and Bucket Policies). | 04/05/2026 | 04/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - Practice creating an S3 bucket, uploading a static web page (HTML/CSS/JS), and enabling Static Website Hosting. | 05/05/2026 | 05/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 7 | - *On-site lab session:* Learn about Amazon RDS (create a MySQL database instance, test EC2 connections). Install Docker Engine on EC2 and test running basic containers. | 06/05/2026 | 06/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 1 | - Write the Week 3 progress report, capture lab evidence screenshots, review AWS Billing, and terminate unused RDS/EC2 resources. | 07/05/2026 | 07/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Deploy the **AWS FCJ Management** workshop application onto the EC2 instance, and configure Security Groups and Route Tables to ensure the web app is accessible over the internet. | 02/05/2026 | 02/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Study Amazon S3 storage fundamentals, Storage Classes, and security access mechanisms (IAM Roles and Bucket Policies). | 03/05/2026 | 03/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Practice creating an S3 bucket, uploading a static web page (HTML/CSS/JS), and enabling Static Website Hosting. | 04/05/2026 | 04/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6-7 | - *On-site lab session:* Learn about and practice setting up relational databases with Amazon RDS (create a MySQL database instance, configure Security Groups, test EC2 connections). | 05/05/2026 | 06/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 1 | - Install Docker Engine on EC2 Linux and run sample containers. Write the Week 3 progress report, capture lab evidence, review AWS Billing, and terminate unused resources. | 07/05/2026 | 07/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 3 Achievements:
 

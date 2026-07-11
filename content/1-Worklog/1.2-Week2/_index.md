@@ -16,10 +16,10 @@ pre: " <b> 1.2. </b> "
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :---: | :--- | :---: | :---: | :--- |
-| 2 | - Study AWS networking concepts and practice setting up a complete Amazon VPC with Public/Private Subnets, an Internet Gateway, and a Route Table. | 24/04/2026 | 24/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Learn how to manage EC2 Linux instances (Amazon Linux 2023), generate SSH Key Pairs, and connect via terminal or Session Manager. | 25/04/2026 | 26/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Practice launching EC2 Linux instances using t3.nano and t3.micro sizes to compare CPU/RAM limits, then terminate unused servers. | 27/04/2026 | 28/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - Install Apache Web Server (`httpd`) on EC2 Linux, upload a sample HTML web page, and open ports 80/443 in the Security Group to verify internet access. | 29/04/2026 | 30/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 1-2 | - Study AWS networking concepts and practice setting up a complete Amazon VPC with Public/Private Subnets, an Internet Gateway, and a Route Table. | 24/04/2026 | 25/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Learn how to manage EC2 Linux instances (Amazon Linux 2023), generate SSH Key Pairs, and connect via terminal or Session Manager. | 26/04/2026 | 26/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Practice launching EC2 Linux instances using t3.nano and t3.micro sizes to compare CPU/RAM limits, then terminate unused servers. | 27/04/2026 | 27/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5-7 | - Install Apache Web Server (`httpd`) on EC2 Linux, upload a sample HTML web page, and open ports 80/443 in the Security Group to verify internet access. | 28/04/2026 | 30/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 2 Achievements:
 

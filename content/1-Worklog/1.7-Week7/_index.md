@@ -17,10 +17,10 @@ pre: " <b> 1.7. </b> "
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :---: | :--- | :---: | :---: | :--- |
-| 2 | - *On-site office session:* Meet in person with the team to align Frontend and Backend code integration. Create and configure a secure IAM User account with AdministratorAccess privileges to replace Root account usage. | 29/05/2026 | 30/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Study how Amazon Bedrock Knowledge Bases and OpenSearch Serverless operate under the hood to support RAG document retrieval. | 31/05/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Develop the **Online Examination Room UI** featuring smooth question switching, auto-save draft answers, and a live countdown timer. | 02/06/2026 | 03/06/2026 | |
-| 6 | - Integrate the webcam video stream box directly into the exam interface for AI Proctoring and test displaying warning alerts triggered from backend models. | 04/06/2026 | 04/06/2026 | |
+| 2-3 | - *On-site office session:* Meet in person with the team to align Frontend and Backend code integration. Create and configure a secure IAM User account with AdministratorAccess privileges to replace Root account usage. | 29/05/2026 | 30/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Study how Amazon Bedrock Knowledge Bases and OpenSearch Serverless operate under the hood to support RAG document retrieval. | 31/05/2026 | 31/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5-6 | - Develop the **Online Examination Room UI** featuring smooth question switching, auto-save draft answers, and a live countdown timer. | 01/06/2026 | 02/06/2026 | |
+| 7-1 | - Integrate the webcam video stream box directly into the exam interface for AI Proctoring and test displaying warning alerts triggered from backend models. | 03/06/2026 | 04/06/2026 | |
 
 ### Week 7 Achievements:
 
