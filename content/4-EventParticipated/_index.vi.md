@@ -20,3 +20,12 @@ Trong quá trình thực tập, em đã có cơ hội tham gia sự kiện offli
 
 &emsp;**Mô tả ngắn:** Buổi gặp gỡ, kết nối mở cùng các chuyên gia và mentor AWS xoay quanh 6 phần chia sẻ thực chiến: (1) Game hóa việc học AWS với Cloud Quest & Floci, (2) Kinh nghiệm triển khai Hackathon (The Ballers), (3) Tầm quan trọng của sự tự tin (Why We Always Need Confidence), (4) Case study sản phẩm web Tử Vi Đại Việt, (5) Tảng băng chìm DevOps (DevOps Before Disaster), và (6) Khắc phục tâm lý trì hoãn trong học tập và công việc.
 
+
+### [Event 2: Chung kết Cloud Architect & Seminar](4.2-Event2/)
+&emsp;**Tên sự kiện:** Chung kết cuộc thi Cloud Architect & Seminar  
+
+&emsp;**Thời gian:** Thứ 7, ngày 11/07/2026  
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự  
+
+&emsp;**Mô tả ngắn:** Sự kiện gồm 2 phần chính: thi đấu chung kết cuộc thi Cloud Architect đầy kịch tính và 3 phiên thuyết trình chuyên sâu từ các diễn giả về bảo mật web app với AWS Security Agent, kinh nghiệm ôn thi AWS Cloud Practitioner, và tư duy giám sát SLA (Monitoring what really matters).

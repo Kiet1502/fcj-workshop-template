@@ -31,3 +31,13 @@ During my internship, I had the opportunity to attend the offline **Saturday Mee
 &emsp;**Role:** Attendee (FCJ Intern / Frontend Developer for Aura Academic)  
 
 &emsp;**Brief Description:** An engaging offline tech meetup at the AWS Bitexco office featuring 6 practical sessions: (1) Gamified AWS Learning via Cloud Quest & Floci, (2) Hackathon Product Strategy (The Ballers), (3) Building Tech Confidence (Why We Always Need Confidence), (4) Case study of Tu Vi Dai Viet web app, (5) DevOps Culture & Automation (DevOps Before Disaster), and (6) Overcoming Procrastination in Engineering. 
+
+
+### [Event 2: Cloud Architect Final & Seminar](4.2-Event2/)
+&emsp;**Event Name:** Cloud Architect Final & Seminar  
+
+&emsp;**Date & Time:** Saturday, July 11, 2026  
+
+&emsp;**Role:** Attendee  
+
+&emsp;**Brief Description:** The event included a thrilling Cloud Architect final competition and 3 deep-dive presentations from guest speakers on securing web apps with AWS Security Agent, insights for the AWS Cloud Practitioner exam, and SLA monitoring strategies (Monitoring what really matters).
