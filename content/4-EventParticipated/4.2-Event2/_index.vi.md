@@ -26,17 +26,17 @@ Sự kiện đã mang đến 3 bài thuyết trình rất bổ ích:
 
 #### 1. Securing Your Web Apps With AWS Security Agent
 * **Người chia sẻ:** Thinh Nguyen (DevOps/DevSecOps/Cloud Engineer)
-* **Cảm nhận & Bài học:** Giới thiệu về cách bảo mật các ứng dụng web với AWS Security Agent, bảo vệ hệ thống trước các nguy cơ tấn công mạng.
+* **Cảm nhận & Bài học:** Bài chia sẻ tập trung vào các phương pháp bảo mật ứng dụng web hiện đại trên nền tảng đám mây. Anh Thịnh đã chỉ ra những lỗ hổng phổ biến mà lập trình viên thường bỏ qua và cách ứng dụng AWS Security Agent để giám sát, phát hiện mối đe dọa theo thời gian thực. Điều này giúp em nhận ra rằng bảo mật không phải là bước cuối cùng trước khi release, mà phải được tích hợp (DevSecOps) ngay từ quá trình phát triển để đảm bảo an toàn tối đa cho hệ thống.
 * **Link Slide:** [Securing Your Web Apps With AWS Security Agent](https://docs.google.com/presentation/d/1BhpPX4YFPGrgY7a3_gmQCeyHugsZbl0w/edit?slide=id.p2#slide=id.p2)
 
 #### 2. Inside The Exam: AWS Cloud Practitioner
 * **Người chia sẻ:** Ngo Le Tan Huy
-* **Cảm nhận & Bài học:** Cung cấp lộ trình chiến lược (A Strategic Roadmap) và những kinh nghiệm thực tế để chinh phục kỳ thi chứng chỉ AWS Cloud Practitioner.
+* **Cảm nhận & Bài học:** Với những ai đang lên kế hoạch thi chứng chỉ AWS Cloud Practitioner, phần trình bày của anh Huy thực sự là một "kim chỉ nam". Anh không chỉ chia sẻ chi tiết về cấu trúc bài thi (A Strategic Roadmap), các domain kiến thức trọng tâm mà còn bật mí các chiến thuật làm bài thực tế hiệu quả. Em ấn tượng nhất với cách anh hướng dẫn tối ưu hóa lộ trình ôn tập, giúp giải tỏa tâm lý lo lắng và tự tin hơn để chinh phục chứng chỉ này.
 * **Link Slide:** [Inside The Exam: AWS Cloud Practitioner](https://docs.google.com/presentation/d/1WL690tPPU3taJToRZQ3QkbO26Hxcn7dG/edit?slide=id.p1#slide=id.p1)
 
 #### 3. SLA and Monitoring: From SLA to Monitoring what really matters
 * **Người chia sẻ:** Nguyễn Hu...
-* **Cảm nhận & Bài học:** Đi từ khái niệm SLA đến các chiến lược Monitoring thực tiễn. Giúp hiểu rõ vì sao monitoring cần đo lường trải nghiệm người dùng cuối thay vì chỉ đo các thông số CPU/Memory đơn thuần.
+* **Cảm nhận & Bài học:** Bài nói đã làm thay đổi hoàn toàn tư duy của em về việc giám sát hệ thống (Monitoring). Anh mở đầu bằng một câu chuyện rất thực tế: "AWS console có thể xanh, server có thể chạy, nhưng user vẫn không login được". Thay vì chỉ đo các thông số phần cứng cơ bản như CPU hay Memory, chúng ta cần tập trung giám sát trải nghiệm thực sự của người dùng cuối và các chỉ số SLA (Service Level Agreement). Điều này giúp việc vận hành hệ thống bám sát với giá trị cốt lõi của sản phẩm.
 * **Link Slide:** [SLA and Monitoring](https://docs.google.com/presentation/d/1M8Z6jCCNiPnlyRcL7g3sNmYskKlg0XBL/edit?slide=id.p1#slide=id.p1)
 
 ---

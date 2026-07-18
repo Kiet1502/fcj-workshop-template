@@ -26,17 +26,17 @@ The event brought 3 highly informative presentations:
 
 #### 1. Securing Your Web Apps With AWS Security Agent
 * **Speaker:** Thinh Nguyen (DevOps/DevSecOps/Cloud Engineer)
-* **Feelings & Lessons:** An introduction to securing web applications with AWS Security Agent and protecting systems from cyber threats.
+* **Feelings & Lessons:** The presentation focused on modern web application security methods in the cloud. Mr. Thinh pointed out common vulnerabilities that developers often overlook and how to use AWS Security Agent to monitor and detect threats in real time. This made me realize that security is not the final step before release, but must be integrated (DevSecOps) right from the development process to ensure maximum system safety.
 * **Slide Link:** [Securing Your Web Apps](https://docs.google.com/presentation/d/1BhpPX4YFPGrgY7a3_gmQCeyHugsZbl0w/edit?slide=id.p2#slide=id.p2)
 
 #### 2. Inside The Exam: AWS Cloud Practitioner
 * **Speaker:** Ngo Le Tan Huy
-* **Feelings & Lessons:** Providing a strategic roadmap and practical experiences to conquer the AWS Cloud Practitioner certification exam.
+* **Feelings & Lessons:** For those planning to take the AWS Cloud Practitioner certification, Mr. Huy's presentation was truly a "guiding compass". He not only shared in detail about the exam structure (A Strategic Roadmap) and key knowledge domains but also revealed effective practical test-taking strategies. I was most impressed with his guidance on optimizing the study path, which helped relieve anxiety and build confidence to conquer this certification.
 * **Slide Link:** [Inside The Exam](https://docs.google.com/presentation/d/1WL690tPPU3taJToRZQ3QkbO26Hxcn7dG/edit?slide=id.p1#slide=id.p1)
 
 #### 3. SLA and Monitoring: From SLA to Monitoring what really matters
 * **Speaker:** Nguyen Hu...
-* **Feelings & Lessons:** Going from SLA concepts to practical monitoring strategies. Understanding why monitoring should measure end-user experience instead of just CPU/Memory metrics.
+* **Feelings & Lessons:** The talk completely changed my mindset about system monitoring. He started with a very practical story: "The AWS console might be green, the server might be running, but users still can't log in." Instead of just measuring basic hardware metrics like CPU or Memory, we need to focus on monitoring the actual end-user experience and SLA (Service Level Agreement) metrics. This ensures system operations closely align with the product's core value.
 * **Slide Link:** [SLA and Monitoring](https://docs.google.com/presentation/d/1M8Z6jCCNiPnlyRcL7g3sNmYskKlg0XBL/edit?slide=id.p1#slide=id.p1)
 
 ---
