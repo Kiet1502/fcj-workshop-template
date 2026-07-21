@@ -18,10 +18,9 @@ pre: " <b> 1.9. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Tìm hiểu nhanh lý thuyết về bảo mật ứng dụng với Amazon Route 53 và tường lửa AWS WAF. Các lab nặng về dữ liệu lớn (Glue/Athena) được thống nhất tìm hiểu qua lý thuyết để dành thời gian cho code Frontend. | 12/06/2026 | 13/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Lập trình **Giao diện Tạo đề thi AI (AI Exam Builder UI)**, làm tính năng cho phép giảng viên tải lên file tài liệu (PDF/DOCX) hoặc gõ chủ đề/yêu cầu đề thi. | 14/06/2026 | 15/06/2026 | |
-| **3** | Phối hợp sát sao với team backend để nối API gọi sang Bedrock Agents/Lambda tự sinh ma trận đề thi. Xử lý hiển thị hiệu ứng tải (loading spinners) và cho phép giảng viên chỉnh sửa câu hỏi trước khi lưu. | 16/06/2026 | 17/06/2026 | |
-| **4** | Thiết kế và code trang Báo cáo thống kê điểm thi (Analytics Dashboard) cho giảng viên, hiển thị biểu đồ phân bổ điểm số và tỷ lệ làm đúng/sai từng câu. | 18/06/2026 | 18/06/2026 | |
+| **1** | Tìm hiểu nhanh lý thuyết về bảo mật ứng dụng với Amazon Route 53 và tường lửa AWS WAF. Các lab nặng về dữ liệu lớn (Glue/Athena) được thống nhất tìm hiểu qua lý thuyết để dành thời gian cho code Frontend. | | | |
+| **2** | Lập trình giao diện tạo đề thi AI, làm tính năng cho phép giảng viên tải lên file tài liệu (PDF/DOCX) hoặc gõ chủ đề/yêu cầu đề thi. | | | |
+| **3** | Thiết kế và code trang Báo cáo thống kê điểm thi cho giảng viên, hiển thị biểu đồ phân bố điểm số và tỷ lệ làm đúng/sai từng câu. | | | |
 
 ### Kết quả đạt được tuần 9:
 

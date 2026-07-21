@@ -18,10 +18,9 @@ pre: " <b> 1.8. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Tìm hiểu dịch vụ Amazon Cognito để quản lý người dùng. Thay vì làm các bài lab nặng về container (ECR/ECS Fargate) không cần thiết cho Frontend, tôi dồn thời gian tìm hiểu sâu về Cognito User Pool. | 05/06/2026 | 06/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Tích hợp thành công luồng xác thực (Đăng ký, Đăng nhập, Quên mật khẩu) vào code Frontend **Aura Academic**. Xử lý lưu trữ JWT Token an toàn và phân quyền bảo vệ trang (Protected Routes). | 07/06/2026 | 08/06/2026 | |
-| **3** | Kết nối kho code Frontend trên GitHub với dịch vụ AWS Amplify, thiết lập CI/CD tự động deploy trang web mỗi khi có commit mới push lên nhánh chính. | 09/06/2026 | 10/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **4** | Họp nhóm kiểm tra chéo các chức năng, rà soát tính năng phân quyền (Sinh viên vs Giảng viên) và thử nghiệm giao diện trên cả màn hình máy tính lẫn điện thoại di động. | 11/06/2026 | 11/06/2026 | |
+| **1** | Tích hợp thành công luồng xác thực (Đăng ký, Đăng nhập, Quên mật khẩu) vào code Frontend của dự án. Xử lý lưu trữ JWT Token an toàn và phân quyền bảo vệ trang (Protected Routes). | | | |
+| **2** | Kết nối kho code Frontend trên GitHub với dịch vụ AWS Amplify, thiết lập CI/CD tự động deploy trang web mỗi khi có commit mới push lên nhánh chính. | | | |
+| **3** | Họp nhóm kiểm tra chéo các chức năng, rà soát tính năng phân quyền (Sinh viên với Giảng viên) và thử nghiệm giao diện trên màn hình máy tính lẫn điện thoại di động. | | | |
 
 ### Kết quả đạt được tuần 8:
 

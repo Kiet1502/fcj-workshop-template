@@ -18,10 +18,9 @@ pre: " <b> 1.11. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Hỗ trợ thiết kế hệ thống: Cùng nhóm phân tích và trực quan hóa luồng làm việc (workflow) cho đồ án **Aura Academic**. Chịu trách nhiệm chính vẽ sơ đồ kiến trúc, thể hiện rõ sự kết nối giữa Frontend (Amplify/CloudFront) và Backend (API Gateway/Lambda/Bedrock). | 26/06/2026 | 26/06/2026 | |
-| **2** | Phối hợp cùng nhóm kiểm thử kỹ lưỡng ứng dụng Frontend sau khi deploy lên AWS Amplify, gỡ lỗi (fix bugs) các vấn đề về hiển thị trên thiết bị di động và căn chỉnh giao diện. | 27/06/2026 | 28/06/2026 | |
-| **3** | *Lên văn phòng công ty:* Trao đổi với các anh chị mentor, ánh xạ kiến thức từ các bài lab AWS vào kiến trúc đồ án để giải thích lý do lựa chọn từng dịch vụ và cách tối ưu bảo mật, chi phí. | 29/06/2026 | 30/06/2026 | |
-| **4** | Đóng góp cộng đồng (Community Contribution): Viết bài blog chia sẻ kiến thức chuyên môn và quá trình thực tập làm đồ án trên AWS. Bài viết đã được xuất bản và chia sẻ thành công lên cộng đồng AWS Study Vietnam. | 01/07/2026 | 02/07/2026 | |
+| **1** | Hỗ trợ thiết kế hệ thống: Cùng nhóm phân tích và trực quan hóa luồng làm việc (workflow) cho đồ án. | | | |
+| **2** | Phối hợp cùng các bạn phụ trách kiểm thử kỹ lưỡng ứng dụng Frontend sau khi deploy lên AWS Amplify, gỡ lỗi các vấn đề về hiển thị trên thiết bị di động và căn chỉnh giao diện. | | | |
+| **3** | Viết bài blog chia sẻ kiến thức chuyên môn và quá trình thực tập làm đồ án trên AWS. Bài viết đã được xuất bản và chia sẻ thành công lên cộng đồng AWS Study Vietnam. | | | |
 
 ### Kết quả đạt được tuần 11:
 

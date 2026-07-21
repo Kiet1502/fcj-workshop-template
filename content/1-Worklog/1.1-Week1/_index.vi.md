@@ -19,12 +19,9 @@ pre: " <b> 1.1. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Làm quen và trao đổi với các thành viên trong nhóm, đọc kỹ nội quy cũng như lộ trình thực tập 12 tuần tới. | 17/04/2026 | 17/04/2026 |  |
-| **2** | Tìm hiểu khái niệm cơ bản về Cloud Computing và tổng quan các nhóm dịch vụ của AWS (Compute, Storage, Network, Database...). | 18/04/2026 | 18/04/2026 |  |
-| **3** | Tạo tài khoản AWS Free Tier. Gặp một chút trục trặc ở bước xác minh thẻ Visa nhưng đã liên hệ AWS Support để xử lý thành công. | 19/04/2026 | 19/04/2026 |  |
-| **4** | Làm quen với giao diện AWS Management Console, đồng thời cài đặt và cấu hình thử AWS CLI trên máy cá nhân. | 20/04/2026 | 20/04/2026 |  |
-| **5** | Đọc tài liệu tìm hiểu chi tiết về dịch vụ máy chủ ảo Amazon EC2 (AMI, Instance Type, Security Group). | 21/04/2026 | 21/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **6** | Làm 5 bài lab thực hành cơ bản đầu tiên (chọn lọc theo hướng dẫn để không tốn phí) và nhận thành công 100$ AWS Credits làm tài nguyên cho dự án sau này. | 22/04/2026 | 23/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| **1** | Tìm hiểu khái niệm cơ bản về Cloud Computing và tổng quan các nhóm dịch vụ của AWS (Compute, Storage, Network, Database...). | | | |
+| **2** | Đọc tài liệu tìm hiểu chi tiết về dịch vụ máy chủ ảo Amazon EC2 (AMI, Instance Type, Security Group). | | | |
+| **3** | Làm 5 bài lab thực hành cơ bản đầu tiên (chọn lọc theo hướng dẫn để không tốn phí) và nhận thành công 100$ AWS Credits làm tài nguyên cho dự án sau này. | | | |
 
 ### Kết quả đạt được tuần 1:
 

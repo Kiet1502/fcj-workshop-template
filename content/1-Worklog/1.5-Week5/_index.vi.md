@@ -18,10 +18,9 @@ pre: " <b> 1.5. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Tìm hiểu cơ chế hoạt động của AWS Lambda và Amazon API Gateway. Trao đổi với các bạn làm backend trong nhóm để thống nhất danh sách các API cần thiết cho hệ thống thi. | 15/05/2026 | 16/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Tự viết một hàm Lambda nhỏ xử lý logic trả về JSON mẫu và kết nối với API Gateway để test luồng gọi API từ trình duyệt. | 17/05/2026 | 17/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **3** | Tìm hiểu dịch vụ Amazon CloudFront, thực hành cấu hình CloudFront đứng trước một S3 bucket chứa web tĩnh để tăng tốc độ tải trang và hỗ trợ HTTPS. | 18/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **4** | Họp team rà soát tiến độ cho đồ án nhóm. Làm báo cáo tiến độ TTTN | 20/05/2026 | 21/05/2026 |  |
+| **1** | Tìm hiểu cơ chế hoạt động của AWS Lambda và Amazon API Gateway. Trao đổi với các bạn làm backend trong nhóm để thống nhất danh sách các API cần thiết cho hệ thống thi. | | | |
+| **2** | Tìm hiểu dịch vụ Amazon CloudFront, thực hành cấu hình CloudFront đứng trước một S3 bucket chứa web tĩnh để tăng tốc độ tải trang và hỗ trợ HTTPS. | | | |
+| **3** | Họp team rà soát tiến độ cho đồ án nhóm. Làm báo cáo tiến độ thực tập tốt nghiệp. | | | |
 
 ### Kết quả đạt được tuần 5:
 

@@ -18,11 +18,10 @@ pre: " <b> 1.12. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Viết dự thảo báo cáo tổng kết thực tập AWS, tổng hợp lại toàn bộ quá trình học tập, làm lab và phát triển đồ án nhóm. | 06/07/2026 | 06/07/2026 | |
-| **2** | Kiểm tra và rà soát lại tài liệu hướng dẫn workshop của nhóm, bổ sung các hình ảnh chụp màn hình minh họa chi tiết từng bước deploy ứng dụng. | 07/07/2026 | 07/07/2026 | |
-| **3** | Cập nhật báo cáo theo đúng định dạng Template chuẩn của chương trình First Cloud Journey (FCJ), rà soát lỗi chính tả và cách trình bày. | 08/07/2026 | 08/07/2026 | |
-| **4** | Họp nhóm tổng kết 12 tuần thực tập: cùng nhau kiểm tra chéo hồ sơ, tài liệu workshop và các link demo đồ án trước khi nộp. | 09/07/2026 | 09/07/2026 | |
-| **5** | Hoàn thiện bản cuối cùng (Final version) và chính thức nộp báo cáo tổng kết, hoàn tất các thủ tục kết thúc chương trình thực tập AWS đầy ý nghĩa. | 10/07/2026 | 10/07/2026 | |
+| **1** | Viết báo cáo tổng kết thực tập AWS, tổng hợp lại toàn bộ quá trình học tập, làm lab và phát triển đồ án nhóm. | | | |
+| **2** | Kiểm tra và rà soát lại tài liệu hướng dẫn workshop của nhóm, bổ sung các hình ảnh chụp màn hình minh họa chi tiết từng bước deploy ứng dụng. | | | |
+| **3** | Cập nhật báo cáo theo đúng định dạng Template chuẩn của chương trình First Cloud Journey (FCJ), rà soát lỗi chính tả và cách trình bày. | | | |
+| **4** | Hoàn thiện bản cuối cùng và chính thức nộp báo cáo tổng kết, hoàn tất các thủ tục kết thúc chương trình thực tập. | | | |
 
 ### Kết quả đạt được tuần 12:
 

@@ -18,11 +18,10 @@ pre: " <b> 1.6. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | STT | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Làm bài lab ngắn tìm hiểu cách theo dõi hệ thống với Amazon CloudWatch (xem biểu đồ CPU, RAM, tạo cảnh báo qua email) và làm quen khái niệm IaC với AWS CloudFormation. | 22/05/2026 | 23/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| **2** | Khởi tạo project Frontend cho hệ thống thi thông minh **Aura Academic** (cấu hình cấu trúc thư mục, bộ thư viện CSS/UI components và routing trang). | 24/05/2026 | 25/05/2026 | |
-| **3** | Thiết kế và lập trình giao diện Trang chủ (Landing Page) cùng với màn hình Đăng nhập/Đăng ký dành cho cả sinh viên và giảng viên. | 26/05/2026 | 27/05/2026 | |
-| **4** | Dựng khung Bảng điều khiển sinh viên (Student Dashboard) hiển thị danh sách các kỳ thi, thời gian bắt đầu và lịch sử làm bài, sau đó rà soát với team backend. | 28/05/2026 | 28/05/2026 | |
-| **5** | - Tham gia meeting First Cloud Journey<br>- Lắng nghe chia sẻ về công nghệ, kinh nghiệm học tập<br>- Trao đổi về ý tưởng phân chia công việc về dự án của nhóm | 30/05/2026 | 30/05/2026 | |
+| **1** | Khởi tạo Frontend cho hệ thống thi thông minh | | | |
+| **2** | Thiết kế và lập trình giao diện Trang chủ cùng với màn hình Đăng nhập/Đăng ký dành cho cả sinh viên và giảng viên. | | | |
+| **3** | Dựng khung Bảng điều khiển sinh viên hiển thị danh sách các kỳ thi, thời gian bắt đầu và lịch sử làm bài, sau đó rà soát với team backend. | | | |
+| **4** | Tham gia meeting First Cloud Journey: Lắng nghe chia sẻ về công nghệ, kinh nghiệm học tập và trao đổi về ý tưởng phân chia công việc về dự án của nhóm. | | | |
 
 ### Kết quả đạt được tuần 6:
 
