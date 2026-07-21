@@ -35,7 +35,7 @@ Sự kiện đã mang đến 3 bài thuyết trình rất bổ ích:
 * **Link Slide:** [Inside The Exam: AWS Cloud Practitioner](https://docs.google.com/presentation/d/1WL690tPPU3taJToRZQ3QkbO26Hxcn7dG/edit?slide=id.p1#slide=id.p1)
 
 #### 3. SLA and Monitoring: From SLA to Monitoring what really matters
-* **Người chia sẻ:** Nguyễn Hu...
+* **Người chia sẻ:** Nguyễn Huỳnh Sơn
 * **Cảm nhận & Bài học:** Bài nói đã làm thay đổi hoàn toàn tư duy của em về việc giám sát hệ thống (Monitoring). Anh mở đầu bằng một câu chuyện rất thực tế: "AWS console có thể xanh, server có thể chạy, nhưng user vẫn không login được". Thay vì chỉ đo các thông số phần cứng cơ bản như CPU hay Memory, chúng ta cần tập trung giám sát trải nghiệm thực sự của người dùng cuối và các chỉ số SLA (Service Level Agreement). Điều này giúp việc vận hành hệ thống bám sát với giá trị cốt lõi của sản phẩm.
 * **Link Slide:** [SLA and Monitoring](https://docs.google.com/presentation/d/1M8Z6jCCNiPnlyRcL7g3sNmYskKlg0XBL/edit?slide=id.p1#slide=id.p1)
 
@@ -52,6 +52,6 @@ Sau sự kiện, em đã rút ra được nhiều bài học giá trị:
 
 ### Một số hình ảnh khi tham gia sự kiện
 
-Dưới đây là hình ảnh thực tế từ sự kiện đầy kịch tính và ý nghĩa này:
+Dưới đây là hình ảnh thực tế từ sự kiện:
 
 ![Hình ảnh tham gia sự kiện ngày 11/7](/fcj-workshop-template/images/4-EventParticipated/4.2-Event2/event-photo-1.jpg)
